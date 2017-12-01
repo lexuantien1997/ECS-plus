@@ -24,7 +24,7 @@ namespace ECS
 		// std::size_t means BaseID can be a big number or small number
 		using BaseID = std::size_t;
 
-		// Base can be: `Component` or `ISystem`
+		// Base can be: `Component` or `TSystem`
 		template<typename Base>
 		class ClassID
 		{

@@ -35,10 +35,10 @@ namespace ECS
 
 		struct Checker
 		{
-		private:
+			public:
 			ComponentTypeList _requires; //  each array have `maxComponents` element -> each element have 2 values (0|1)
 			ComponentTypeList _excludes;
-		public:
+		
 			Checker(ComponentTypeList requires, ComponentTypeList excludes) :_requires(requires), _excludes(excludes) { }
 
 			Checker() { }

@@ -1,9 +1,10 @@
-#include <iostream>
-using namespace std;
+#include <../ECS Plus/_ECS_Header.h>
 
-int main(int argc, char *argv[])
+#include <../ECS Plus/Test_System.h>
+
+int main()
 {
-
-
+	Test_ECS();
+	
 	return 0;
 }

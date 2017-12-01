@@ -6,11 +6,7 @@ namespace ECS
 {
 	class GameWorld;
 	class Entity;
-	/*
-	* Why we must use class `ISystem` ?
-	* This is just a trick. Because `System` has a template in front of
-	* => You can't use it to count id or use std::is_base_of
-	*/
+
 
 	// =================================================== Brief ====================================================
 	//	- System is where defides the logic for particular parts (components) of your game
@@ -55,11 +51,24 @@ namespace ECS
 
 		// Important function
 		template<class Exclude>
-		void Exclude();
+		void Excludes();
 
 		void addEntity(Entity* entity);
 
 		void removeEntity(Entity* entity);
+
+		// =======================================================================
+		// Virtual method
+		// =======================================================================
+
+		virtual void update(float dt){}
+
+		virtual void render(){}
+
+		virtual void init() {}
+
+		virtual void loadResource() {}
+
 	};
 
 	template<class Requires>
@@ -69,7 +78,7 @@ namespace ECS
 	}
 
 	template<class Exclude>
-	inline void TSystem::Exclude()
+	inline void TSystem::Excludes()
 	{
 		checker._excludes = addExclude<Exclude>();
 	}
