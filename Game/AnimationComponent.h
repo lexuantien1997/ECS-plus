@@ -21,6 +21,10 @@ public:
 	
 	void initAnimationComponent(string startAction,string sourceName);
 
+	Action getCurrentAction() {
+		return currentAction;
+	}
+
 	~AnimationComponent();
 
 };

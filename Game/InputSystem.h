@@ -3,10 +3,13 @@
 
 #include "AnimationComponent.h"
 #include "PlayerControllable.h"
+#include "Mess.h"
+#include "Server.h"
 
-class InputSystem:public ECS::TSystem
+class InputSystem:public ECS::TSystem,public Server
 {
 public:
+
 
 	InputSystem();
 

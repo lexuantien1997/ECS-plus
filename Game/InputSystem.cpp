@@ -2,16 +2,17 @@
 #include "Velocity.h"
 #include "Bound.h"
 
+using namespace ECS;
 InputSystem::InputSystem()
 {
 	Requires<Require<PlayerControllable, AnimationComponent>>();
 	Excludes<Exclude<>>();
 }
 
-
 InputSystem::~InputSystem()
 {
 }
+
 
 void InputSystem::update(float dt)
 {
@@ -30,6 +31,9 @@ void InputSystem::update(float dt)
 		if (input->isKeyDown(playCon->controls.right,KeyState::current))
 		{
 			velocity->setVelocity(Vector2f(bound->SPEED, 0), VelocityType::normal);
+
+			SendMessage(new eMess(entity));
+
 		}
 		else if(input->isKeyDown(playCon->controls.left, KeyState::current))
 		{

@@ -28,6 +28,9 @@
     <Filter Include="Utility\src">
       <UniqueIdentifier>{e254b3b2-332e-4b3b-8a56-a5045f2eb654}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Event _ Delegate">
+      <UniqueIdentifier>{07a23cc4-c0a9-4e05-9861-5578a8ccd5c4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Bound.cpp">
@@ -69,7 +72,9 @@
     <ClCompile Include="main.cpp">
       <Filter>Utility</Filter>
     </ClCompile>
-    <ClCompile Include="AnimationSystem.cpp" />
+    <ClCompile Include="AnimationSystem.cpp">
+      <Filter>Systems\src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bound.h">
@@ -108,6 +113,28 @@
     <ClInclude Include="PlayingScene.h">
       <Filter>Utility\include</Filter>
     </ClInclude>
-    <ClInclude Include="AnimationSystem.h" />
+    <ClInclude Include="Delegate.h">
+      <Filter>Event _ Delegate</Filter>
+    </ClInclude>
+    <ClInclude Include="Event.h">
+      <Filter>Event _ Delegate</Filter>
+    </ClInclude>
+    <ClInclude Include="Server.h">
+      <Filter>Event _ Delegate</Filter>
+    </ClInclude>
+    <ClInclude Include="Client.h">
+      <Filter>Event _ Delegate</Filter>
+    </ClInclude>
+    <ClInclude Include="Mess.h">
+      <Filter>Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimationSystem.h">
+      <Filter>Systems\include</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Read me .txt">
+      <Filter>Event _ Delegate</Filter>
+    </Text>
   </ItemGroup>
 </Project>

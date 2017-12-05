@@ -149,15 +149,23 @@
     <ClInclude Include="AnimationComponent.h" />
     <ClInclude Include="AnimationSystem.h" />
     <ClInclude Include="Bound.h" />
+    <ClInclude Include="Client.h" />
+    <ClInclude Include="Delegate.h" />
+    <ClInclude Include="Event.h" />
     <ClInclude Include="InputSystem.h" />
+    <ClInclude Include="Mess.h" />
     <ClInclude Include="MetroidGame.h" />
     <ClInclude Include="MovementSystem.h" />
     <ClInclude Include="PlayerControllable.h" />
     <ClInclude Include="PlayingScene.h" />
     <ClInclude Include="RenderingSystem.h" />
+    <ClInclude Include="Server.h" />
     <ClInclude Include="SpriteComponent.h" />
     <ClInclude Include="Action.h" />
     <ClInclude Include="Velocity.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Read me .txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

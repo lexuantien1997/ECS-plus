@@ -4,7 +4,7 @@
 
 PlayingScene::PlayingScene(string name):Scene(name)
 {
-
+	
 }
 
 
@@ -26,6 +26,7 @@ void PlayingScene::init()
 	world->addSystem(renderSystem);
 	world->addSystem(inputSystem);
 	world->addSystem(movementSystem);
+	world->addSystem(animationSystem);
 	// ENTITY
 	Entity* samus = world->create_Entity("samus");
 

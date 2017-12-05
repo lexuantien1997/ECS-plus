@@ -17,13 +17,15 @@ private:
 
 	vector<Rect> action_rect; // danh sách cách vị trí của các bức hình
 
+	float duration;
+
 	int action_size;
 
 	int current_rect;
 
 public:
 
-	Action(string name,string path, vector<Rect> rects);
+	Action(string name,string path, vector<Rect> rects,float duration);
 
 	Action(){}
 
@@ -32,6 +34,18 @@ public:
 	string getSpritePath();
 
 	vector<Rect> getActionRect();
+
+	float getFrameDuration() {
+		return duration;
+	}
+
+	float getCurrentRect() {return current_rect; }
+
+	void setCurrentRect(float offset) { current_rect = offset; }
+
+	void increasing() { current_rect++; }
+
+	float getAction_Size() { return action_size; }
 
 	~Action();
 };

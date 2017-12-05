@@ -36,6 +36,7 @@ void Animation::loadResource()
 	{
 		string name = node->first_attribute("name")->value();
 		string spritePath = node->first_attribute("s")->value();
+		float duration = stof(node->first_attribute("duration")->value());
 
 		xml_node<> *child = node->first_node();
 	
@@ -56,7 +57,7 @@ void Animation::loadResource()
 			child = child->next_sibling();
 		}
 	
-		Action action = Action(name, spritePath, rects);
+		Action action = Action(name, spritePath, rects,duration);
 
 		actions.insert(pair < string, Action>(name, action));
 

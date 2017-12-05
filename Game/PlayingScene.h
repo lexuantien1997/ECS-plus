@@ -12,6 +12,8 @@
 #include "PlayerControllable.h"
 #include "MovementSystem.h"
 #include "Bound.h"
+#include "AnimationSystem.h"
+
 using namespace ECS;
 
 class PlayingScene:public ECS::Scene
@@ -20,6 +22,7 @@ private:
 	RenderingSystem renderSystem;
 	InputSystem inputSystem;
 	MovementSystem movementSystem;
+	AnimationSystem animationSystem=AnimationSystem(&inputSystem);
 public:
 
 	PlayingScene(string name);
