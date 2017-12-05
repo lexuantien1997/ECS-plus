@@ -67,14 +67,20 @@ namespace ECS
 		//												Entity method
 		// ==========================================================================================================
 
-		/**
+		/* NOTE: use when you create a class inherit Entity *
 		*@brief  Create an entity and match it into `GameWorld`
+		*@para name: name of entity
 		*@return : Entity if use
 		**/
 		template<class T>
-		T* createEntity(string);
+		T* createEntity(string name);
 
-		Entity* create_Entity(string);
+		/**
+		*@brief  Create an entity and match it into `GameWorld`
+		*@para name: name of entity
+		*@return : Entity if use
+		**/
+		Entity* create_Entity(string name);
 
 		/*Chưa làm*
 		*@brief  Remove an entity out of `GameWorld`

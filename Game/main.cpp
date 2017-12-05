@@ -1,10 +1,19 @@
-#include <../ECS Plus/_ECS_Header.h>
+﻿#include "../ECS Plus/_ECS_Header.h"
+#include "../DirectX/_DIRECTX_Header.h"
+#include "MetroidGame.h"
+#include <Windows.h>
 
-#include <../ECS Plus/Test_System.h>
-
-int main()
+int WINAPI WinMain(
+	HINSTANCE hInstance,
+	HINSTANCE hPrevInstance,
+	LPSTR lpStrCmdLine,
+	int nShowCmd)
 {
-	Test_ECS();
-	
+
+	MetroidGame *metroid = new MetroidGame(hInstance, L"Metroid", GAME_SCREEN_RESOLUTION_640_480_24, 0, 60);
+
+	metroid->runGame();
+
 	return 0;
 }
+

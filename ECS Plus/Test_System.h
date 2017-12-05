@@ -12,27 +12,27 @@ void Test_ECS()
 {
 	// =============================== create data ==========================
 
-	// Tạo game world
+	// create game world
 	GameWorld* world=new GameWorld();
 
-	// Tạo các system dùng trong game world này:
+	// create systems are used in game world :
 	TMovementSystem movementSystem;
 	TRenderingSystem renderingSystem;
 
-	// add system vào game world:
+	// add system into game world:
 	world->addSystem(movementSystem);
 	world->addSystem(renderingSystem);
 
-	// Tạo 1 thằng nhân vật có tên là samus
+	// create 1 player character with name: `Samus`
 	Entity* player = world->create_Entity("Samus");
 
-	// Các component cần có của nhân vật:
-	// `auto` giống `var` trong c# nhưng tốc độ xử lý của `auto rất nhanh
+	// Some components of `Samus`:
+	// `auto` like `var` in c# but the performance of `auto is very fast
 	auto transform=player->addComponent<TTransform>("transform");
 	auto velocity=player->addComponent<TVelocity>("velocity");
 	player->addComponent<TSprite>("sprite");
 	
-	// có thể add nhiều gravity
+	// 1 player may be have more gravity:
 	player->addComponent<TGravity>("gravity 1");
 	player->addComponent<TGravity>("gravity 2");
 	

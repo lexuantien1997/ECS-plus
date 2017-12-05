@@ -29,7 +29,7 @@
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
-    <CharacterSet>MultiByte</CharacterSet>
+    <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -70,7 +70,8 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>$(SolutionDir)ECS;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -83,6 +84,7 @@
       </EntryPointSymbol>
       <SubSystem>
       </SubSystem>
+      <AdditionalDependencies>dinput8.lib;dxguid.lib;d3dx9.lib;d3d9.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -119,12 +121,43 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Animation.cpp" />
+    <ClCompile Include="AnimationComponent.cpp" />
+    <ClCompile Include="AnimationSystem.cpp" />
+    <ClCompile Include="Bound.cpp" />
+    <ClCompile Include="InputSystem.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MetroidGame.cpp" />
+    <ClCompile Include="MovementSystem.cpp" />
+    <ClCompile Include="PlayerControllable.cpp" />
+    <ClCompile Include="PlayingScene.cpp" />
+    <ClCompile Include="RenderingSystem.cpp" />
+    <ClCompile Include="SpriteComponent.cpp" />
+    <ClCompile Include="Action.cpp" />
+    <ClCompile Include="Velocity.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DirectX\DirectX.vcxproj">
+      <Project>{766ea06d-ce81-43d8-91ad-3cf28e959c0d}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\ECS Plus\ECS Plus.vcxproj">
       <Project>{5a41ea8c-344f-42e2-a18c-62292b8324ce}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Animation.h" />
+    <ClInclude Include="AnimationComponent.h" />
+    <ClInclude Include="AnimationSystem.h" />
+    <ClInclude Include="Bound.h" />
+    <ClInclude Include="InputSystem.h" />
+    <ClInclude Include="MetroidGame.h" />
+    <ClInclude Include="MovementSystem.h" />
+    <ClInclude Include="PlayerControllable.h" />
+    <ClInclude Include="PlayingScene.h" />
+    <ClInclude Include="RenderingSystem.h" />
+    <ClInclude Include="SpriteComponent.h" />
+    <ClInclude Include="Action.h" />
+    <ClInclude Include="Velocity.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
