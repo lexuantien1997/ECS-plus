@@ -31,11 +31,11 @@
     <Filter Include="Event _ Delegate">
       <UniqueIdentifier>{07a23cc4-c0a9-4e05-9861-5578a8ccd5c4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="main">
+      <UniqueIdentifier>{c809c5a6-6fbe-41ff-802a-471eb386de99}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Bound.cpp">
-      <Filter>Utility</Filter>
-    </ClCompile>
     <ClCompile Include="AnimationComponent.cpp">
       <Filter>Components\src</Filter>
     </ClCompile>
@@ -69,17 +69,17 @@
     <ClCompile Include="PlayingScene.cpp">
       <Filter>Utility\src</Filter>
     </ClCompile>
-    <ClCompile Include="main.cpp">
-      <Filter>Utility</Filter>
-    </ClCompile>
     <ClCompile Include="AnimationSystem.cpp">
       <Filter>Systems\src</Filter>
     </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>main</Filter>
+    </ClCompile>
+    <ClCompile Include="Bound.cpp">
+      <Filter>Components\src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Bound.h">
-      <Filter>Utility</Filter>
-    </ClInclude>
     <ClInclude Include="AnimationComponent.h">
       <Filter>Components\include</Filter>
     </ClInclude>
@@ -125,11 +125,14 @@
     <ClInclude Include="Client.h">
       <Filter>Event _ Delegate</Filter>
     </ClInclude>
-    <ClInclude Include="Mess.h">
-      <Filter>Utility</Filter>
-    </ClInclude>
     <ClInclude Include="AnimationSystem.h">
       <Filter>Systems\include</Filter>
+    </ClInclude>
+    <ClInclude Include="Bound.h">
+      <Filter>Components\include</Filter>
+    </ClInclude>
+    <ClInclude Include="Mess.h">
+      <Filter>Utility\include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

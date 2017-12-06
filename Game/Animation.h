@@ -22,7 +22,7 @@ private:
 	
 	string sourcePath;
 	// animation có nhiều trạng thái
-	map<string, Action> actions;
+	map<string, Action*> actions;
 
 public:
 	
@@ -30,7 +30,7 @@ public:
 
 	~Animation();
 
-	Action findAction(string name);
+	Action* findAction(string name);
 
 	// Inherit from `Resource`
 	void loadResource();

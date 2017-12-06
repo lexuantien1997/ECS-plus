@@ -39,13 +39,13 @@ public:
 		return duration;
 	}
 
-	float getCurrentRect() {return current_rect; }
+	int getCurrentRect() {return current_rect; }
 
 	void setCurrentRect(float offset) { current_rect = offset; }
 
-	void increasing() { current_rect++; }
+	void increasing() { current_rect+=1; }
 
-	float getAction_Size() { return action_size; }
+	int getAction_Size() { return action_size; }
 
 	~Action();
 };

@@ -25,6 +25,8 @@ public:
 
 	~SpriteComponent();
 
+	void setRect(Rect r) { rect = r; }
+
 	Rect getRect() { return rect; }
 };
 

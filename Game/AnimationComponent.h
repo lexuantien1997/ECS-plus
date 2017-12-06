@@ -13,7 +13,7 @@ private:
 
 	Animation* animation;
 
-	Action currentAction;
+	Action* currentAction;
 
 public:
 
@@ -21,9 +21,13 @@ public:
 	
 	void initAnimationComponent(string startAction,string sourceName);
 
-	Action getCurrentAction() {
+	Animation* getAniamtion() { return animation; }
+
+	Action* getCurrentAction() {
 		return currentAction;
 	}
+
+	void setCurrentAction(Action* action) { currentAction = action; }
 
 	~AnimationComponent();
 

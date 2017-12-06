@@ -19,6 +19,8 @@ public:
 
 	void update(float dt);
 
+	void onUpdate(Entity * entity);
+
 	void onActionChanged(Entity* e, string name);
 
 	void render();

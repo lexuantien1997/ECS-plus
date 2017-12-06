@@ -51,7 +51,7 @@ void PlayingScene::init()
 
 	spriteComp->initSpriteComponent(samus_sprite, Rect(Vector2f(184, 36), Vector2f(18,34)));
 
-	transformComp->initTransform(Vector2f(200,200), Vector2f(50, 50), Vector2f(2,2), 0);
+	transformComp->initTransform(Vector2f(200,200), Vector2f(50, 50), Vector2f(2,2.2), 0);
 
 	velocity->initVelocity(Vector2f(0, 0), Vector2f(0, 0));
 

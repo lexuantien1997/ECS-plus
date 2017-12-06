@@ -13,9 +13,9 @@ Animation::~Animation()
 
 }
 
-Action Animation::findAction(string name)
+Action* Animation::findAction(string name)
 {
-	map<string, Action>::iterator it = actions.find(name);
+	map<string, Action*>::iterator it = actions.find(name);
 	if (it != actions.end())
 	{
 		return actions[name];
@@ -57,9 +57,9 @@ void Animation::loadResource()
 			child = child->next_sibling();
 		}
 	
-		Action action = Action(name, spritePath, rects,duration);
+		Action* action =new Action(name, spritePath, rects,duration);
 
-		actions.insert(pair < string, Action>(name, action));
+		actions.insert(pair < string, Action*>(name, action));
 
 		node = node->next_sibling();
 

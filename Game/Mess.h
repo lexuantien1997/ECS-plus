@@ -13,7 +13,8 @@ struct eMess :Mess
 {
 public:
 	ECS::Entity* e1;
-	eMess(ECS::Entity* e):e1(e)
+	string from,to;
+	eMess(ECS::Entity* e,string _from,string _to):e1(e), from(_from),to(_to)
 	{
 
 	}

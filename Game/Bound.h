@@ -8,7 +8,7 @@ class Bound :public ECS::Component
 {
 public:
 
-	const float SPEED = 1000;
+	const float SPEED = 250;
 
 	Bound(string name);
 	
