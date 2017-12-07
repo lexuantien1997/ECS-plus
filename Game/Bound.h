@@ -22,6 +22,7 @@ public:
 	bool shoot_straight;
 	bool no_state;
 	bool rolling;
+	bool turning;
 	int vel_x;
 
 	Bound(string name);

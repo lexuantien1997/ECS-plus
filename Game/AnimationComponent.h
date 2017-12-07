@@ -28,8 +28,13 @@ public:
 		return currentAction;
 	}
 
-	void setCurrentAction(Action* action) { currentAction = action; }
+	Action* getPreviousAction() {
+		return previousAction;
+	}
 
+
+	void setCurrentAction(Action* action) { currentAction = action; }
+	void setPreviousAction(Action* action) { previousAction = action; }
 	~AnimationComponent();
 
 };

@@ -15,7 +15,7 @@ void AnimationComponent::initAnimationComponent(string startAction, string sourc
 	animation = static_cast<Animation*>(SpriteManager::getInstance()->find(sourceName));
 
 	currentAction = animation->findAction(startAction);
-
+	previousAction = currentAction;
 	// change image:
 }
 

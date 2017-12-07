@@ -9,8 +9,9 @@ Bound::Bound(string name):Component(name)
 	 this->runningRight = true;
 	 this->no_state = true;
 	 this->shoot_up = false;
-	 shoot_straight = false;
-	 rolling = false;
+	 this->shoot_straight = false;
+	 this->rolling = false;
+	 this->turning = false;
 	 vel_x = 0;
 }
 

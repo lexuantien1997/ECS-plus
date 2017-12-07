@@ -17,7 +17,7 @@ void AnimationSystem::update(float dt)
 {
 	for (auto entity :getEntities())
 	{
-
+		auto animationComp = entity->getComponent<AnimationComponent>("animation component");
 		auto bound= entity->getComponent<Bound>("bound");
 
 		// Đang nhảy
@@ -33,9 +33,14 @@ void AnimationSystem::update(float dt)
 			{
 				onActionChanged(entity, "jump_shoot");
 			}
+			else if (bound->turning == true)
+			{
+				onActionChanged(entity, "turning");
+			}
 			// chỉ nhảy
 			else if(bound->shoot_up == false && bound->shoot_straight == false)
 			{
+
 				onActionChanged(entity, "jump");
 				
 			}
@@ -55,7 +60,7 @@ void AnimationSystem::update(float dt)
 				{
 					onActionChanged(entity, "stand_shoot_up");
 				}
-				else if (bound->rolling)
+				else if (bound->rolling==1)
 				{
 					onActionChanged(entity, "rolling");
 				}
@@ -69,6 +74,7 @@ void AnimationSystem::update(float dt)
 			// Đang di chuyển
 			else if (bound->vel_x != 0)
 			{
+
 				// Di chuyển mà đưa súng lên trời => chạy
 				if (bound->shoot_up == true)
 				{
@@ -79,7 +85,7 @@ void AnimationSystem::update(float dt)
 					onActionChanged(entity, "rolling");
 				}
 				else
-				{
+				{				
 					onActionChanged(entity, "run");
 				}
 			}
@@ -115,7 +121,11 @@ void AnimationSystem::onUpdate(Entity * entity)
 void AnimationSystem::onActionChanged(Entity * entity, string name)
 {
 	auto animationComp = entity->getComponent<AnimationComponent>("animation component");
-	
+
+	if (animationComp->getCurrentAction()->getName() == name)
+		return;
+
+	animationComp->setPreviousAction(animationComp->getCurrentAction());
 	animationComp->setCurrentAction(animationComp->getAniamtion()->findAction(name));
 	
 	auto samus_sprite = static_cast<Sprite*>(SpriteManager::getInstance()->find("samus_aran.png"));
@@ -123,7 +133,7 @@ void AnimationSystem::onActionChanged(Entity * entity, string name)
 	auto spriteComp = entity->getComponent<SpriteComponent>("sprite component");
 
 	spriteComp->setSprite(samus_sprite);
-
+	
 }
 
 void AnimationSystem::render()

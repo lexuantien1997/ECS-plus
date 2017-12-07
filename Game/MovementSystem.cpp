@@ -34,6 +34,11 @@ void MovementSystem::update(float dt)
 		else if (velocity->getVelocity().x == 0)
 		{
 			bound->vel_x = 0;
+			if (bound->onGround==true)
+			{
+				bound->turning = false;
+			}
+
 		}
 
 		if (transform->getPosition().y >200)
