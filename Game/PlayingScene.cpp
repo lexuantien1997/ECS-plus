@@ -17,6 +17,7 @@ void PlayingScene::update(float dt)
 {
 	inputSystem.update(dt);
 	movementSystem.update(dt);
+	animationSystem.update(dt);
 	renderSystem.update(dt);
 }
 
@@ -32,28 +33,20 @@ void PlayingScene::init()
 
 	// COMPONENTS
 	samus->addComponent<PlayerControllable>("player control");
-
 	auto transformComp = samus->addComponent<Transform>("transform component");
-
 	auto bound= samus->addComponent<Bound>("bound");
-
 	auto velocity = samus->addComponent<Velocity>("velocity");
-
+	auto gravity = samus->addComponent<Gravity>("gravity");
 	auto spriteComp = samus->addComponent<SpriteComponent>("sprite component");
-
 	auto animationComp= samus->addComponent<AnimationComponent>("animation component");
 
 	// INIT COMPONENTS
-
 	auto samus_sprite= static_cast<Sprite*>(SpriteManager::getInstance()->find("samus_aran.png"));
-
 	animationComp->initAnimationComponent("no_state", "samus_states.xml");
-
 	spriteComp->initSpriteComponent(samus_sprite, Rect(Vector2f(184, 36), Vector2f(18,34)));
-
 	transformComp->initTransform(Vector2f(200,200), Vector2f(50, 50), Vector2f(2,2.2), 0);
-
-	velocity->initVelocity(Vector2f(0, 0), Vector2f(0, 0));
+	velocity->initVelocity(Vector2f(0, 0));
+	gravity->initGravity(-9.8f);
 
 	// refresh the game world:
 	world->refresh();

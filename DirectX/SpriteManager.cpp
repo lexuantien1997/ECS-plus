@@ -40,7 +40,7 @@ SpriteManager::~SpriteManager()
 }
 
 // full parameters about drawing
-void SpriteManager::draw(SpriteComponent* spritecomp, Transform* t,bool isCenterSprite,bool flipX,bool flipY)
+void SpriteManager::draw(SpriteComponent* spritecomp, Transform* t)
 {
 	// set position:
 	// vị trí của bức hình từ transform
@@ -71,20 +71,6 @@ void SpriteManager::draw(SpriteComponent* spritecomp, Transform* t,bool isCenter
 	// Lấy độ co dãn của hình, phóng to hay thu nhỏ từ transform
 	Vector2f sca = t->getScale();
 	D3DXVECTOR2 scaling = D3DXVECTOR2(sca.x, sca.y);
-	
-	// set fliping
-	// kiểm tra có lật bức hình lại không
-	if (flipX)
-	{
-		scaling = D3DXVECTOR2(scaling.x, -scaling.y);
-		t->setScale(scaling.x, -scaling.y);
-	}
-	if (flipY)
-	{
-		scaling = D3DXVECTOR2(-scaling.x, scaling.y);
-		t->setScale(-scaling.x, scaling.y);
-	}
-	
 
 	// scaling center:
 	D3DXVECTOR2 scalingScenter = D3DXVECTOR2(t->getPosition().x, t->getPosition().y);
@@ -106,9 +92,7 @@ void SpriteManager::draw(SpriteComponent* spritecomp, Transform* t,bool isCenter
 	spriteHandler->SetTransform(&matrix);
 
 	// vị trí vẽ sẽ là giữa bức hình hay không
-	D3DXVECTOR3* isCenter = NULL;
-	if (isCenterSprite)
-		isCenter = new D3DXVECTOR3(r.size.x / 2, r.size.y / 2, 0);
+	D3DXVECTOR3* isCenter  = new D3DXVECTOR3(r.size.x / 2, r.size.y / 2, 0);
 	
 	begin(); // start drawing
 

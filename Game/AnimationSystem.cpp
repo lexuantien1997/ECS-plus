@@ -1,6 +1,6 @@
-#include "AnimationSystem.h"
+﻿#include "AnimationSystem.h"
 #include "../DirectX/Rect.h"
-
+#include "Bound.h"
 
 AnimationSystem::AnimationSystem(Server* p_server):Client(p_server)
 {
@@ -15,12 +15,76 @@ AnimationSystem::~AnimationSystem()
 
 void AnimationSystem::update(float dt)
 {
+	for (auto entity :getEntities())
+	{
 
+		auto bound= entity->getComponent<Bound>("bound");
+
+		// Đang nhảy
+		if (bound->onGround==false)
+		{
+			// nhảy + đưa súng lên trên
+			if (bound->shoot_up==true)
+			{
+				onActionChanged(entity, "jump_shoot_up");
+			}
+			// nhảy bắn súng ngang
+			else if (bound->shoot_straight == true)
+			{
+				onActionChanged(entity, "jump_shoot");
+			}
+			// chỉ nhảy
+			else if(bound->shoot_up == false && bound->shoot_straight == false)
+			{
+				onActionChanged(entity, "jump");
+				
+			}
+			onUpdate(entity); 
+			return;
+		}
+
+		// [ Đang ở dưới đất ]
+		else if (bound->onGround == true)
+		{
+
+			// Không di chuyển => Đứng
+			if (bound->vel_x == 0)
+			{
+				// Đứng mà đưa súng lên trời
+				if (bound->shoot_up == true)
+				{
+					onActionChanged(entity, "stand_shoot_up");
+				}
+				else
+				{
+					onActionChanged(entity, "stand");
+				}
+
+			}
+
+			// Đang di chuyển
+			else if (bound->vel_x != 0)
+			{
+				// Di chuyển mà đưa súng lên trời => chạy
+				if (bound->shoot_up == true)
+				{
+					onActionChanged(entity, "run_shoot_up");
+				}
+				else
+				{
+					onActionChanged(entity, "run");
+				}
+			}
+			onUpdate(entity);
+			return;
+		}	
+
+	}
+	
 }
 
 void AnimationSystem::onUpdate(Entity * entity)
 {
-
 	auto animationComp = entity->getComponent<AnimationComponent>("animation component");
 	auto currentAction = animationComp->getCurrentAction();
 
@@ -36,10 +100,8 @@ void AnimationSystem::onUpdate(Entity * entity)
 		currentAction->setCurrentRect(0);
 
 	auto spriteComp = entity->getComponent<SpriteComponent>("sprite component");
-
-	spriteComp->setRect(currentAction->getActionRect().at(currentAction->getCurrentRect()));
 	
-
+	spriteComp->setRect(currentAction->getActionRect().at(currentAction->getCurrentRect()));
 }
 
 void AnimationSystem::onActionChanged(Entity * entity, string name)
@@ -49,7 +111,7 @@ void AnimationSystem::onActionChanged(Entity * entity, string name)
 	animationComp->setCurrentAction(animationComp->getAniamtion()->findAction(name));
 	
 	auto samus_sprite = static_cast<Sprite*>(SpriteManager::getInstance()->find("samus_aran.png"));
-
+	auto bound = entity->getComponent<Bound>("bound");
 	auto spriteComp = entity->getComponent<SpriteComponent>("sprite component");
 
 	spriteComp->setSprite(samus_sprite);
@@ -79,6 +141,5 @@ void AnimationSystem::MessageSentHandler(const Server * p_sender, void * p_param
 	{
 		onActionChanged(e->e1, e->to);
 	}
-
-	onUpdate(e->e1);
+	
 }

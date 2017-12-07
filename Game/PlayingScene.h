@@ -13,7 +13,7 @@
 #include "MovementSystem.h"
 #include "Bound.h"
 #include "AnimationSystem.h"
-
+#include "Gravity.h"
 using namespace ECS;
 
 class PlayingScene:public ECS::Scene

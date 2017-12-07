@@ -4,33 +4,27 @@
 #include "../ECS Plus/_ECS_Header.h"
 #include "../DirectX/_DIRECTX_Header.h"
 
-enum VelocityType
-{
-	normal = 0,
-	plus = 1
-};
 
 class Velocity:public ECS::Component
 {
 private:
 	Vector2f vNormal;
-	Vector2f vPlus;
 public:
 
 	Velocity(string name);
 
 	// ============ get - set velocity ==================
-	void setVelocity(Vector2f &v, VelocityType t);
-	void setVelocity(float offx, float offy, VelocityType t);
+	void setVelocity(Vector2f &v);
+	void setVelocity(float offx, float offy);
 
-	void translating(Vector2f &v, VelocityType t);
-	void translating(float vx, float vy, VelocityType t);
+	void translating(Vector2f &v);
+	void translating(float vx, float vy);
 
-	Vector2f& getVelocity(VelocityType t);
+	Vector2f& getVelocity();
 
 	~Velocity();
 
-	void initVelocity(Vector2f vNormal, Vector2f	vPlus);
+	void initVelocity(Vector2f vNormal);
 };
 
 

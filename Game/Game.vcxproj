@@ -125,6 +125,8 @@
     <ClCompile Include="AnimationComponent.cpp" />
     <ClCompile Include="AnimationSystem.cpp" />
     <ClCompile Include="Bound.cpp" />
+    <ClCompile Include="Gravity.cpp" />
+    <ClCompile Include="GravitySystem.cpp" />
     <ClCompile Include="InputSystem.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MetroidGame.cpp" />
@@ -152,6 +154,8 @@
     <ClInclude Include="Client.h" />
     <ClInclude Include="Delegate.h" />
     <ClInclude Include="Event.h" />
+    <ClInclude Include="Gravity.h" />
+    <ClInclude Include="GravitySystem.h" />
     <ClInclude Include="InputSystem.h" />
     <ClInclude Include="Mess.h" />
     <ClInclude Include="MetroidGame.h" />

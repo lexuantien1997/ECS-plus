@@ -40,7 +40,7 @@ public:
 
 	~SpriteManager();
 
-	void draw(SpriteComponent* spritecomp, Transform* transform, bool isCenterSprite=false, bool fx = false, bool fy = false);
+	void draw(SpriteComponent* spritecomp, Transform* transform);
 
 	void begin();
 	void end();

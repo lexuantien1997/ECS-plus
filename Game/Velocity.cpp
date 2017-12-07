@@ -14,48 +14,40 @@ Velocity::~Velocity()
 
 // =============================================================
 
-void Velocity::setVelocity(Vector2f & vel, VelocityType type)
+void Velocity::setVelocity(Vector2f & vel)
 {
-	setVelocity(vel.x, vel.y, type);
+	setVelocity(vel.x, vel.y);
 }
 
-void Velocity::setVelocity(float offx, float offy, VelocityType type)
+void Velocity::setVelocity(float offx, float offy)
 {
-	if (type == VelocityType::normal)
-	{
-		vNormal.x = offx;
-		vNormal.y = offy;
-	}
-	else if (type == VelocityType::plus)
-	{
-		vPlus.x = offx;
-		vPlus.y = offy;
-	}
+
+	vNormal.x = offx;
+	vNormal.y = offy;
+
 }
 
-void Velocity::translating(Vector2f & vel, VelocityType type)
+void Velocity::translating(Vector2f & vel)
 {
-	if (type == VelocityType::normal)
-		setVelocity(vNormal.x + vel.x, vNormal.y + vel.y, VelocityType::normal);
-	else if (type == VelocityType::plus)
-		setVelocity(vPlus.x + vel.x, vPlus.y + vel.y, VelocityType::plus);
+
+	setVelocity(vNormal.x + vel.x, vNormal.y + vel.y);
+
 }
 
-void Velocity::translating(float vx, float vy, VelocityType type)
+void Velocity::translating(float vx, float vy)
 {
-	if (type == VelocityType::normal)
-		setVelocity(vNormal.x + vx, vNormal.y + vy, VelocityType::normal);
-	else if (type == VelocityType::plus)
-		setVelocity(vPlus.x + vx, vPlus.y + vy, VelocityType::plus);
+
+	setVelocity(vNormal.x + vx, vNormal.y + vy);
+
 }
 
-Vector2f& Velocity::getVelocity(VelocityType type)
+Vector2f& Velocity::getVelocity()
 {
-	return (type == VelocityType::normal) ? vNormal : vPlus;
+	return vNormal;
 }
 
-void Velocity::initVelocity(Vector2f vNormal, Vector2f vPlus)
+void Velocity::initVelocity(Vector2f vNormal)
 {
 	this->vNormal = vNormal;
-	this->vPlus = vPlus;
+
 }

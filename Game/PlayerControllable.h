@@ -10,13 +10,13 @@ public:
 	struct Controls
 	{
 		// default Key controls
-		Controls() :up(DIK_UP), down(DIK_DOWN), left(DIK_LEFT), right(DIK_RIGHT),jump(DIK_Z),shoot(DIK_X) { }
+		Controls() :UP(DIK_UP), DOWN(DIK_DOWN), LEFT(DIK_LEFT), RIGHT(DIK_RIGHT),JUMP(DIK_Z),SHOOT(DIK_X) { }
 
 		// change key controls
-		Controls(int u, int d, int l, int r,int j,int s) :up(u), down(d), left(l), right(r),jump(j),shoot(s) { }
+		Controls(int u, int d, int l, int r,int j,int s) :UP(u), DOWN(d), LEFT(l), RIGHT(r), JUMP(j), SHOOT(s) { }
 
 		// all directions:
-		int up, down, left, right,jump,shoot;
+		int UP, DOWN, LEFT, RIGHT,JUMP,SHOOT;
 
 	} controls;
 

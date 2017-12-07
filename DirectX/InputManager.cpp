@@ -91,7 +91,7 @@ bool InputManager::getKeyUp(const int key)
 bool InputManager::isKeyDown(const int key, KeyState keyState)
 {
 	BYTE k = (keyState == KeyState::current) ? currentKeyStates[key] & 0x80 : previousKeyStates[key] & 0x80;
-	return k != 0;
+	return k > 0;
 }
 
 InputManager::InputManager()

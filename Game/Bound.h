@@ -8,7 +8,21 @@ class Bound :public ECS::Component
 {
 public:
 
-	const float SPEED = 250;
+	const float SPEED = 500.f;
+	const float HEIGHT = 1200;
+	const float GRAVITY = 50.0f;
+	const float JUMP_1 = 700.0F;
+
+
+	float prevPosY;
+
+	bool onGround;
+	bool runningRight;
+	bool shoot_up;
+	bool shoot_straight;
+	bool no_state;
+
+	int vel_x;
 
 	Bound(string name);
 	

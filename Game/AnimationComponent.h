@@ -14,6 +14,7 @@ private:
 	Animation* animation;
 
 	Action* currentAction;
+	Action* previousAction;
 
 public:
 
