@@ -10,6 +10,7 @@ Bound::Bound(string name):Component(name)
 	 this->no_state = true;
 	 this->shoot_up = false;
 	 shoot_straight = false;
+	 rolling = false;
 	 vel_x = 0;
 }
 

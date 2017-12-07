@@ -55,6 +55,10 @@ void AnimationSystem::update(float dt)
 				{
 					onActionChanged(entity, "stand_shoot_up");
 				}
+				else if (bound->rolling)
+				{
+					onActionChanged(entity, "rolling");
+				}
 				else
 				{
 					onActionChanged(entity, "stand");
@@ -69,6 +73,10 @@ void AnimationSystem::update(float dt)
 				if (bound->shoot_up == true)
 				{
 					onActionChanged(entity, "run_shoot_up");
+				}
+				else if (bound->rolling)
+				{
+					onActionChanged(entity, "rolling");
 				}
 				else
 				{

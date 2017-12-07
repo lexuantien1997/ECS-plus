@@ -2,7 +2,7 @@
 <States>
 
 	<!--BASE STATE-->
-	<State name="no_state" s="../resources/charactor/samus_aran.png" duration="0.1">
+	<State name="no_state" s="../resources/charactor/samus_aran.png" duration="0.03">
 		<sprite x="184" y="36" w="18" h="34"/>
 	</State>
 	
@@ -14,12 +14,12 @@
 	</State>
 	
 	<!--JUMP-->
-	<State name="jump" s="../resources/charactor/samus_aran.png" duration="0.1">
+	<State name="jump" s="../resources/charactor/samus_aran.png" duration="0.03">
 		<Sprite x="363" y="39" w="20" h="27"/>
 	</State>
 
 	<!--STAND-->
-	<State name="stand" s="../resources/charactor/samus_aran.png" duration="0.1">
+	<State name="stand" s="../resources/charactor/samus_aran.png" duration="0.03">
 		<Sprite x="202" y="76" w="21" h="34"/>
 	</State>
 
@@ -32,7 +32,7 @@
 	
 	
 	<!--JUMP && SHOOT STRAIGHT-->
-	<State name="jump_shoot" s="../resources/charactor/samus_aran.png" duration="0.1">
+	<State name="jump_shoot" s="../resources/charactor/samus_aran.png" duration="0.03">
 		<Sprite x="360" y="79" w="25" h="27"/>
 	</State>
 	
@@ -49,18 +49,18 @@
 	</State>
 	
 	<!--JUMP && SHOOT UP-->
-	<State name="jump_shoot_up" s="../resources/charactor/samus_aran.png" duration="0.1">
+	<State name="jump_shoot_up" s="../resources/charactor/samus_aran.png" duration="0.03">
 		<Sprite x="363" y="116" w="20" h="34"/>
 	</State>
 	
 	<!--ROLLING-->
-	<State name="rolling" s="../resources/charactor/samus_aran.png" duration="0.1">
+	<State name="rolling" s="../resources/charactor/samus_aran.png" duration="0.025">
 		<Sprite x="201" y="165" w="14" h="15"/>
 		<Sprite x="231" y="165" w="14" h="15"/>
 	</State>
 	
 	<!--TURNING-->
-	<State name="turning" s="../resources/charactor/samus_aran.png" duration="0.1">
+	<State name="turning" s="../resources/charactor/samus_aran.png" duration="0.03">
 		<Sprite x="272" y="164" w="21" h="17"/>
 		<Sprite x="305" y="160" w="16" h="25"/>
 		<Sprite x="332" y="164" w="21" h="17"/>

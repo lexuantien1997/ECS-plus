@@ -119,6 +119,7 @@ void InputSystem::update(float dt)
 		{
 			bound->shoot_up = true;
 			bound->no_state = false;
+			bound->rolling = false;
 		}
 		 if(input->isKeyDown(playCon->controls.UP, KeyState::current) == false)
 		{
@@ -134,6 +135,7 @@ void InputSystem::update(float dt)
 		{
 			bound->shoot_straight = true;
 			bound->no_state = false;
+			bound->rolling = false;
 		}
 		else if (input->isKeyDown(playCon->controls.SHOOT, KeyState::current) == false)
 		{
@@ -144,7 +146,11 @@ void InputSystem::update(float dt)
 		// ==================================================================================
 		// ROLLING
 		// ==================================================================================
-
+		if (input->isKeyDown(playCon->controls.DOWN, KeyState::current) == true)
+		{
+			bound->rolling = true;
+			bound->no_state = false;
+		}
 
 	}
 }
