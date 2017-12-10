@@ -70,7 +70,8 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <LibraryPath>$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86);$(NETFXKitsDir)Lib\um\x86</LibraryPath>
+    <IncludePath>C:\Users\Admin\Documents\Visual Studio 2017\Projects\Frame Work Game\directx data\Include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\Admin\Documents\Visual Studio 2017\Projects\Frame Work Game\directx data\Lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -135,6 +136,10 @@
     <ClCompile Include="RenderingSystem.cpp" />
     <ClCompile Include="SpriteComponent.cpp" />
     <ClCompile Include="Action.cpp" />
+    <ClCompile Include="State.cpp" />
+    <ClCompile Include="StateComponent.cpp" />
+    <ClCompile Include="StateSystem.cpp" />
+    <ClCompile Include="Transition.cpp" />
     <ClCompile Include="Velocity.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -165,6 +170,10 @@
     <ClInclude Include="Server.h" />
     <ClInclude Include="SpriteComponent.h" />
     <ClInclude Include="Action.h" />
+    <ClInclude Include="State.h" />
+    <ClInclude Include="StateComponent.h" />
+    <ClInclude Include="StateSystem.h" />
+    <ClInclude Include="Transition.h" />
     <ClInclude Include="Velocity.h" />
   </ItemGroup>
   <ItemGroup>

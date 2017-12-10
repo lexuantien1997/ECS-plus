@@ -25,9 +25,9 @@ private:
 
 public:
 
-	Action(string name,string path, vector<Rect> rects,float duration);
+	Action(string name, string path, vector<Rect> rects, float duration);
 
-	Action(){}
+	Action() {}
 
 	string getName();
 
@@ -39,13 +39,16 @@ public:
 		return duration;
 	}
 
-	int getCurrentRect() {return current_rect; }
+	int getCurrentRect() { return current_rect; }
 
 	void setCurrentRect(float offset) { current_rect = offset; }
 
-	void increasing() { current_rect+=1; }
+	void increasing() { current_rect += 1; }
 
 	int getAction_Size() { return action_size; }
+
+	void setName(string name) { this->name = name; }
+
 
 	~Action();
 };

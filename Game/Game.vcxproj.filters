@@ -34,6 +34,15 @@
     <Filter Include="main">
       <UniqueIdentifier>{c809c5a6-6fbe-41ff-802a-471eb386de99}</UniqueIdentifier>
     </Filter>
+    <Filter Include="State Pattern">
+      <UniqueIdentifier>{ad28cb0d-9060-49e1-affa-1e24b6f2391e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="State Pattern\include">
+      <UniqueIdentifier>{4c673d28-6abd-49ec-93aa-cc7435de3673}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="State Pattern\src">
+      <UniqueIdentifier>{7af32c73-83aa-497b-be98-f8579f4ef05a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AnimationComponent.cpp">
@@ -83,6 +92,16 @@
     </ClCompile>
     <ClCompile Include="Gravity.cpp">
       <Filter>Components\src</Filter>
+    </ClCompile>
+    <ClCompile Include="StateComponent.cpp">
+      <Filter>Components\src</Filter>
+    </ClCompile>
+    <ClCompile Include="StateSystem.cpp" />
+    <ClCompile Include="State.cpp">
+      <Filter>State Pattern\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Transition.cpp">
+      <Filter>State Pattern\src</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -145,6 +164,16 @@
     </ClInclude>
     <ClInclude Include="Gravity.h">
       <Filter>Components\include</Filter>
+    </ClInclude>
+    <ClInclude Include="StateComponent.h">
+      <Filter>Components\include</Filter>
+    </ClInclude>
+    <ClInclude Include="StateSystem.h" />
+    <ClInclude Include="State.h">
+      <Filter>State Pattern\include</Filter>
+    </ClInclude>
+    <ClInclude Include="Transition.h">
+      <Filter>State Pattern\include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

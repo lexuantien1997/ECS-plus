@@ -26,20 +26,20 @@ void MovementSystem::update(float dt)
 		transform->moving(velocity->getVelocity()*0.01f);
 
 		// Kiểm tra nếu nhân vật đang di chuyển
-		if (velocity->getVelocity().x!=0)
+		/*if (velocity->getVelocity().x!=0)
 		{
 			bound->vel_x = 1;
-		}
+		}*/
 		// Kiểm tra nếu nhân vật không di chuyển
-		else if (velocity->getVelocity().x == 0)
-		{
-			bound->vel_x = 0;
-			if (bound->onGround==true)
-			{
-				bound->turning = false;
-			}
+		//else if (velocity->getVelocity().x == 0)
+		//{
+		//	bound->vel_x = 0;
+		//	if (bound->onGround==true)
+		//	{
+		//		bound->turning = false;
+		//	}
 
-		}
+		//}
 
 		if (transform->getPosition().y >200)
 		{
@@ -47,7 +47,7 @@ void MovementSystem::update(float dt)
 			velocity->setVelocity(velocity->getVelocity().x,0);
 			bound->onGround = true;
 		}
-		velocity->setVelocity(Vector2f(0, velocity->getVelocity().y));	
+		velocity->setVelocity(Vector2f(0, velocity->getVelocity().y));
 
 	}
 }

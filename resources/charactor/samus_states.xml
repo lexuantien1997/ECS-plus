@@ -7,7 +7,7 @@
 	</State>
 	
 	<!--RUN-->
-	<State name="run" s="../resources/charactor/samus_aran.png" duration="0.05">
+	<State name="run" s="../resources/charactor/samus_aran.png" duration="0.03">
 		<sprite x="244" y="36" w="17" h="33"/>
 		<Sprite x="283" y="36" w="19" h="34"/>
 		<Sprite x="322" y="36" w="22" h="34"/>
@@ -24,7 +24,7 @@
 	</State>
 
 	<!--RUN && SHOOT STRAIGHT-->
-	<State name="run_shoot" s="../resources/charactor/samus_aran.png" duration="0.05">
+	<State name="run_shoot" s="../resources/charactor/samus_aran.png" duration="0.03">
 		<Sprite x="242" y="76" w="22" h="33"/>
 		<Sprite x="281" y="76" w="24" h="33"/>
 		<Sprite x="319" y="76" w="27" h="33"/>
@@ -43,7 +43,7 @@
 	
 	<!--RUN && SHOOT UP-->
 	<State name="run_shoot_up" s="../resources/charactor/samus_aran.png" duration="0.03">
-		<Sprite x="146" y="113" w="14" h="40"/>
+		<Sprite x="246" y="113" w="14" h="40"/>
 		<Sprite x="283" y="113" w="19" h="40"/>
 		<Sprite x="322" y="113" w="21" h="40"/>
 	</State>

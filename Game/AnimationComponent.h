@@ -34,6 +34,7 @@ public:
 
 
 	void setCurrentAction(Action* action) { currentAction = action; }
+
 	void setPreviousAction(Action* action) { previousAction = action; }
 	~AnimationComponent();
 
