@@ -371,12 +371,12 @@ void PlayingScene::init()
 	// Make stand shoot up => stand
 	// ======================================================================================
 
-	stand_shoot_up_left->addTransition(new Transition("stand_shoot_up_left", "stand_left", [=] {
-		return InputManager::getInstance()->getKeyUp(DIK_UP) == true && bound->runningRight == false;
+	stand_shoot_up_left->addTransition(new Transition("stand_shoot_up_left", "stand_left", [] {
+		return InputManager::getInstance()->getKeyUp(DIK_UP) == true;
 	}));
 
-	stand_shoot_up_right->addTransition(new Transition("stand_shoot_up_right", "stand_right", [=] {
-		return InputManager::getInstance()->getKeyUp(DIK_UP) == true && bound->runningRight == true;
+	stand_shoot_up_right->addTransition(new Transition("stand_shoot_up_right", "stand_right", [] {
+		return InputManager::getInstance()->getKeyUp(DIK_UP) == true ;
 	}));
 
 	// ======================================================================================
