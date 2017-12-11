@@ -49,8 +49,6 @@ void Game::runGame()
 			TranslateMessage(&msg);
 			DispatchMessage(&msg);
 		}
-		else
-		{
 			DWORD now = GetTickCount();
 			deltatime = now - frame_start;
 			if (deltatime >= count_per_frame)
@@ -60,19 +58,17 @@ void Game::runGame()
 				// start update
 				update(deltatime);
 
-				std::stringstream ss;
+			/*	std::stringstream ss;
 				ss << "Delta time: " << deltatime;
 				wchar_t* wString = new wchar_t[4096];
 				MultiByteToWideChar(CP_ACP, 0, ss.str().c_str(), -1, wString, 4096);
-				SetWindowText(window->GetHwnd(), wString);
+				SetWindowText(window->GetHwnd(), wString);*/
 
 				// start render
 				render();
 			}
 			else
 				Sleep(count_per_frame - deltatime);
-		}
-		
 	}
 }
 

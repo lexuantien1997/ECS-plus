@@ -106,6 +106,12 @@
     <ClCompile Include="Camera.cpp">
       <Filter>Utility\src</Filter>
     </ClCompile>
+    <ClCompile Include="MapComponent.cpp">
+      <Filter>Components\src</Filter>
+    </ClCompile>
+    <ClCompile Include="MapSystem.cpp">
+      <Filter>Systems\src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AnimationComponent.h">
@@ -180,6 +186,12 @@
     </ClInclude>
     <ClInclude Include="Camera.h">
       <Filter>Utility\include</Filter>
+    </ClInclude>
+    <ClInclude Include="MapComponent.h">
+      <Filter>Components\include</Filter>
+    </ClInclude>
+    <ClInclude Include="MapSystem.h">
+      <Filter>Systems\include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

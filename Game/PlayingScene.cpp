@@ -30,9 +30,10 @@ void PlayingScene::init()
 	world->addSystem(movementSystem);
 	world->addSystem(animationSystem);
 	world->addSystem(stateSystem);
+	world->addSystem(mapSystem);
 	// ENTITY
 	Entity* samus = world->create_Entity("samus");
-
+	
 	// COMPONENTS
 	samus->addComponent<PlayerControllable>("player control");
 	auto stateComp = samus->addComponent<StateComponent>("state component");
@@ -51,6 +52,17 @@ void PlayingScene::init()
 	transformComp->initTransform(Vector2f(0,0), Vector2f(50, 50), Vector2f(2,2.2), 0);
 	velocity->initVelocity(Vector2f(0, 0));
 	gravity->initGravity(-9.8f);
+
+	//
+	Entity* Map = world->create_Entity("map");
+	auto maptransformComp = Map->addComponent<Transform>("transform component");
+	auto TilesetComponent = Map->addComponent<SpriteComponent>("sprite component");
+	auto mapComp = Map->addComponent<MapComponent>("map component");
+
+	auto Tileset = static_cast<Sprite*>(SpriteManager::getInstance()->find("tiles.png"));
+	TilesetComponent->initSpriteComponent(Tileset, Rect(Vector2f(0, 0), Vector2f(16, 16)));
+	maptransformComp->initTransform(Vector2f(0, 0), Vector2f(0, 0), Vector2f(1, 1), 0);
+	mapComp->InitMapComponent();
 
 	// Add state into State Component:
 
@@ -619,8 +631,8 @@ void PlayingScene::render()
 {
 	inputSystem.render();
 	movementSystem.render();
+	mapSystem.render();
 	renderSystem.render();
-
 }
 
 void PlayingScene::release()

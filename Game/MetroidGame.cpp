@@ -27,4 +27,7 @@ void MetroidGame::loadResource()
 
 	asset->attachResource(new Animation("samus_states.xml", "../resources/charactor/samus_states.xml"));
 
+	asset->attachResource(new Sprite("tiles.png", "../resources/map/tiles.png"));
+
+	asset->attachResource(new TileMap("untitled.tmx", "../resources/map/untitled.tmx"));
 }

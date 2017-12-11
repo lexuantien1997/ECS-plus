@@ -50,6 +50,7 @@
       <Filter>Core\src</Filter>
     </ClCompile>
     <ClCompile Include="Resource.cpp" />
+    <ClCompile Include="TileMap.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="WindowManager.h">
@@ -87,5 +88,6 @@
     <ClInclude Include="Rect.h">
       <Filter>Core\include</Filter>
     </ClInclude>
+    <ClInclude Include="TileMap.h" />
   </ItemGroup>
 </Project>
