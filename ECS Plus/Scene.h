@@ -13,6 +13,7 @@ namespace ECS
 		string name;
 
 	public:
+		
 
 		GameWorld *world;
 

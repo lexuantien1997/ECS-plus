@@ -41,9 +41,9 @@ void MovementSystem::update(float dt)
 
 		//}
 
-		if (transform->getPosition().y >200)
+		if (transform->getPosition().y < -80)
 		{
-			transform->setPosition(transform->getPosition().x, 200);
+			transform->setPosition(transform->getPosition().x, -80);
 			velocity->setVelocity(velocity->getVelocity().x,0);
 			bound->onGround = true;
 		}

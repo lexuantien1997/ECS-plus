@@ -7,6 +7,7 @@
 #include "System.h"
 #include <cassert>
 #include <memory>
+#include "../Game/Camera.h"
 
 using namespace std;
 
@@ -29,7 +30,7 @@ namespace ECS
 	class GameWorld
 	{
 	public:
-
+		Camera cam;
 		// ==========================================================================================================
 		//												System method
 		// ==========================================================================================================

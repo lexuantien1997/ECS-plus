@@ -45,7 +45,7 @@ void RenderingSystem::render()
 		}
 		transform->setOrigin(spriteComp->getRect().size*0.5f);
 		auto batch = SpriteManager::getInstance();
-		batch->draw(spriteComp, transform);
+		batch->draw(spriteComp, transform, getGameWorld()->cam);
 	}
 }
 

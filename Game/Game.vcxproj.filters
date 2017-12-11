@@ -103,6 +103,9 @@
     <ClCompile Include="Transition.cpp">
       <Filter>State Pattern\src</Filter>
     </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Utility\src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AnimationComponent.h">
@@ -174,6 +177,9 @@
     </ClInclude>
     <ClInclude Include="Transition.h">
       <Filter>State Pattern\include</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Utility\include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -70,8 +70,8 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>C:\Users\Admin\Documents\Visual Studio 2017\Projects\Frame Work Game\directx data\Include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\Admin\Documents\Visual Studio 2017\Projects\Frame Work Game\directx data\Lib\x86;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)\directx data\Include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)\directx data\Lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -125,6 +125,7 @@
     <ClCompile Include="AnimationComponent.cpp" />
     <ClCompile Include="AnimationSystem.cpp" />
     <ClCompile Include="Bound.cpp" />
+    <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Gravity.cpp" />
     <ClCompile Include="GravitySystem.cpp" />
     <ClCompile Include="InputSystem.cpp" />
@@ -155,6 +156,7 @@
     <ClInclude Include="AnimationComponent.h" />
     <ClInclude Include="AnimationSystem.h" />
     <ClInclude Include="Bound.h" />
+    <ClInclude Include="Camera.h" />
     <ClInclude Include="Client.h" />
     <ClInclude Include="Delegate.h" />
     <ClInclude Include="Event.h" />

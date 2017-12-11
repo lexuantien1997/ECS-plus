@@ -81,7 +81,7 @@ void InputSystem::update(float dt)
 				//bound->onGround = false;
 				//bound->no_state = false;
 			 //}
-			 velocity->setVelocity(Vector2f(velocity->getVelocity().x, -bound->HEIGHT));
+			 velocity->setVelocity(Vector2f(velocity->getVelocity().x, bound->HEIGHT));
 			 bound->onGround = false;
 			 
 		 }
@@ -99,7 +99,7 @@ void InputSystem::update(float dt)
 			//}
 			//
 			//bound->no_state = false;
-			if (velocity->getVelocity().y<=-bound->JUMP_1)
+			if (velocity->getVelocity().y>=-bound->JUMP_1)
 			{
 				velocity->setVelocity(Vector2f(velocity->getVelocity().x, -bound->JUMP_1));
 			}

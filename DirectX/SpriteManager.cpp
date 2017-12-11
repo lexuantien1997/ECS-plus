@@ -40,11 +40,11 @@ SpriteManager::~SpriteManager()
 }
 
 // full parameters about drawing
-void SpriteManager::draw(SpriteComponent* spritecomp, Transform* t)
+void SpriteManager::draw(SpriteComponent* spritecomp, Transform* t, Camera cam)
 {
 	// set position:
 	// vị trí của bức hình từ transform
-	D3DXVECTOR3 position = D3DXVECTOR3(t->getPosition().x, t->getPosition().y, 0);
+	D3DXVECTOR4 position = D3DXVECTOR4(t->getPosition().x, t->getPosition().y, 0, 0);
 
 	// set source rect:
 	// Trong bức hình chính lấy ra bao nhiêu phần
@@ -91,6 +91,21 @@ void SpriteManager::draw(SpriteComponent* spritecomp, Transform* t)
 	spriteHandler->GetTransform(&oldMatrix);
 	spriteHandler->SetTransform(&matrix);
 
+	//Camera
+	D3DXMATRIX transformMatrix;
+	D3DXMatrixIdentity(&transformMatrix);
+
+	transformMatrix._22 = -1.0f;
+	transformMatrix._41 = -cam.getCamPosition().x;
+	transformMatrix._42 = cam.getCamPosition().y;
+
+
+
+	D3DXVECTOR4 result;
+	D3DXVec4Transform(&result, &position, &transformMatrix);
+
+	D3DXVECTOR3 realPositionInCamera(result.x, result.y, 0);
+
 	// vị trí vẽ sẽ là giữa bức hình hay không
 	D3DXVECTOR3* isCenter  = new D3DXVECTOR3(r.size.x / 2, r.size.y / 2, 0);
 	
@@ -100,7 +115,7 @@ void SpriteManager::draw(SpriteComponent* spritecomp, Transform* t)
 		spritecomp->getSprite()->getTexture(), // image
 		&sourceRect, // rect
 		isCenter,
-		&position, // position
+		&realPositionInCamera, // position
 		spritecomp->getSprite()->getColor() // transparent color
 	);
 

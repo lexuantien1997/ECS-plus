@@ -12,6 +12,7 @@
 #include "../Game/SpriteComponent.h"
 #include <map>
 #include "DeviceManager.h"
+#include "../Game/Camera.h"
 
 using namespace std;
 
@@ -40,7 +41,7 @@ public:
 
 	~SpriteManager();
 
-	void draw(SpriteComponent* spritecomp, Transform* transform);
+	void draw(SpriteComponent* spritecomp, Transform* transform, Camera cam);
 
 	void begin();
 	void end();
