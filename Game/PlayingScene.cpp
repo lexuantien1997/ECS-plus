@@ -13,6 +13,14 @@ PlayingScene::~PlayingScene()
 
 }
 
+void PlayingScene::render()
+{
+	inputSystem.render();
+	movementSystem.render();
+	mapSystem.render();
+	renderSystem.render();
+}
+
 void PlayingScene::update(float dt)
 {
 	inputSystem.update(dt);
@@ -22,50 +30,22 @@ void PlayingScene::update(float dt)
 	renderSystem.update(dt);
 }
 
+void PlayingScene::release()
+{
+
+}
+
+
+
 void PlayingScene::init()
 {
-	// SYSTEMS
-	world->addSystem(renderSystem);
-	world->addSystem(inputSystem);
-	world->addSystem(movementSystem);
-	world->addSystem(animationSystem);
-	world->addSystem(stateSystem);
-	world->addSystem(mapSystem);
-	// ENTITY
-	Entity* samus = world->create_Entity("samus");
+
+	initSystem();
+
+	initEntity();
+
 	
-	// COMPONENTS
-	samus->addComponent<PlayerControllable>("player control");
-	auto stateComp = samus->addComponent<StateComponent>("state component");
-	auto transformComp = samus->addComponent<Transform>("transform component");
-	auto bound= samus->addComponent<Bound>("bound");
-	auto velocity = samus->addComponent<Velocity>("velocity");
-	auto gravity = samus->addComponent<Gravity>("gravity");
-	auto spriteComp = samus->addComponent<SpriteComponent>("sprite component");
-	auto animationComp= samus->addComponent<AnimationComponent>("animation component");
-
-	// INIT COMPONENTS
-	stateComp->initStateComponent("no_state");
-	auto samus_sprite= static_cast<Sprite*>(SpriteManager::getInstance()->find("samus_aran.png"));
-	animationComp->initAnimationComponent("no_state", "samus_states.xml");
-	spriteComp->initSpriteComponent(samus_sprite, Rect(Vector2f(184, 36), Vector2f(18,34)));
-	transformComp->initTransform(Vector2f(0,0), Vector2f(50, 50), Vector2f(2,2.2), 0);
-	velocity->initVelocity(Vector2f(0, 0));
-	gravity->initGravity(-9.8f);
-
-	//
-	Entity* Map = world->create_Entity("map");
-	auto maptransformComp = Map->addComponent<Transform>("transform component");
-	auto TilesetComponent = Map->addComponent<SpriteComponent>("sprite component");
-	auto mapComp = Map->addComponent<MapComponent>("map component");
-
-	auto Tileset = static_cast<Sprite*>(SpriteManager::getInstance()->find("tiles.png"));
-	TilesetComponent->initSpriteComponent(Tileset, Rect(Vector2f(0, 0), Vector2f(16, 16)));
-	maptransformComp->initTransform(Vector2f(0, 0), Vector2f(0, 0), Vector2f(1, 1), 0);
-	mapComp->InitMapComponent();
-
-	// Add state into State Component:
-
+	/*
 	// ========================================================================================
 	// NO STATE
 	// ========================================================================================
@@ -617,25 +597,193 @@ void PlayingScene::init()
 
 	turning->addTransition(new Transition("turning", "stand_left", [=] {
 		return bound->onGround == true;
-	}));
+	}));*/
 
 	// refresh the game world:
 	world->refresh();
 
-	stateSystem.init("no_state");
+	stateSystem.init("no_state");	
+}
 
+
+
+void PlayingScene::initSystem()
+{
+	// SYSTEMS
+	world->addSystem(renderSystem);
+	world->addSystem(inputSystem);
+	world->addSystem(movementSystem);
+	world->addSystem(animationSystem);
+	world->addSystem(stateSystem);
+	world->addSystem(mapSystem);
+}
+
+void PlayingScene::initEntity()
+{
+
+	// Create the entity
+	Entity* samus = world->create_Entity("samus");
+	Entity* Map = world->create_Entity("map");
+
+
+	// ===================================================================================================
+	// create components for `samus`
+	// ===================================================================================================
+
+	samus->addComponent<PlayerControllable>("player control");
+	auto stateComp = samus->addComponent<StateComponent>("state component");
+	auto transformComp = samus->addComponent<Transform>("transform component");
+	auto bound = samus->addComponent<Bound>("bound");
+	auto velocity = samus->addComponent<Velocity>("velocity");
+	auto gravity = samus->addComponent<Gravity>("gravity");
+	auto spriteComp = samus->addComponent<SpriteComponent>("sprite component");
+	auto animationComp = samus->addComponent<AnimationComponent>("animation component");
+
+
+	// ===================================================================================================
+	// create components for `map`
+	// ===================================================================================================
+
+	auto maptransformComp = Map->addComponent<Transform>("transform component");
+	auto TilesetComponent = Map->addComponent<SpriteComponent>("sprite component");
+	auto mapComp = Map->addComponent<MapComponent>("map component");
+
+	// ===================================================================================================
+	// init components for `samus`
+	// ===================================================================================================
+
+	stateComp->initStateComponent("no_state");
+	auto samus_sprite = static_cast<Sprite*>(SpriteManager::getInstance()->find("samus_aran.png"));
+	animationComp->initAnimationComponent("no_state", "samus_states.xml");
+	spriteComp->initSpriteComponent(samus_sprite, Rect(Vector2f(184, 36), Vector2f(18, 34)));
+	transformComp->initTransform(Vector2f(0, 0), Vector2f(50, 50), Vector2f(2, 2.2), 0);
+	velocity->initVelocity(Vector2f(0, 0));
+	gravity->initGravity(-9.8f);
+
+
+	// ===================================================================================================
+	// init components for `map`
+	// ===================================================================================================
+
+	auto Tileset = static_cast<Sprite*>(SpriteManager::getInstance()->find("tiles.png"));
+	TilesetComponent->initSpriteComponent(Tileset, Rect(Vector2f(0, 0), Vector2f(16, 16)));
+	maptransformComp->initTransform(Vector2f(0, 0), Vector2f(0, 0), Vector2f(1, 1), 0);
+	mapComp->InitMapComponent();
+
+	// ===================================================================================================
+	//	create state for `samus`
+	// ===================================================================================================
+
+#pragma region "No state"
+	auto no_state = new State("no_state",
+		[=] {
+		animationComp->setCurrentAction(animationComp->getAniamtion()->findAction("no_state"));
+	}, NULL, NULL);
+#pragma endregion
 	
-}
+#pragma region "stand"
+	auto stand_right = new State("stand_right",
+		[=] {
+		animationComp->setCurrentAction(animationComp->getAniamtion()->findAction("stand"));
+	}, NULL, NULL);
 
-void PlayingScene::render()
-{
-	inputSystem.render();
-	movementSystem.render();
-	mapSystem.render();
-	renderSystem.render();
-}
+	auto stand_left = new State("stand_left",
+		[=] {
+		animationComp->setCurrentAction(animationComp->getAniamtion()->findAction("stand"));
+	}, NULL, NULL);
+#pragma endregion
 
-void PlayingScene::release()
-{
+#pragma region "run"
+
+	auto run_right = new State("run_right",
+		[=] {
+		animationComp->setCurrentAction(animationComp->getAniamtion()->findAction("run"));
+	}, NULL, NULL);
+
+	auto run_left = new State("run_left",
+		[=] {
+		animationComp->setCurrentAction(animationComp->getAniamtion()->findAction("run"));
+	}, NULL, NULL);
+
+#pragma endregion
+
+#pragma region "No state"
+
+#pragma endregion
+
+#pragma region "No state"
+
+#pragma endregion
+
+#pragma region "No state"
+
+#pragma endregion
+
+#pragma region " add into state component:"
+	// add into state component:
+
+	stateComp->addState(no_state);
+
+	stateComp->addState(stand_right);
+	stateComp->addState(stand_left);
+
+	stateComp->addState(run_right);
+	stateComp->addState(run_left);
+
+#pragma endregion
+
+
+#pragma region " Transition No-state"
+
+	no_state->addTransition(new Transition("no_state", "stand_right", [] {
+		return InputManager::getInstance()->getKeyDown(DIK_RIGHT) == true;
+	}));
+
+	no_state->addTransition(new Transition("no_state", "stand_left", [] {
+		return InputManager::getInstance()->getKeyDown(DIK_LEFT) == true;
+	}));
+
+#pragma endregion
+	
+#pragma region " Transition stand"
+
+	stand_right->addTransition(new Transition("stand_right", "run_right", [] {
+		return InputManager::getInstance()->isKeyDown(DIK_RIGHT, KeyState::current) == true;
+	}));
+
+	stand_right->addTransition(new Transition("stand_right", "stand_left", [] {
+		return InputManager::getInstance()->getKeyDown(DIK_LEFT) == true;
+	}));
+
+	stand_left->addTransition(new Transition("stand_left", "run_left", [] {
+		return InputManager::getInstance()->isKeyDown(DIK_LEFT, KeyState::current) == true;
+	}));
+
+	stand_left->addTransition(new Transition("stand_left", "stand_right", [] {
+		return InputManager::getInstance()->getKeyDown(DIK_RIGHT) == true;
+	}));
+
+#pragma endregion
+
+#pragma region " Transition stand"
+	
+	run_right->addTransition(new Transition("run_right", "stand_right", [] {
+		return InputManager::getInstance()->getKeyUp(DIK_RIGHT) == true;
+	}));
+
+	run_left->addTransition(new Transition("run_left", "stand_left", [] {
+		return InputManager::getInstance()->getKeyUp(DIK_LEFT) == true;
+	}));
+
+	// -------------------
+	run_right->addTransition(new Transition("run_right", "stand_left", [] {
+		return InputManager::getInstance()->getKeyDown(DIK_LEFT) == true;
+	}));
+
+	run_left->addTransition(new Transition("run_left", "stand_right", [] {
+		return InputManager::getInstance()->getKeyDown(DIK_RIGHT) == true;
+	}));
+
+#pragma endregion
 
 }

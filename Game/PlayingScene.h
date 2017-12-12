@@ -47,6 +47,10 @@ public:
 	void render();
 
 	void release();
+
+	void initSystem();
+
+	void initEntity();
 };
 
 #endif // !PLAYINGSCENE_H_

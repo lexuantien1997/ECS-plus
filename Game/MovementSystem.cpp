@@ -25,22 +25,6 @@ void MovementSystem::update(float dt)
 
 		transform->moving(velocity->getVelocity()*0.01f);
 
-		// Kiểm tra nếu nhân vật đang di chuyển
-		/*if (velocity->getVelocity().x!=0)
-		{
-			bound->vel_x = 1;
-		}*/
-		// Kiểm tra nếu nhân vật không di chuyển
-		//else if (velocity->getVelocity().x == 0)
-		//{
-		//	bound->vel_x = 0;
-		//	if (bound->onGround==true)
-		//	{
-		//		bound->turning = false;
-		//	}
-
-		//}
-
 		if (transform->getPosition().y < -80)
 		{
 			transform->setPosition(transform->getPosition().x, -80);
