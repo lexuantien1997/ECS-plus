@@ -125,6 +125,7 @@
     <ClCompile Include="Resource.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="SpriteManager.cpp" />
+    <ClCompile Include="TileMap.cpp" />
     <ClCompile Include="Transform.cpp" />
     <ClCompile Include="WindowManager.cpp" />
     <ClCompile Include="WindowResolution.cpp" />
@@ -140,6 +141,7 @@
     <ClInclude Include="Resource.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="SpriteManager.h" />
+    <ClInclude Include="TileMap.h" />
     <ClInclude Include="Transform.h" />
     <ClInclude Include="Vector2.h" />
     <ClInclude Include="WindowManager.h" />

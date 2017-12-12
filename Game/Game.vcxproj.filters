@@ -105,6 +105,7 @@
     <ClCompile Include="Camera.cpp">
       <Filter>Utility\src</Filter>
     </ClCompile>
+<<<<<<< HEAD
     <ClCompile Include="StateSystem.cpp">
       <Filter>Systems\src</Filter>
     </ClCompile>
@@ -112,6 +113,12 @@
       <Filter>Components\src</Filter>
     </ClCompile>
     <ClCompile Include="CollisionSystem.cpp">
+=======
+    <ClCompile Include="MapComponent.cpp">
+      <Filter>Components\src</Filter>
+    </ClCompile>
+    <ClCompile Include="MapSystem.cpp">
+>>>>>>> c87c6e984a67814079691470b3dbbdcb4375d947
       <Filter>Systems\src</Filter>
     </ClCompile>
   </ItemGroup>
@@ -188,6 +195,7 @@
     <ClInclude Include="Camera.h">
       <Filter>Utility\include</Filter>
     </ClInclude>
+<<<<<<< HEAD
     <ClInclude Include="StateSystem.h">
       <Filter>Systems\include</Filter>
     </ClInclude>
@@ -195,6 +203,12 @@
       <Filter>Components\include</Filter>
     </ClInclude>
     <ClInclude Include="CollisionSystem.h">
+=======
+    <ClInclude Include="MapComponent.h">
+      <Filter>Components\include</Filter>
+    </ClInclude>
+    <ClInclude Include="MapSystem.h">
+>>>>>>> c87c6e984a67814079691470b3dbbdcb4375d947
       <Filter>Systems\include</Filter>
     </ClInclude>
   </ItemGroup>

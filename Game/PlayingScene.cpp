@@ -34,9 +34,10 @@ void PlayingScene::init()
 	world->addSystem(animationSystem);
 	world->addSystem(collsionSystem);
 	world->addSystem(stateSystem);
+	world->addSystem(mapSystem);
 	// ENTITY
 	Entity* samus = world->create_Entity("samus");
-
+	
 	// COMPONENTS
 	samus->addComponent<PlayerControllable>("player control");
 	auto collision=samus->addComponent<CollisionComponent>("collision component");
@@ -56,7 +57,22 @@ void PlayingScene::init()
 	transformComp->initTransform(Vector2f(200,-50), Vector2f(50, 50), Vector2f(2,2.2f), 0);
 	velocity->initVelocity(Vector2f(0, 0));
 	gravity->initGravity(-9.8f);
+<<<<<<< HEAD
 	collision->initCollision(1/60.0f);
+=======
+
+	//
+	Entity* Map = world->create_Entity("map");
+	auto maptransformComp = Map->addComponent<Transform>("transform component");
+	auto TilesetComponent = Map->addComponent<SpriteComponent>("sprite component");
+	auto mapComp = Map->addComponent<MapComponent>("map component");
+
+	auto Tileset = static_cast<Sprite*>(SpriteManager::getInstance()->find("tiles.png"));
+	TilesetComponent->initSpriteComponent(Tileset, Rect(Vector2f(0, 0), Vector2f(16, 16)));
+	maptransformComp->initTransform(Vector2f(0, 0), Vector2f(0, 0), Vector2f(1, 1), 0);
+	mapComp->InitMapComponent();
+
+>>>>>>> c87c6e984a67814079691470b3dbbdcb4375d947
 	// Add state into State Component:
 	ss << transformComp->getPosition().x << " " << transformComp->getPosition().y << " " << velocity->getVelocity().x << " " << velocity->getVelocity().y << endl;
 	OutputDebugStringA(ss.str().c_str());
@@ -625,8 +641,8 @@ void PlayingScene::render()
 {
 	inputSystem.render();
 	movementSystem.render();
+	mapSystem.render();
 	renderSystem.render();
-
 }
 
 void PlayingScene::release()
