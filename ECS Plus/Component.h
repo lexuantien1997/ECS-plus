@@ -9,7 +9,7 @@ namespace ECS
 
 	// ================================================== Brief ==================================================
 	//
-	// - Component is used to describe data for an Entity
+	// - Component is used to describe data for an Entity.
 	// - All components are inherited from the Component class
 	// - NOTE: Component only storage data (attributes)
 	// Example about compnent:

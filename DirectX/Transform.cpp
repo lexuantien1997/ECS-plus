@@ -74,6 +74,7 @@ void Transform::moving(float offx, float offy)
 				   
 void Transform::moving(Vector2f & offset)
 {
+
 	setPosition(position.x + offset.x, position.y + offset.y);
 }
 

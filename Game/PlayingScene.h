@@ -14,6 +14,7 @@
 #include "Bound.h"
 #include "Gravity.h"
 #include "StateComponent.h"
+#include "CollisionComponent.h"
 
 // Systems
 #include "RenderingSystem.h"
@@ -21,7 +22,9 @@
 #include "MovementSystem.h"
 #include "AnimationSystem.h"
 #include "StateSystem.h"
+#include "CollisionSystem.h"
 
+#include <sstream> 
 using namespace ECS;
 
 class PlayingScene:public ECS::Scene
@@ -31,6 +34,7 @@ private:
 	InputSystem inputSystem;
 	MovementSystem movementSystem;
 	StateSystem stateSystem;
+	CollisionSystem collsionSystem;
 	AnimationSystem animationSystem=AnimationSystem(&inputSystem);
 public:
 

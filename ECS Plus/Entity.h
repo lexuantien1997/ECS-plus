@@ -119,7 +119,7 @@ namespace ECS
 		*		   addComponent<Sprite>("Resource/Samus.png","Image") -> add component `Sprite`	with name [Image] into entity, source `.../Samus.png`
 		*@return	T*: may be we can use the component to do sth
 		*/
-		template <typename T, typename ... Args>
+		template <typename T, typename ... Args> 
 		T* addComponent(Args&&...arg);
 
 		/**

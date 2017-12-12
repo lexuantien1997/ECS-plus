@@ -96,7 +96,6 @@
     <ClCompile Include="StateComponent.cpp">
       <Filter>Components\src</Filter>
     </ClCompile>
-    <ClCompile Include="StateSystem.cpp" />
     <ClCompile Include="State.cpp">
       <Filter>State Pattern\src</Filter>
     </ClCompile>
@@ -105,6 +104,15 @@
     </ClCompile>
     <ClCompile Include="Camera.cpp">
       <Filter>Utility\src</Filter>
+    </ClCompile>
+    <ClCompile Include="StateSystem.cpp">
+      <Filter>Systems\src</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionComponent.cpp">
+      <Filter>Components\src</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionSystem.cpp">
+      <Filter>Systems\src</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -171,7 +179,6 @@
     <ClInclude Include="StateComponent.h">
       <Filter>Components\include</Filter>
     </ClInclude>
-    <ClInclude Include="StateSystem.h" />
     <ClInclude Include="State.h">
       <Filter>State Pattern\include</Filter>
     </ClInclude>
@@ -180,6 +187,15 @@
     </ClInclude>
     <ClInclude Include="Camera.h">
       <Filter>Utility\include</Filter>
+    </ClInclude>
+    <ClInclude Include="StateSystem.h">
+      <Filter>Systems\include</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionComponent.h">
+      <Filter>Components\include</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionSystem.h">
+      <Filter>Systems\include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

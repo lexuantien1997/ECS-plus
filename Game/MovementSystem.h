@@ -5,7 +5,8 @@
 #include "../DirectX/_DIRECTX_Header.h"
 
 #include "Velocity.h"
-
+#include "CollisionComponent.h"
+#include <sstream> 
 class MovementSystem:public ECS::TSystem
 {
 public:

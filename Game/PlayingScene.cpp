@@ -15,8 +15,10 @@ PlayingScene::~PlayingScene()
 
 void PlayingScene::update(float dt)
 {
+	
 	inputSystem.update(dt);
 	stateSystem.update(dt);
+	//collsionSystem.update(dt);
 	movementSystem.update(dt);
 	animationSystem.update(dt);
 	renderSystem.update(dt);
@@ -24,36 +26,40 @@ void PlayingScene::update(float dt)
 
 void PlayingScene::init()
 {
+	std::ostringstream ss;
 	// SYSTEMS
 	world->addSystem(renderSystem);
 	world->addSystem(inputSystem);
 	world->addSystem(movementSystem);
 	world->addSystem(animationSystem);
+	world->addSystem(collsionSystem);
 	world->addSystem(stateSystem);
 	// ENTITY
 	Entity* samus = world->create_Entity("samus");
 
 	// COMPONENTS
 	samus->addComponent<PlayerControllable>("player control");
+	auto collision=samus->addComponent<CollisionComponent>("collision component");
 	auto stateComp = samus->addComponent<StateComponent>("state component");
 	auto transformComp = samus->addComponent<Transform>("transform component");
-	auto bound= samus->addComponent<Bound>("bound");
+	auto bound= samus->addComponent<Bound>("bound",true);
 	auto velocity = samus->addComponent<Velocity>("velocity");
 	auto gravity = samus->addComponent<Gravity>("gravity");
 	auto spriteComp = samus->addComponent<SpriteComponent>("sprite component");
 	auto animationComp= samus->addComponent<AnimationComponent>("animation component");
-
+	
 	// INIT COMPONENTS
 	stateComp->initStateComponent("no_state");
 	auto samus_sprite= static_cast<Sprite*>(SpriteManager::getInstance()->find("samus_aran.png"));
 	animationComp->initAnimationComponent("no_state", "samus_states.xml");
 	spriteComp->initSpriteComponent(samus_sprite, Rect(Vector2f(184, 36), Vector2f(18,34)));
-	transformComp->initTransform(Vector2f(0,0), Vector2f(50, 50), Vector2f(2,2.2), 0);
+	transformComp->initTransform(Vector2f(200,-50), Vector2f(50, 50), Vector2f(2,2.2f), 0);
 	velocity->initVelocity(Vector2f(0, 0));
 	gravity->initGravity(-9.8f);
-
+	collision->initCollision(1/60.0f);
 	// Add state into State Component:
-
+	ss << transformComp->getPosition().x << " " << transformComp->getPosition().y << " " << velocity->getVelocity().x << " " << velocity->getVelocity().y << endl;
+	OutputDebugStringA(ss.str().c_str());
 	// ========================================================================================
 	// NO STATE
 	// ========================================================================================

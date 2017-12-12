@@ -3,7 +3,6 @@
 
 #include "Vector2.h"
 #include "../ECS Plus/_ECS_Header.h"
-
 using namespace ECS;
 
 /*

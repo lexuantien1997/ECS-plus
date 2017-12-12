@@ -28,7 +28,7 @@ void Test_ECS()
 
 	// Some components of `Samus`:
 	// `auto` like `var` in c# but the performance of `auto is very fast
-	auto transform=player->addComponent<TTransform>("transform");
+	auto transform=player->addComponent<TTransform>("transform",6);
 	auto velocity=player->addComponent<TVelocity>("velocity");
 	player->addComponent<TSprite>("sprite");
 	

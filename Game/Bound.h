@@ -25,7 +25,7 @@ public:
 	bool turning;
 	int vel_x;
 
-	Bound(string name);
+	Bound(string name, bool hasGravity);
 	
 	~Bound();
 };

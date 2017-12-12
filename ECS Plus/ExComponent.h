@@ -21,6 +21,7 @@ struct IImage
 class TTransform :public ECS::Component
 {
 private:
+	int a;
 	IVector2f position; // vị trí của bức hình
 
 					   // độ phóng đại của bức hình, mặc định là (1,1)
@@ -34,7 +35,7 @@ private:
 
 public:
 
-	TTransform(string name) :Component{ name } 
+	TTransform(string name,int _a) :Component{ name } ,a(_a)
 	{ 
 
 	}

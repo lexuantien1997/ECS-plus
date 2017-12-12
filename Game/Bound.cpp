@@ -3,7 +3,7 @@
 
 
 
-Bound::Bound(string name):Component(name)
+Bound::Bound(string name,bool hasGravity):Component(name)
 {
 	 this->onGround = true;
 	 this->runningRight = true;
@@ -14,7 +14,10 @@ Bound::Bound(string name):Component(name)
 	 this->turning = false;
 	 SPEED = 500.f;
 	 HEIGHT = 700;
-	 GRAVITY = -50.0f;
+	 if(hasGravity)
+		 GRAVITY = -50.0f;
+	 else 
+		 GRAVITY = 0.f;
 	 JUMP_1 = 700.0F;
 	 vel_x = 0;
 	 dem = 0;
