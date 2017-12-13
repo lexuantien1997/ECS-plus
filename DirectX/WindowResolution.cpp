@@ -6,13 +6,6 @@ WindowResolution::WindowResolution(int mode)
 	
 	switch (mode)
 	{
-	case GAME_SCREEN_RESOLUTION_256_256_24:
-		screenWidth = 256;
-		screenHeight = 256;
-		depth = 24;
-		backBufferFormat = D3DFMT_X8R8G8B8;
-		break;
-
 	case GAME_SCREEN_RESOLUTION_640_480_24:
 		screenWidth = 640;
 		screenHeight = 480;

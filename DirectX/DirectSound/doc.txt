@@ -1,5 +1,0 @@
-if you have any problem like this:
-
-Error   LNK2019 unresolved external symbol __vsnprintf referenced in function "long __stdcall StringVPrintfWorkerA(char *,unsigned int,unsigned int *,char const *,char *)" (?StringVPrintfWorkerA@@YGJPADIPAIPBD0@Z)   Ancora  D:\Moody\Moody\Projects\Projects\Ancora\Ancora\dxerr.lib(dxerra.obj)
-
-then add this line : legacy_stdio_definitions.lib in Additional Dependencies
