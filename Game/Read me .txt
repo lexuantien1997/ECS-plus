@@ -1,0 +1,6 @@
+
+
+
+1. https://mhesham.wordpress.com/2010/12/07/events-and-delegates-a-c-implementation/
+
+2. https://www.codeproject.com/Tips/708772/Events-and-Delegates-in-Standard-Cplusplus

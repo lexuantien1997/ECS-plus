@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Manager">
+      <UniqueIdentifier>{50cb4401-fb9a-4206-87c5-17a796d25d5e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Manager\include">
+      <UniqueIdentifier>{0d9e2392-8d4b-4de9-a18d-0969693549ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Manager\scr">
+      <UniqueIdentifier>{accd32d4-8284-4418-9e58-9ba5db880248}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Define">
+      <UniqueIdentifier>{40302a39-ab3c-474b-8b49-226cd15fcd7a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core">
+      <UniqueIdentifier>{3ad64078-7671-491a-9a31-b733274f6554}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\include">
+      <UniqueIdentifier>{d631bbe1-9a02-47df-97ef-2a39d5815717}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\src">
+      <UniqueIdentifier>{33c71330-253a-4e27-bfab-6eb717fa2d38}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="DeviceManager.cpp">
+      <Filter>Manager\scr</Filter>
+    </ClCompile>
+    <ClCompile Include="InputManager.cpp">
+      <Filter>Manager\scr</Filter>
+    </ClCompile>
+    <ClCompile Include="WindowManager.cpp">
+      <Filter>Manager\scr</Filter>
+    </ClCompile>
+    <ClCompile Include="WindowResolution.cpp">
+      <Filter>Manager\scr</Filter>
+    </ClCompile>
+    <ClCompile Include="_DIRECTX_Header.h" />
+    <ClCompile Include="SpriteManager.cpp">
+      <Filter>Manager\scr</Filter>
+    </ClCompile>
+    <ClCompile Include="Transform.cpp">
+      <Filter>Core\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Sprite.cpp">
+      <Filter>Core\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Core\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Resource.cpp" />
+    <ClCompile Include="TileMap.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="WindowManager.h">
+      <Filter>Manager\include</Filter>
+    </ClInclude>
+    <ClInclude Include="DeviceManager.h">
+      <Filter>Manager\include</Filter>
+    </ClInclude>
+    <ClInclude Include="InputManager.h">
+      <Filter>Manager\include</Filter>
+    </ClInclude>
+    <ClInclude Include="WindowResolution.h">
+      <Filter>Manager\include</Filter>
+    </ClInclude>
+    <ClInclude Include="Define.h">
+      <Filter>Define</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteManager.h">
+      <Filter>Manager\include</Filter>
+    </ClInclude>
+    <ClInclude Include="Transform.h">
+      <Filter>Core\include</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector2.h">
+      <Filter>Core\include</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObjectId.h" />
+    <ClInclude Include="Sprite.h">
+      <Filter>Core\include</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Core\include</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="Rect.h">
+      <Filter>Core\include</Filter>
+    </ClInclude>
+    <ClInclude Include="TileMap.h" />
+  </ItemGroup>
+</Project>
