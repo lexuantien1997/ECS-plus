@@ -118,6 +118,7 @@
   <ItemGroup>
     <ClCompile Include="DeviceManager.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="GameTime.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="Resource.cpp" />
     <ClCompile Include="Sprite.cpp" />
@@ -133,6 +134,7 @@
     <ClInclude Include="DeviceManager.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObjectId.h" />
+    <ClInclude Include="GameTime.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="Rect.h" />
     <ClInclude Include="Resource.h" />

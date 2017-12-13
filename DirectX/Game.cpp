@@ -31,16 +31,23 @@ void Game::loadResourceData()
 
 void Game::runGame()
 {
+	float tickPerFrame = 1.0f / fps, delta = 0;
+
+
 	MSG msg; // throw the message
-	DWORD frame_start = GetTickCount(); // get time start game
+
+	//DWORD frame_start = GetTickCount(); // get time start game
 	bool endGame = false;
-	DWORD count_per_frame = 1000 / fps;
+	//DWORD count_per_frame = 1000 / fps;
 
 	// initialize data like resource:
 	init();
-
+	std::ostringstream ss;
 	while (!endGame)
 	{
+
+		GameTime::getInstance()->StartCounter();
+
 		if (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
 		{
 			if (msg.message == WM_QUIT) 
@@ -49,26 +56,45 @@ void Game::runGame()
 			TranslateMessage(&msg);
 			DispatchMessage(&msg);
 		}
-			DWORD now = GetTickCount();
-			deltatime = now - frame_start;
-			if (deltatime >= count_per_frame)
-			{
-				frame_start = now;
 
-				// start update
-				update(deltatime);
+		delta += GameTime::getInstance()->GetCouter();
 
-			/*	std::stringstream ss;
-				ss << "Delta time: " << deltatime;
-				wchar_t* wString = new wchar_t[4096];
-				MultiByteToWideChar(CP_ACP, 0, ss.str().c_str(), -1, wString, 4096);
-				SetWindowText(window->GetHwnd(), wString);*/
+		if (delta >= tickPerFrame)
+		{
+			ss << delta << endl;
+			OutputDebugStringA(ss.str().c_str());
 
-				// start render
-				render();
-			}
-			else
-				Sleep(count_per_frame - deltatime);
+			update(delta); 
+			render();
+
+			delta = 0;
+		}
+		else
+		{
+			Sleep(tickPerFrame - delta);
+			delta = tickPerFrame;
+		}
+			//DWORD now = GetTickCount();
+			//deltatime = now - frame_start;
+			//if (deltatime >= count_per_frame)
+			//{
+			//	frame_start = now;
+		//
+			//	// start update
+			//	update(deltatime);
+		//
+			//*	std::stringstream ss;
+			//	ss << "Delta time: " << deltatime;
+			//	wchar_t* wString = new wchar_t[4096];
+			//	MultiByteToWideChar(CP_ACP, 0, ss.str().c_str(), -1, wString, 4096);
+			//	SetWindowText(window->GetHwnd(), wString);*/
+		//
+			//	// start render
+			//	render();
+			//}
+			//else
+			//	Sleep(count_per_frame - deltatime);
+
 	}
 }
 

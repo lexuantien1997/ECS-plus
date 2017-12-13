@@ -10,5 +10,5 @@
 #include "Sprite.h"
 #include "Transform.h"
 #include "Rect.h"
-
+#include "GameTime.h"
 #endif // !_DIRECTX_HEADER_H
