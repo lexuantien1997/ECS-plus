@@ -76,12 +76,16 @@ namespace ECS
 		template<class T>
 		T* createEntity(string name);
 
+		
+
 		/**
 		*@brief  Create an entity and match it into `GameWorld`
 		*@para name: name of entity
 		*@return : Entity if use
 		**/
 		Entity* create_Entity(string name);
+
+		vector<Entity*> create_Entities(int size);
 
 		/*Chưa làm*
 		*@brief  Remove an entity out of `GameWorld`

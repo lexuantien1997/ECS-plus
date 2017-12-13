@@ -49,7 +49,7 @@ void PlayingScene::init()
 	auto samus_sprite= static_cast<Sprite*>(SpriteManager::getInstance()->find("samus_aran.png"));
 	animationComp->initAnimationComponent("no_state", "samus_states.xml");
 	spriteComp->initSpriteComponent(samus_sprite, Rect(Vector2f(184, 36), Vector2f(18,34)));
-	transformComp->initTransform(Vector2f(0,0), Vector2f(50, 50), Vector2f(2,2.2), 0);
+	transformComp->initTransform(Vector2f(0,0), Vector2f(50, 50), Vector2f(1,1), 0);
 	velocity->initVelocity(Vector2f(0, 0));
 	gravity->initGravity(-9.8f);
 
