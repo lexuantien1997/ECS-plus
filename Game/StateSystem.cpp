@@ -37,6 +37,8 @@ void StateSystem::update(float dt)
 				currentState->update(dt);
 			}
 		}
+		// https://denisrizov.com/2016/03/13/state-pattern/
+		// http://www.ai-junkie.com/architecture/state_driven/tut_state3.html
 	}
 }
 

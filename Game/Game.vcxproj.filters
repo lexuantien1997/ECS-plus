@@ -48,9 +48,6 @@
     <ClCompile Include="AnimationComponent.cpp">
       <Filter>Components\src</Filter>
     </ClCompile>
-    <ClCompile Include="PlayerControllable.cpp">
-      <Filter>Components\src</Filter>
-    </ClCompile>
     <ClCompile Include="SpriteComponent.cpp">
       <Filter>Components\src</Filter>
     </ClCompile>
@@ -115,9 +112,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AnimationComponent.h">
-      <Filter>Components\include</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerControllable.h">
       <Filter>Components\include</Filter>
     </ClInclude>
     <ClInclude Include="SpriteComponent.h">

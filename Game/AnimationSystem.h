@@ -19,7 +19,7 @@ public:
 
 	void update(float dt);
 
-	void onUpdate(Entity * entity);
+	void onUpdate(Entity * entity,float);
 
 	void onActionChanged(Entity* e, string name);
 

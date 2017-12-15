@@ -42,7 +42,7 @@ void Game::runGame()
 
 	// initialize data like resource:
 	init();
-	std::ostringstream ss;
+	///std::ostringstream ss;
 	while (!endGame)
 	{
 
@@ -61,8 +61,8 @@ void Game::runGame()
 
 		if (delta >= tickPerFrame)
 		{
-			ss << delta << endl;
-			OutputDebugStringA(ss.str().c_str());
+			//ss << delta << endl;
+			//OutputDebugStringA(ss.str().c_str());
 
 			update(delta); 
 			render();

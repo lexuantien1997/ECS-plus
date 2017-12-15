@@ -142,7 +142,6 @@
     <ClCompile Include="MapSystem.cpp" />
     <ClCompile Include="MetroidGame.cpp" />
     <ClCompile Include="MovementSystem.cpp" />
-    <ClCompile Include="PlayerControllable.cpp" />
     <ClCompile Include="PlayingScene.cpp" />
     <ClCompile Include="RenderingSystem.cpp" />
     <ClCompile Include="SpriteComponent.cpp" />
@@ -178,7 +177,6 @@
     <ClInclude Include="Mess.h" />
     <ClInclude Include="MetroidGame.h" />
     <ClInclude Include="MovementSystem.h" />
-    <ClInclude Include="PlayerControllable.h" />
     <ClInclude Include="PlayingScene.h" />
     <ClInclude Include="RenderingSystem.h" />
     <ClInclude Include="Server.h" />

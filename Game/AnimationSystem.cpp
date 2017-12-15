@@ -20,18 +20,18 @@ void AnimationSystem::update(float dt)
 		auto animationComp = entity->getComponent<AnimationComponent>("animation component");
 		auto bound= entity->getComponent<Bound>("bound");
 
-		onUpdate(entity);
+		onUpdate(entity,dt);
 	}
 	
 }
 
-void AnimationSystem::onUpdate(Entity * entity)
+void AnimationSystem::onUpdate(Entity * entity,float dt)
 {
 	auto animationComp = entity->getComponent<AnimationComponent>("animation component");
 	auto currentAction = animationComp->getCurrentAction();
 
 	// stateTime += dt;
-	stateTime += 0.01f;
+	stateTime += dt;
 	if (stateTime >= currentAction->getFrameDuration())
 	{
 		currentAction->increasing();

@@ -12,10 +12,11 @@ Bound::Bound(string name):Component(name)
 	 this->shoot_straight = false;
 	 this->rolling = false;
 	 this->turning = false;
-	 SPEED = 500.f;
-	 HEIGHT = 700;
-	 GRAVITY = -50.0f;
-	 JUMP_1 = 700.0F;
+
+	 SPEED = 150.f;
+	 HEIGHT = 400.0f;
+	 GRAVITY = -9.8f;
+	 JUMP_1 = 350.0f;
 	 vel_x = 0;
 	 dem = 0;
 }
