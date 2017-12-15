@@ -30,4 +30,11 @@ void MetroidGame::loadResource()
 	asset->attachResource(new Sprite("tiles.png", "../resources/map/tiles.png"));
 
 	asset->attachResource(new TileMap("untitled.tmx", "../resources/map/untitled.tmx"));
+
+	/*QuadtreeDivision quadtreeDivision;
+	quadtreeDivision.preExport("../resources/map/untitled.tmx");
+	quadtreeDivision.BuildTree(quadtreeDivision.quadtree);
+	quadtreeDivision.Export(quadtreeDivision.quadtree, quadtreeDivision.xml_rootNode);
+	quadtreeDivision.endExport("../resources/map/untitledQuadtree.xml");
+	quadtreeDivision.release(quadtreeDivision.quadtree);*/
 }

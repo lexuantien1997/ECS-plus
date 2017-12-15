@@ -17,7 +17,7 @@ void MapSystem::render()
 {
 	for (auto entity : getEntities())
 	{
-		if (entity->getName() == "map")
+		//if (entity->getName() == "map")
 		{
 			auto transform = entity->getComponent<Transform>("transform component");
 			auto spriteComp = entity->getComponent<SpriteComponent>("sprite component");
@@ -50,6 +50,7 @@ void MapSystem::render()
 				transform->setPosition(0, transform->getPosition().y - 16);
 			}
 			transform->setPosition(_xOld, _yOld);
+			break;
 		}
 	}
 }

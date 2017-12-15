@@ -10,10 +10,13 @@
 #include "../rapid xml/rapidxml_iterators.hpp"
 #include "../rapid xml/rapidxml_print.hpp"
 #include "../rapid xml/rapidxml_utils.hpp"
+#include "../ECS Plus/Entity.h"
+#include "Transform.h"
+#include "../Game/SpriteComponent.h"
 
 using namespace std;
 using namespace rapidxml;
-
+#define TILESIZE 16
 class TileMap : public Resource
 {
 	string source; // the path of map file
@@ -22,6 +25,8 @@ class TileMap : public Resource
 	vector<Rect*> _ground;
 public:
 	int **value;
+	map<int, Entity*> mapTile;
+
 	TileMap(string name, string sourcePath);
 	int getColumn() { return _column; }
 	int getRow() { return _row; }

@@ -50,7 +50,12 @@
       <Filter>Core\src</Filter>
     </ClCompile>
     <ClCompile Include="Resource.cpp" />
-    <ClCompile Include="TileMap.cpp" />
+    <ClCompile Include="TileMap.cpp">
+      <Filter>Core\src</Filter>
+    </ClCompile>
+    <ClCompile Include="QNode.cpp">
+      <Filter>Core\src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="WindowManager.h">
@@ -88,6 +93,11 @@
     <ClInclude Include="Rect.h">
       <Filter>Core\include</Filter>
     </ClInclude>
-    <ClInclude Include="TileMap.h" />
+    <ClInclude Include="TileMap.h">
+      <Filter>Core\include</Filter>
+    </ClInclude>
+    <ClInclude Include="QNode.h">
+      <Filter>Core\include</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

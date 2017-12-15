@@ -5,13 +5,14 @@
 #include "../DirectX/_DIRECTX_Header.h"
 #include <vector>
 #include "../DirectX/TileMap.h"
-
+#include "../DirectX/QNode.h"
 using namespace ECS;
 
 class MapComponent : public ECS::Component
 {
 public:
 	TileMap *map;
+	QuadtreeDivision quadtreeDivision;
 	MapComponent(string name);
 	void InitMapComponent();
 	~MapComponent();

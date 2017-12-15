@@ -12,6 +12,7 @@ Bound::Bound(string name):Component(name)
 	 this->shoot_straight = false;
 	 this->rolling = false;
 	 this->turning = false;
+	 //SPEED = 200.f;
 	 SPEED = 500.f;
 	 HEIGHT = 700;
 	 GRAVITY = -50.0f;

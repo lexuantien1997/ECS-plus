@@ -15,6 +15,12 @@ ECS::Entity::Entity(string _name,GameWorld* s)
 	//systems.resize(maxComponents);
 }
 
+ECS::Entity::Entity(string name, int id)
+{
+	this->name = name;
+	this->id = id;
+}
+
 ECS::Entity::~Entity()
 {
 }

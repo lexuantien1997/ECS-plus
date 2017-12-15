@@ -118,6 +118,7 @@
     <ClCompile Include="DeviceManager.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="InputManager.cpp" />
+    <ClCompile Include="QNode.cpp" />
     <ClCompile Include="Resource.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="SpriteManager.cpp" />
@@ -133,6 +134,7 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObjectId.h" />
     <ClInclude Include="InputManager.h" />
+    <ClInclude Include="QNode.h" />
     <ClInclude Include="Rect.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="Sprite.h" />

@@ -17,6 +17,11 @@ void Game::init()
 	loadResourceData();
 }
 
+void Game::initQuadtree()
+{
+	
+}
+
 void Game::loadResource()
 {
 }
@@ -38,7 +43,7 @@ void Game::runGame()
 
 	// initialize data like resource:
 	init();
-
+	
 	while (!endGame)
 	{
 		if (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
@@ -100,7 +105,7 @@ void Game::render()
 		// Render scene
 		SceneManager::getInstance()->render();
 
-		DeviceManager::getInstance()->getDevice()->EndScene();
+	DeviceManager::getInstance()->getDevice()->EndScene();
 	}
 	DeviceManager::getInstance()->draw();
 

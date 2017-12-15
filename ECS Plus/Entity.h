@@ -92,6 +92,7 @@ namespace ECS
 		// Constructor pass 2 value:
 		// set name and GameWorld for entity
 		Entity(string name, GameWorld* s);
+		Entity(string name, int id);
 
 
 		// ============================================================================

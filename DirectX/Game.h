@@ -21,8 +21,10 @@ protected:
 	WindowManager* window;
 
 public:
-
+	
 	virtual void init();
+
+	void initQuadtree();
 
 	virtual void loadResource();
 

@@ -49,20 +49,23 @@ void PlayingScene::init()
 	auto samus_sprite= static_cast<Sprite*>(SpriteManager::getInstance()->find("samus_aran.png"));
 	animationComp->initAnimationComponent("no_state", "samus_states.xml");
 	spriteComp->initSpriteComponent(samus_sprite, Rect(Vector2f(184, 36), Vector2f(18,34)));
-	transformComp->initTransform(Vector2f(0,0), Vector2f(50, 50), Vector2f(1,1), 0);
+	transformComp->initTransform(Vector2f(100,-110), Vector2f(50, 50), Vector2f(2,2.2), 0);
 	velocity->initVelocity(Vector2f(0, 0));
 	gravity->initGravity(-9.8f);
 
 	//
 	Entity* Map = world->create_Entity("map");
+	//Entity *e = new Entity(0);
 	auto maptransformComp = Map->addComponent<Transform>("transform component");
 	auto TilesetComponent = Map->addComponent<SpriteComponent>("sprite component");
 	auto mapComp = Map->addComponent<MapComponent>("map component");
 
 	auto Tileset = static_cast<Sprite*>(SpriteManager::getInstance()->find("tiles.png"));
 	TilesetComponent->initSpriteComponent(Tileset, Rect(Vector2f(0, 0), Vector2f(16, 16)));
-	maptransformComp->initTransform(Vector2f(0, 0), Vector2f(0, 0), Vector2f(1, 1), 0);
+	maptransformComp->initTransform(Vector2f(0, -16), Vector2f(0, 0), Vector2f(1, 1), 0);
 	mapComp->InitMapComponent();
+
+
 
 	// Add state into State Component:
 
