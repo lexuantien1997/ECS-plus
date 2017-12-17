@@ -49,6 +49,13 @@ void RenderingSystem::render()
 			SpriteManager *batch = SpriteManager::getInstance();
 			batch->draw(spriteComp, transform, getGameWorld()->cam);
 		}
+		else if (entity->getName() == "intro")
+		{
+			auto transform = entity->getComponent<Transform>("transform component");
+			auto spriteComp = entity->getComponent<SpriteComponent>("sprite component");
+
+			SpriteManager::getInstance()->drawLeftTopTransform(spriteComp, transform, getGameWorld()->cam);
+		}
 	}
 }
 

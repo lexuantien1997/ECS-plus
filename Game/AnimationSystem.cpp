@@ -17,82 +17,100 @@ void AnimationSystem::update(float dt)
 {
 	for (auto entity :getEntities())
 	{
-		auto animationComp = entity->getComponent<AnimationComponent>("animation component");
-		auto bound= entity->getComponent<Bound>("bound");
+		if (entity->getName() == "intro")
+		{
+			stateTime = stateTime + 0.01;
+			if (stateTime >= 0.03)
+			{
+				stateTime = 0.0;
+				
+				auto introAni = entity->getComponent<AnimationComponent>("animation component")->getIntroAnimation();
+				 
+				auto spriteComp = entity->getComponent<SpriteComponent>("sprite component");
+				auto rects = introAni->rect;
+				Rect r = rects.at(++(introAni->rectIndex)%rects.size());
+				spriteComp->setRect(r);
+			}
+		}
+		else
+		{
+			auto animationComp = entity->getComponent<AnimationComponent>("animation component");
+			auto bound = entity->getComponent<Bound>("bound");
 
-		//// Đang nhảy
-		//if (bound->onGround==false)
-		//{
-		//	// nhảy + đưa súng lên trên
-		//	if (bound->shoot_up==true)
-		//	{
-		//		onActionChanged(entity, "jump_shoot_up");
-		//	}
-		//	// nhảy bắn súng ngang
-		//	else if (bound->shoot_straight == true)
-		//	{
-		//		onActionChanged(entity, "jump_shoot");
-		//	}
-		//	else if (bound->turning == true)
-		//	{
-		//		onActionChanged(entity, "turning");
-		//	}
-		//	// chỉ nhảy
-		//	else if(bound->shoot_up == false && bound->shoot_straight == false)
-		//	{
+			//// Đang nhảy
+			//if (bound->onGround==false)
+			//{
+			//	// nhảy + đưa súng lên trên
+			//	if (bound->shoot_up==true)
+			//	{
+			//		onActionChanged(entity, "jump_shoot_up");
+			//	}
+			//	// nhảy bắn súng ngang
+			//	else if (bound->shoot_straight == true)
+			//	{
+			//		onActionChanged(entity, "jump_shoot");
+			//	}
+			//	else if (bound->turning == true)
+			//	{
+			//		onActionChanged(entity, "turning");
+			//	}
+			//	// chỉ nhảy
+			//	else if(bound->shoot_up == false && bound->shoot_straight == false)
+			//	{
 
-		//		onActionChanged(entity, "jump");
-		//		
-		//	}
-		//	onUpdate(entity); 
-		//	return;
-		//}
+			//		onActionChanged(entity, "jump");
+			//		
+			//	}
+			//	onUpdate(entity); 
+			//	return;
+			//}
 
-		//// [ Đang ở dưới đất ]
-		//else if (bound->onGround == true)
-		//{
+			//// [ Đang ở dưới đất ]
+			//else if (bound->onGround == true)
+			//{
 
-		//	// Không di chuyển => Đứng
-		//	if (bound->vel_x == 0)
-		//	{
-		//		// Đứng mà đưa súng lên trời
-		//		if (bound->shoot_up == true)
-		//		{
-		//			onActionChanged(entity, "stand_shoot_up");
-		//		}
-		//		else if (bound->rolling==1)
-		//		{
-		//			onActionChanged(entity, "rolling");
-		//		}
-		//		else
-		//		{
-		//			onActionChanged(entity, "stand");
-		//		}
+			//	// Không di chuyển => Đứng
+			//	if (bound->vel_x == 0)
+			//	{
+			//		// Đứng mà đưa súng lên trời
+			//		if (bound->shoot_up == true)
+			//		{
+			//			onActionChanged(entity, "stand_shoot_up");
+			//		}
+			//		else if (bound->rolling==1)
+			//		{
+			//			onActionChanged(entity, "rolling");
+			//		}
+			//		else
+			//		{
+			//			onActionChanged(entity, "stand");
+			//		}
 
-		//	}
+			//	}
 
-		//	// Đang di chuyển
-		//	else if (bound->vel_x != 0)
-		//	{
+			//	// Đang di chuyển
+			//	else if (bound->vel_x != 0)
+			//	{
 
-		//		// Di chuyển mà đưa súng lên trời => chạy
-		//		if (bound->shoot_up == true)
-		//		{
-		//			onActionChanged(entity, "run_shoot_up");
-		//		}
-		//		else if (bound->rolling)
-		//		{
-		//			onActionChanged(entity, "rolling");
-		//		}
-		//		else
-		//		{				
-		//			onActionChanged(entity, "run");
-		//		}
-		//	}
-		//	onUpdate(entity);
-		//	return;
-		//}	
-		onUpdate(entity);
+			//		// Di chuyển mà đưa súng lên trời => chạy
+			//		if (bound->shoot_up == true)
+			//		{
+			//			onActionChanged(entity, "run_shoot_up");
+			//		}
+			//		else if (bound->rolling)
+			//		{
+			//			onActionChanged(entity, "rolling");
+			//		}
+			//		else
+			//		{				
+			//			onActionChanged(entity, "run");
+			//		}
+			//	}
+			//	onUpdate(entity);
+			//	return;
+			//}	
+			onUpdate(entity);
+		}
 	}
 	
 }
@@ -128,11 +146,11 @@ void AnimationSystem::onActionChanged(Entity * entity, string name)
 	animationComp->setPreviousAction(animationComp->getCurrentAction());
 	animationComp->setCurrentAction(animationComp->getAniamtion()->findAction(name));
 	
-	auto samus_sprite = static_cast<Sprite*>(SpriteManager::getInstance()->find("samus_aran.png"));
+	/*auto samus_sprite = static_cast<Sprite*>(SpriteManager::getInstance()->find("samus_aran.png"));
 	auto bound = entity->getComponent<Bound>("bound");
 	auto spriteComp = entity->getComponent<SpriteComponent>("sprite component");
 
-	spriteComp->setSprite(samus_sprite);
+	spriteComp->setSprite(samus_sprite);*/
 	
 }
 

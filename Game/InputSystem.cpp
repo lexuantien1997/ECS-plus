@@ -19,141 +19,151 @@ void InputSystem::update(float dt)
 
 	for (auto entity : getEntities())
 	{
-		auto playCon = entity->getComponent<PlayerControllable>("player control");
-		auto velocity = entity->getComponent<Velocity>("velocity");
-		auto animationCom= entity->getComponent<AnimationComponent>("animation component");
-		auto bound = entity->getComponent<Bound>("bound");
-
-		// init:
-		string actionName= animationCom->getCurrentAction()->getName();
-		auto input = InputManager::getInstance();
-
-
-		// ==================================================================================
-		// RIGHT + LEFT
-		// ==================================================================================
-
-		if (input->isKeyDown(playCon->controls.LEFT,KeyState::current))
+		if (entity->getName() == "intro")
 		{
-			//if (input->getKeyDown(playCon->controls.JUMP))
-			//{
-			//	bound->turning = true;
-			//	velocity->setVelocity(Vector2f(-bound->SPEED, velocity->getVelocity().y));
-			//}
-			//else {
-			//	velocity->setVelocity(Vector2f(-bound->SPEED, velocity->getVelocity().y));
-			//	bound->runningRight = false;
-			//	bound->no_state = false;
-			//}
-			Vector2i camPos = getGameWorld()->cam.getCamPosition();
-			camPos.x = camPos.x - 2;
-			getGameWorld()->cam.setCamPosition(camPos);
-			velocity->setVelocity(Vector2f(-bound->SPEED, velocity->getVelocity().y));
-			bound->runningRight = false;
-		}
-		else if (input->isKeyDown(playCon->controls.RIGHT, KeyState::current))
-		{
-			/*if (input->getKeyDown(playCon->controls.JUMP) )
+			if (InputManager::getInstance()->isKeyDown(DIK_RETURN, KeyState::current))
 			{
+				SceneManager::getInstance()->removeScene();
+			}
+		}
+		else
+		{
+			auto playCon = entity->getComponent<PlayerControllable>("player control");
+			auto velocity = entity->getComponent<Velocity>("velocity");
+			auto animationCom = entity->getComponent<AnimationComponent>("animation component");
+			auto bound = entity->getComponent<Bound>("bound");
+
+			// init:
+			string actionName = animationCom->getCurrentAction()->getName();
+			auto input = InputManager::getInstance();
+
+
+			// ==================================================================================
+			// RIGHT + LEFT
+			// ==================================================================================
+
+			if (input->isKeyDown(playCon->controls.LEFT, KeyState::current))
+			{
+				//if (input->getKeyDown(playCon->controls.JUMP))
+				//{
+				//	bound->turning = true;
+				//	velocity->setVelocity(Vector2f(-bound->SPEED, velocity->getVelocity().y));
+				//}
+				//else {
+				//	velocity->setVelocity(Vector2f(-bound->SPEED, velocity->getVelocity().y));
+				//	bound->runningRight = false;
+				//	bound->no_state = false;
+				//}
+				Vector2i camPos = getGameWorld()->cam.getCamPosition();
+				camPos.x = camPos.x - 2;
+				getGameWorld()->cam.setCamPosition(camPos);
+				velocity->setVelocity(Vector2f(-bound->SPEED, velocity->getVelocity().y));
+				bound->runningRight = false;
+			}
+			else if (input->isKeyDown(playCon->controls.RIGHT, KeyState::current))
+			{
+				/*if (input->getKeyDown(playCon->controls.JUMP) )
+				{
 				bound->turning = true;
 				velocity->setVelocity(Vector2f(bound->SPEED, velocity->getVelocity().y));
-			}
-			else {
+				}
+				else {
 				velocity->setVelocity(Vector2f(bound->SPEED, velocity->getVelocity().y));
 				bound->runningRight = true;
 				bound->no_state = false;
-			}*/
-			Vector2i camPos = getGameWorld()->cam.getCamPosition();
-			camPos.x = camPos.x + 2;
-			getGameWorld()->cam.setCamPosition(camPos);
-			Vector2i c = getGameWorld()->cam.getCamPosition();
-			velocity->setVelocity(Vector2f(bound->SPEED, velocity->getVelocity().y));
-			bound->runningRight = true;
-		}
+				}*/
+				Vector2i camPos = getGameWorld()->cam.getCamPosition();
+				camPos.x = camPos.x + 2;
+				getGameWorld()->cam.setCamPosition(camPos);
+				Vector2i c = getGameWorld()->cam.getCamPosition();
+				velocity->setVelocity(Vector2f(bound->SPEED, velocity->getVelocity().y));
+				bound->runningRight = true;
+			}
 
-		// ==================================================================================
-		// JUMP
-		// ==================================================================================
-		
-		 if (bound->onGround == true && input->getKeyDown(playCon->controls.JUMP)==true)
-		 {
-			 //if (bound->rolling == true)
-			 //{
+			// ==================================================================================
+			// JUMP
+			// ==================================================================================
+
+			if (bound->onGround == true && input->getKeyDown(playCon->controls.JUMP) == true)
+			{
+				//if (bound->rolling == true)
+				//{
 				//bound->rolling = false;
-			 //}
-			 //else if(bound->rolling == false && animationCom->getPreviousAction()->getName()!="rolling")
-			 //{
+				//}
+				//else if(bound->rolling == false && animationCom->getPreviousAction()->getName()!="rolling")
+				//{
 				//// source: http://jsfiddle.net/LyM87/ make object jump
 				//velocity->setVelocity(Vector2f(velocity->getVelocity().x, -bound->HEIGHT));
 				//bound->onGround = false;
 				//bound->no_state = false;
-			 //}
-			 velocity->setVelocity(Vector2f(velocity->getVelocity().x, bound->HEIGHT));
-			 bound->onGround = false;
-			 
-		 }
+				//}
+				velocity->setVelocity(Vector2f(velocity->getVelocity().x, bound->HEIGHT));
+				bound->onGround = false;
 
-		 else if (input->getKeyUp(playCon->controls.JUMP))
-		{
-
-			//if (velocity->getVelocity().y<=-bound->JUMP_1)
-			//{
-			//	velocity->setVelocity(Vector2f(velocity->getVelocity().x, -bound->JUMP_1));
-			//}
-			//if (bound->onGround==true)
-			//{
-			//	bound->turning = false;
-			//}
-			//
-			//bound->no_state = false;
-			if (velocity->getVelocity().y>=-bound->JUMP_1)
-			{
-				velocity->setVelocity(Vector2f(velocity->getVelocity().x, -bound->JUMP_1));
 			}
-		}
 
-		// ==================================================================================
-		// UP
-		// ==================================================================================
-		/*if (input->isKeyDown(playCon->controls.UP, KeyState::current) == true)
-		{
+			else if (input->getKeyUp(playCon->controls.JUMP))
+			{
+
+				//if (velocity->getVelocity().y<=-bound->JUMP_1)
+				//{
+				//	velocity->setVelocity(Vector2f(velocity->getVelocity().x, -bound->JUMP_1));
+				//}
+				//if (bound->onGround==true)
+				//{
+				//	bound->turning = false;
+				//}
+				//
+				//bound->no_state = false;
+				if (velocity->getVelocity().y >= -bound->JUMP_1)
+				{
+					velocity->setVelocity(Vector2f(velocity->getVelocity().x, -bound->JUMP_1));
+				}
+			}
+
+			// ==================================================================================
+			// UP
+			// ==================================================================================
+			/*if (input->isKeyDown(playCon->controls.UP, KeyState::current) == true)
+			{
 			bound->shoot_up = true;
 			bound->no_state = false;
 			bound->rolling = 0;
-		}
-		 if(input->isKeyDown(playCon->controls.UP, KeyState::current) == false)
-		{
+			}
+			if(input->isKeyDown(playCon->controls.UP, KeyState::current) == false)
+			{
 			bound->shoot_up = false;
 			bound->no_state = false;
-		}*/
+			}*/
 
-		// ==================================================================================
-		// SHOOT
-		// ==================================================================================
+			// ==================================================================================
+			// SHOOT
+			// ==================================================================================
 
-		//if (input->isKeyDown(playCon->controls.SHOOT, KeyState::current) == true)
-		//{
-		//	bound->shoot_straight = true;
-		//	bound->no_state = false;
+			//if (input->isKeyDown(playCon->controls.SHOOT, KeyState::current) == true)
+			//{
+			//	bound->shoot_straight = true;
+			//	bound->no_state = false;
 
-		//}
-		//else if (input->isKeyDown(playCon->controls.SHOOT, KeyState::current) == false)
-		//{
-		//	bound->shoot_straight = false;
-		//	bound->no_state = false;
-		//}
+			//}
+			//else if (input->isKeyDown(playCon->controls.SHOOT, KeyState::current) == false)
+			//{
+			//	bound->shoot_straight = false;
+			//	bound->no_state = false;
+			//}
 
-		// ==================================================================================
-		// ROLLING
-		// ==================================================================================
-		/*if (input->isKeyDown(playCon->controls.DOWN, KeyState::current) == true)
-		{
+			// ==================================================================================
+			// ROLLING
+			// ==================================================================================
+			/*if (input->isKeyDown(playCon->controls.DOWN, KeyState::current) == true)
+			{
 			if (bound->onGround==true)
 			{
-				bound->rolling = true;
-				bound->no_state = false;
+			bound->rolling = true;
+			bound->no_state = false;
 			}
-		}*/
+			}*/
+		}
 	}
 }
 

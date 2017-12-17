@@ -17,6 +17,7 @@ void MetroidGame::init()
 {
 	Game::init();
 	SceneManager::getInstance()->addScene(new PlayingScene("Playing scene"));
+	SceneManager::getInstance()->addScene(new IntroScene("Intro scene"));
 }
 
 void MetroidGame::loadResource()
@@ -25,12 +26,15 @@ void MetroidGame::loadResource()
 	
 	asset->attachResource(new Sprite("samus_aran.png", "resources/charactor/samus_aran.png"));
 
+	asset->attachResource(new Sprite("intro.png", "../resources/intro/intro.png"));
+
 	asset->attachResource(new Animation("samus_states.xml", "../resources/charactor/samus_states.xml"));
 
 	asset->attachResource(new Sprite("tiles.png", "../resources/map/tiles.png"));
 
 	asset->attachResource(new TileMap("untitled.tmx", "../resources/map/untitled.tmx"));
 
+	asset->attachResource(new introAnimation("introscene.xml", "../resources/intro/introscene.xml"));
 	/*QuadtreeDivision quadtreeDivision;
 	quadtreeDivision.preExport("../resources/map/untitled.tmx");
 	quadtreeDivision.BuildTree(quadtreeDivision.rootQuadtree);

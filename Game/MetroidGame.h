@@ -4,7 +4,8 @@
 #include "../ECS Plus/_ECS_Header.h"
 #include "../DirectX/_DIRECTX_Header.h"
 #include "PlayingScene.h"
-
+#include "IntroScene.h"
+#include "introAnimation.h"
 #include "Animation.h"
 
 using namespace ECS;

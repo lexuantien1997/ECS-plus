@@ -19,8 +19,8 @@
 // Systems
 #include "RenderingSystem.h"
 #include "InputSystem.h"
-#include "MovementSystem.h"
 #include "AnimationSystem.h"
+#include "MovementSystem.h"
 #include "StateSystem.h"
 #include "MapSystem.h"
 using namespace ECS;
@@ -30,12 +30,12 @@ class PlayingScene:public ECS::Scene
 private:
 	RenderingSystem renderSystem;
 	InputSystem inputSystem;
+	AnimationSystem animationSystem=AnimationSystem(&inputSystem);
 	MovementSystem movementSystem;
 	StateSystem stateSystem;
 	MapSystem mapSystem;
-	AnimationSystem animationSystem=AnimationSystem(&inputSystem);
 public:
-
+	
 	PlayingScene(string name);
 	
 	~PlayingScene();

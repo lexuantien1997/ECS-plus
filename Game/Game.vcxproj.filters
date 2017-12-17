@@ -112,6 +112,10 @@
     <ClCompile Include="MapSystem.cpp">
       <Filter>Systems\src</Filter>
     </ClCompile>
+    <ClCompile Include="IntroScene.cpp">
+      <Filter>Utility\src</Filter>
+    </ClCompile>
+    <ClCompile Include="introAnimation.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AnimationComponent.h">
@@ -193,6 +197,10 @@
     <ClInclude Include="MapSystem.h">
       <Filter>Systems\include</Filter>
     </ClInclude>
+    <ClInclude Include="IntroScene.h">
+      <Filter>Utility\include</Filter>
+    </ClInclude>
+    <ClInclude Include="introAnimation.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Read me .txt">

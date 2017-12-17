@@ -6,13 +6,14 @@
 
 #include "Action.h"
 #include "Animation.h"
+#include "introAnimation.h"
 
 class AnimationComponent:public ECS::Component
 {
 private:
 
 	Animation* animation;
-
+	introAnimation *introAnima;
 	Action* currentAction;
 	Action* previousAction;
 
@@ -23,6 +24,7 @@ public:
 	void initAnimationComponent(string startAction,string sourceName);
 
 	Animation* getAniamtion() { return animation; }
+	introAnimation* getIntroAnimation() { return introAnima; }
 
 	Action* getCurrentAction() {
 		return currentAction;
