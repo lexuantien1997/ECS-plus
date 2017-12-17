@@ -4,11 +4,11 @@
 
 void StateSystem::update(float dt)
 {
-	for (auto entity : getEntities())
+	for (Entity* entity : getEntities())
 	{
-		auto stateComp = entity->getComponent<StateComponent>("state component");
+		StateComponent* stateComp = entity->getComponent<StateComponent>("state component");
 		State* nextState = NULL;
-		auto currentState = stateComp->getCurrentState();
+		State* currentState = stateComp->getCurrentState();
 
 		// Kiểm tra từng transition của trạng thái hiện tại
 		// Nếu thỏa điều kiện sang trạng thái tiếp theo thì trả về trạng thái tiếp theo
@@ -52,9 +52,9 @@ void StateSystem::init()
 
 void StateSystem::init(string stateName)
 {
-	for (auto entity : getEntities())
+	for (Entity* entity : getEntities())
 	{
-		auto stateComp = entity->getComponent<StateComponent>("state component");
+		StateComponent* stateComp = entity->getComponent<StateComponent>("state component");
 
 		stateComp->serCurrentState(stateComp->findState(stateName));
 		if (stateComp->getCurrentState()->enter != NULL)

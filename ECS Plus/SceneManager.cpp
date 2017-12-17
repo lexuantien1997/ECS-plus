@@ -22,7 +22,7 @@ void ECS::SceneManager::addScene(Scene * s)
 
 void ECS::SceneManager::removeScene()
 {
-	if (scenes.empty()!=NULL)
+	if (!scenes.empty())
 	{
 		delete scenes.back();
 
@@ -68,7 +68,7 @@ void ECS::SceneManager::render()
 
 void ECS::SceneManager::release()
 {
-	for (auto scene :scenes)
+	for (Scene* scene :scenes)
 	{
 		scene->release();
 	}

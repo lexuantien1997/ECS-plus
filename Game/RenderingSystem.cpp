@@ -22,13 +22,13 @@ void RenderingSystem::update(float dt)
 
 void RenderingSystem::render()
 {
-	for (auto entity : getEntities())
+	for (Entity* entity : getEntities())
 	{
 		if (entity->getName() == "samus")
 		{
-			auto transform = entity->getComponent<Transform>("transform component");
-			auto spriteComp = entity->getComponent<SpriteComponent>("sprite component");
-			auto bound = entity->getComponent<Bound>("bound");
+			Transform* transform = entity->getComponent<Transform>("transform component");
+			SpriteComponent* spriteComp = entity->getComponent<SpriteComponent>("sprite component");
+			Bound* bound = entity->getComponent<Bound>("bound");
 
 			if (bound->runningRight == false)
 			{
@@ -51,8 +51,8 @@ void RenderingSystem::render()
 		}
 		else if (entity->getName() == "intro")
 		{
-			auto transform = entity->getComponent<Transform>("transform component");
-			auto spriteComp = entity->getComponent<SpriteComponent>("sprite component");
+			Transform* transform = entity->getComponent<Transform>("transform component");
+			SpriteComponent* spriteComp = entity->getComponent<SpriteComponent>("sprite component");
 
 			SpriteManager::getInstance()->drawLeftTopTransform(spriteComp, transform, getGameWorld()->cam);
 		}

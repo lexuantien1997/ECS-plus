@@ -17,7 +17,7 @@ InputSystem::~InputSystem()
 void InputSystem::update(float dt)
 {
 
-	for (auto entity : getEntities())
+	for (Entity* entity : getEntities())
 	{
 		if (entity->getName() == "intro")
 		{
@@ -28,14 +28,14 @@ void InputSystem::update(float dt)
 		}
 		else
 		{
-			auto playCon = entity->getComponent<PlayerControllable>("player control");
-			auto velocity = entity->getComponent<Velocity>("velocity");
-			auto animationCom = entity->getComponent<AnimationComponent>("animation component");
-			auto bound = entity->getComponent<Bound>("bound");
+			PlayerControllable* playCon = entity->getComponent<PlayerControllable>("player control");
+			Velocity* velocity = entity->getComponent<Velocity>("velocity");
+			AnimationComponent* animationCom = entity->getComponent<AnimationComponent>("animation component");
+			Bound* bound = entity->getComponent<Bound>("bound");
 
 			// init:
 			string actionName = animationCom->getCurrentAction()->getName();
-			auto input = InputManager::getInstance();
+			InputManager* input = InputManager::getInstance();
 
 
 			// ==================================================================================

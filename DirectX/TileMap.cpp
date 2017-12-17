@@ -88,6 +88,39 @@ void TileMap::loadResource()
 
 	//	node = node->next_sibling();
 	//}
+
+	id = 1;
+	node = node->parent()->parent(); // this one is return to the root node which is the map node
+	node = node->first_node("objectgroup");
+	int numberObject = atoi(node->last_node("object")->first_attribute("id")->value()); // point to last node to get the total number of object
+	node = node->first_node(); // point back to first node
+							   //obj = new Object[numberObject];
+	while (node)
+	{
+		//Rect *obj;
+		int x = atoi(node->first_attribute("x")->value());
+		int y = atoi(node->first_attribute("y")->value());
+		float width = atoi(node->first_attribute("width")->value());
+		float height = atoi(node->first_attribute("height")->value());
+		Vector2f position;
+		position.x = x;
+		position.y = -y;
+		Vector2f dimension;
+		dimension.x = width;
+		dimension.y = height;
+
+		Entity *e = new Entity("ground" + to_string(id), id);
+		Transform *t = e->addComponent<Transform>("transform component");
+		SpriteComponent *s = e->addComponent<SpriteComponent>("sprite component");
+		s->initSpriteComponent(NULL, Rect(Vector2f(x, -y), Vector2f(width, height)));
+		t->initTransform(Vector2f(x, -y), Vector2f(0, 0), Vector2f(0, 0), NULL);
+
+		//obj = new Rect(position, dimension);
+		mapGround.emplace(id++, e);
+		//Collision::listObject.push_back(obj);
+
+		node = node->next_sibling();
+	}
 }
 
 TileMap::~TileMap()

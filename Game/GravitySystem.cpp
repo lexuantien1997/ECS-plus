@@ -16,12 +16,12 @@ GravitySystem::~GravitySystem()
 
 void GravitySystem::update(float dt)
 {
-	for (auto entity : getEntities())
+	for (Entity* entity : getEntities())
 	{
-		auto gravity = entity->getComponent<Gravity>("gravity");
-		auto bound = entity->getComponent<Bound>("bound");
-		auto velocity = entity->getComponent<Velocity>("velocity");
-		auto ancel = gravity->getAncel() * dt;
+		Gravity* gravity = entity->getComponent<Gravity>("gravity");
+		Bound* bound = entity->getComponent<Bound>("bound");
+		Velocity* velocity = entity->getComponent<Velocity>("velocity");
+		float ancel = gravity->getAncel() * dt;
 		if (antiGravity)
 		{
 			ancel = -ancel;

@@ -15,7 +15,7 @@ AnimationSystem::~AnimationSystem()
 
 void AnimationSystem::update(float dt)
 {
-	for (auto entity :getEntities())
+	for (Entity* entity :getEntities())
 	{
 		if (entity->getName() == "intro")
 		{
@@ -24,18 +24,18 @@ void AnimationSystem::update(float dt)
 			{
 				stateTime = 0.0;
 				
-				auto introAni = entity->getComponent<AnimationComponent>("animation component")->getIntroAnimation();
+				introAnimation* introAni = entity->getComponent<AnimationComponent>("animation component")->getIntroAnimation();
 				 
-				auto spriteComp = entity->getComponent<SpriteComponent>("sprite component");
-				auto rects = introAni->rect;
+				SpriteComponent* spriteComp = entity->getComponent<SpriteComponent>("sprite component");
+				vector<Rect> rects = introAni->rect;
 				Rect r = rects.at(++(introAni->rectIndex)%rects.size());
 				spriteComp->setRect(r);
 			}
 		}
-		else
+		else if (entity->getName() == "samus")
 		{
-			auto animationComp = entity->getComponent<AnimationComponent>("animation component");
-			auto bound = entity->getComponent<Bound>("bound");
+			AnimationComponent* animationComp = entity->getComponent<AnimationComponent>("animation component");
+			Bound* bound = entity->getComponent<Bound>("bound");
 
 			//// Đang nhảy
 			//if (bound->onGround==false)
@@ -117,8 +117,8 @@ void AnimationSystem::update(float dt)
 
 void AnimationSystem::onUpdate(Entity * entity)
 {
-	auto animationComp = entity->getComponent<AnimationComponent>("animation component");
-	auto currentAction = animationComp->getCurrentAction();
+	AnimationComponent* animationComp = entity->getComponent<AnimationComponent>("animation component");
+	Action* currentAction = animationComp->getCurrentAction();
 
 	// stateTime += dt;
 	stateTime += 0.01f;
@@ -131,14 +131,14 @@ void AnimationSystem::onUpdate(Entity * entity)
 	if (currentAction->getCurrentRect() >= currentAction->getAction_Size())
 		currentAction->setCurrentRect(0);
 
-	auto spriteComp = entity->getComponent<SpriteComponent>("sprite component");
+	SpriteComponent* spriteComp = entity->getComponent<SpriteComponent>("sprite component");
 	
 	spriteComp->setRect(currentAction->getActionRect().at(currentAction->getCurrentRect()));
 }
 
 void AnimationSystem::onActionChanged(Entity * entity, string name)
 {
-	auto animationComp = entity->getComponent<AnimationComponent>("animation component");
+	AnimationComponent* animationComp = entity->getComponent<AnimationComponent>("animation component");
 
 	if (animationComp->getCurrentAction()->getName() == name)
 		return;

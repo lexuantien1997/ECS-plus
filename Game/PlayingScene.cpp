@@ -36,17 +36,17 @@ void PlayingScene::init()
 	
 	// COMPONENTS
 	samus->addComponent<PlayerControllable>("player control");
-	auto stateComp = samus->addComponent<StateComponent>("state component");
-	auto transformComp = samus->addComponent<Transform>("transform component");
-	auto bound= samus->addComponent<Bound>("bound");
-	auto velocity = samus->addComponent<Velocity>("velocity");
-	auto gravity = samus->addComponent<Gravity>("gravity");
-	auto spriteComp = samus->addComponent<SpriteComponent>("sprite component");
-	auto animationComp= samus->addComponent<AnimationComponent>("animation component");
+	StateComponent* stateComp = samus->addComponent<StateComponent>("state component");
+	Transform* transformComp = samus->addComponent<Transform>("transform component");
+	Bound* bound= samus->addComponent<Bound>("bound");
+	Velocity* velocity = samus->addComponent<Velocity>("velocity");
+	Gravity* gravity = samus->addComponent<Gravity>("gravity");
+	SpriteComponent* spriteComp = samus->addComponent<SpriteComponent>("sprite component");
+	AnimationComponent* animationComp= samus->addComponent<AnimationComponent>("animation component");
 
 	// INIT COMPONENTS
 	stateComp->initStateComponent("no_state");
-	auto samus_sprite= static_cast<Sprite*>(SpriteManager::getInstance()->find("samus_aran.png"));
+	Sprite* samus_sprite= static_cast<Sprite*>(SpriteManager::getInstance()->find("samus_aran.png"));
 	animationComp->initAnimationComponent("no_state", "samus_states.xml");
 	spriteComp->initSpriteComponent(samus_sprite, Rect(Vector2f(184, 36), Vector2f(18,34)));
 	transformComp->initTransform(Vector2f(100,-110), Vector2f(50, 50), Vector2f(1, 1), 0);
@@ -56,11 +56,11 @@ void PlayingScene::init()
 	//
 	Entity* Map = world->create_Entity("map");
 	//Entity *e = new Entity(0);
-	auto maptransformComp = Map->addComponent<Transform>("transform component");
-	auto TilesetComponent = Map->addComponent<SpriteComponent>("sprite component");
-	auto mapComp = Map->addComponent<MapComponent>("map component");
+	Transform* maptransformComp = Map->addComponent<Transform>("transform component");
+	SpriteComponent* TilesetComponent = Map->addComponent<SpriteComponent>("sprite component");
+	MapComponent* mapComp = Map->addComponent<MapComponent>("map component");
 
-	auto Tileset = static_cast<Sprite*>(SpriteManager::getInstance()->find("tiles.png"));
+	Sprite* Tileset = static_cast<Sprite*>(SpriteManager::getInstance()->find("tiles.png"));
 	TilesetComponent->initSpriteComponent(Tileset, Rect(Vector2f(0, 0), Vector2f(16, 16)));
 	maptransformComp->initTransform(Vector2f(0, -0), Vector2f(0, 0), Vector2f(1, 1), 0);
 	mapComp->InitMapComponent();
@@ -72,7 +72,7 @@ void PlayingScene::init()
 	// ========================================================================================
 	// NO STATE
 	// ========================================================================================
-	auto no_state= new State("no_state",
+	State* no_state= new State("no_state",
 		[=] {
 		auto animationComp = samus->getComponent<AnimationComponent>("animation component");
 		animationComp->setCurrentAction(animationComp->getAniamtion()->findAction("no_state"));
@@ -81,13 +81,13 @@ void PlayingScene::init()
 	// ========================================================================================
 	// STAND
 	// ========================================================================================
-	auto stand_left = new State("stand_left",
+	State* stand_left = new State("stand_left",
 		[=] {
 		auto animationComp = samus->getComponent<AnimationComponent>("animation component");
 		animationComp->setCurrentAction(animationComp->getAniamtion()->findAction("stand"));
 	}, NULL, NULL);
 
-	auto stand_right= new State("stand_right",
+	State* stand_right= new State("stand_right",
 		[=] {
 		auto animationComp = samus->getComponent<AnimationComponent>("animation component");
 		animationComp->setCurrentAction(animationComp->getAniamtion()->findAction("stand"));
@@ -96,13 +96,13 @@ void PlayingScene::init()
 	// ========================================================================================
 	// RUN
 	// ========================================================================================
-	auto run_left=new State("run_left",
+	State* run_left=new State("run_left",
 		[=] {
 		auto animationComp = samus->getComponent<AnimationComponent>("animation component");
 		animationComp->setCurrentAction(animationComp->getAniamtion()->findAction("run"));
 	}, NULL, NULL);
 
-	auto run_right= new State("run_right",
+	State* run_right= new State("run_right",
 		[=] {
 		auto animationComp = samus->getComponent<AnimationComponent>("animation component");
 		animationComp->setCurrentAction(animationComp->getAniamtion()->findAction("run"));
@@ -112,13 +112,13 @@ void PlayingScene::init()
 	// STAND SHOOT UP
 	// ========================================================================================
 
-	auto stand_shoot_up_left = new State("stand_shoot_up_left",
+	State* stand_shoot_up_left = new State("stand_shoot_up_left",
 		[=] {
 		auto animationComp = samus->getComponent<AnimationComponent>("animation component");
 		animationComp->setCurrentAction(animationComp->getAniamtion()->findAction("stand_shoot_up"));
 	}, NULL, NULL);
 
-	auto stand_shoot_up_right = new State("stand_shoot_up_right",
+	State* stand_shoot_up_right = new State("stand_shoot_up_right",
 		[=] {
 		auto animationComp = samus->getComponent<AnimationComponent>("animation component");
 		animationComp->setCurrentAction(animationComp->getAniamtion()->findAction("stand_shoot_up"));
@@ -127,13 +127,13 @@ void PlayingScene::init()
 	// ========================================================================================
 	// RUN SHOOT UP
 	// ========================================================================================
-	auto run_shoot_up_left = new State("run_shoot_up_left",
+	State* run_shoot_up_left = new State("run_shoot_up_left",
 		[=] {
 		auto animationComp = samus->getComponent<AnimationComponent>("animation component");
 		animationComp->setCurrentAction(animationComp->getAniamtion()->findAction("run_shoot_up"));
 	}, NULL, NULL);
 
-	auto run_shoot_up_right = new State("run_shoot_up_right",
+	State* run_shoot_up_right = new State("run_shoot_up_right",
 		[=] {
 		auto animationComp = samus->getComponent<AnimationComponent>("animation component");
 		animationComp->setCurrentAction(animationComp->getAniamtion()->findAction("run_shoot_up"));
@@ -143,13 +143,13 @@ void PlayingScene::init()
 	// ROLLING
 	// ========================================================================================
 
-	auto rolling_left = new State("rolling_left",
+	State* rolling_left = new State("rolling_left",
 		[=] {
 		auto animationComp = samus->getComponent<AnimationComponent>("animation component");
 		animationComp->setCurrentAction(animationComp->getAniamtion()->findAction("rolling"));
 	}, NULL, NULL);
 
-	auto rolling_right = new State("rolling_right",
+	State* rolling_right = new State("rolling_right",
 		[=] {
 		auto animationComp = samus->getComponent<AnimationComponent>("animation component");
 		animationComp->setCurrentAction(animationComp->getAniamtion()->findAction("rolling"));
@@ -159,13 +159,13 @@ void PlayingScene::init()
 	// RUN SHOOT 
 	// ========================================================================================
 
-	auto run_shoot_left = new State("run_shoot_left",
+	State* run_shoot_left = new State("run_shoot_left",
 		[=] {
 		auto animationComp = samus->getComponent<AnimationComponent>("animation component");
 		animationComp->setCurrentAction(animationComp->getAniamtion()->findAction("run_shoot"));
 	}, NULL, NULL);
 
-	auto run_shoot_right = new State("run_shoot_right",
+	State* run_shoot_right = new State("run_shoot_right",
 		[=] {
 		auto animationComp = samus->getComponent<AnimationComponent>("animation component");
 		animationComp->setCurrentAction(animationComp->getAniamtion()->findAction("run_shoot"));
@@ -175,13 +175,13 @@ void PlayingScene::init()
 	// JUMP
 	// ========================================================================================
 
-	auto jump_left = new State("jump_left",
+	State* jump_left = new State("jump_left",
 		[=] {
 		auto animationComp = samus->getComponent<AnimationComponent>("animation component");
 		animationComp->setCurrentAction(animationComp->getAniamtion()->findAction("jump"));
 	}, NULL, NULL);
 
-	auto jump_right = new State("jump_right",
+	State* jump_right = new State("jump_right",
 		[=] {
 		auto animationComp = samus->getComponent<AnimationComponent>("animation component");
 		animationComp->setCurrentAction(animationComp->getAniamtion()->findAction("jump"));
@@ -192,7 +192,7 @@ void PlayingScene::init()
 	// JUMP shoot
 	// ========================================================================================
 
-	auto jump_shoot = new State("jump_shoot",
+	State* jump_shoot = new State("jump_shoot",
 		[=] {
 		auto animationComp = samus->getComponent<AnimationComponent>("animation component");
 		animationComp->setCurrentAction(animationComp->getAniamtion()->findAction("jump_shoot"));
@@ -202,7 +202,7 @@ void PlayingScene::init()
 	// JUMP shoot up
 	// ========================================================================================
 
-	auto jump_shoot_up = new State("jump_shoot_up",
+	State* jump_shoot_up = new State("jump_shoot_up",
 		[=] {
 		auto animationComp = samus->getComponent<AnimationComponent>("animation component");
 		animationComp->setCurrentAction(animationComp->getAniamtion()->findAction("jump_shoot_up"));
@@ -212,7 +212,7 @@ void PlayingScene::init()
 	// Turning
 	// ========================================================================================
 
-	auto turning = new State("turning",
+	State* turning = new State("turning",
 		[=] {
 		auto animationComp = samus->getComponent<AnimationComponent>("animation component");
 		animationComp->setCurrentAction(animationComp->getAniamtion()->findAction("turning"));

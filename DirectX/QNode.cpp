@@ -127,7 +127,40 @@ void QuadtreeDivision::preExport(string tmxFile)
 			item = strtok_s(NULL, split, &context);
 		}
 	}
-	
+	id = 1;
+	node = node->parent()->parent(); // this one is return to the root node which is the map node
+	node = node->first_node("objectgroup");
+	int numberObject = atoi(node->last_node("object")->first_attribute("id")->value()); // point to last node to get the total number of object
+	node = node->first_node(); // point back to first node
+							   //obj = new Object[numberObject];
+	while(node)
+	{
+		//Rect *obj;
+		int x = atoi(node->first_attribute("x")->value());
+		int y = atoi(node->first_attribute("y")->value());
+		float width = atoi(node->first_attribute("width")->value());
+		float height = atoi(node->first_attribute("height")->value());
+		Vector2f position;
+		position.x = x;
+		position.y = -y;
+		Vector2f dimension;
+		dimension.x = width;
+		dimension.y = height;
+
+		Entity *e = new Entity("ground" + to_string(id), id);
+		Transform *t = e->addComponent<Transform>("transform component");
+		SpriteComponent *s = e->addComponent<SpriteComponent>("sprite component");
+		s->initSpriteComponent(NULL, Rect(Vector2f(x, -y), Vector2f(width, height)));
+		t->initTransform(Vector2f(x, -y), Vector2f(0, 0), Vector2f(0, 0), NULL);
+
+		//obj = new Rect(position, dimension);
+		objects.push_back(e);
+		id++;
+		//Collision::listObject.push_back(obj);
+
+		node = node->next_sibling();
+	}
+
 	xml_node<> *declaration = doc.allocate_node(node_declaration);
 	declaration->append_attribute(doc.allocate_attribute("version", "1.0"));
 	declaration->append_attribute(doc.allocate_attribute("encoding", "utf-8"));
@@ -140,6 +173,10 @@ void QuadtreeDivision::preExport(string tmxFile)
 void QuadtreeDivision::BuildTree(QNode *quadtree)
 {
 	for (auto i = background.begin(); i != background.end(); ++i)
+	{
+		quadtree->Insert(*i);
+	}
+	for (auto i = objects.begin(); i != objects.end(); ++i)
 	{
 		quadtree->Insert(*i);
 	}
@@ -176,7 +213,10 @@ void QuadtreeDivision::Export(QNode* node, xml_node<>* xmlnode)
 	for (auto i = node->objects.begin(); i != node->objects.end(); ++i)
 	{
 		char * IDStr = doc.allocate_string(std::to_string((*i)->getId()).c_str());
-		child->append_attribute(doc.allocate_attribute("tileid", IDStr));
+		if((*i)->getName().find("tile") != string::npos)
+			child->append_attribute(doc.allocate_attribute("tileid", IDStr));
+		else
+			child->append_attribute(doc.allocate_attribute("groundid", IDStr));
 	}
 }
 
@@ -259,7 +299,17 @@ void QuadtreeDivision::readNodeFromFile(xml_node<>*xmlNode, TileMap* map)
 		mapEntityTile.emplace(_id, e);
 		at = at->next_attribute("tileid");
 	}
+	at = xmlNode->first_attribute("groundid");
+	while (at)
+	{
+		int _id = atoi(at->value());
+		Entity* e = map->mapGround.find(_id)->second;
 
+
+		node->objects.emplace_back(e);
+		mapEntityTile.emplace(_id, e);
+		at = at->next_attribute("groundid");
+	}
 	mapNode.emplace(id, node);
 }
 
@@ -312,20 +362,26 @@ list<Entity*> QuadtreeDivision::listObjectInViewport(Rect viewport, QNode *node)
 			{
 				for (list<Entity*>::iterator it = node->objects.begin(); it != node->objects.end(); ++it)
 				{
-					list<Entity*>::iterator i = std::find(this->background.begin(), this->background.end(), (*it));
-					/*for (list<Entity*>::iterator i = background.begin(); i != background.end(); ++i)
+					if ((*it)->getName().find("tile") != string::npos)
 					{
-					if ((*it)->getName()._Equal((*i)->getName()))
-					{
-					continue;
+						list<Entity*>::iterator i = std::find(this->background.begin(), this->background.end(), (*it));
+						if (i != background.end())
+							continue;
+						else
+						{
+							this->background.emplace_back((*it));
+						}
 					}
 					else
-					this->objects.emplace_back((*it));
-					}*/
-					if (i != background.end())
-						continue;
-					else
-						this->background.emplace_back((*it));
+					{
+						list<Entity*>::iterator i = std::find(this->objects.begin(), this->objects.end(), (*it));
+						if (i != objects.end())
+							continue;
+						else
+						{
+							this->objects.emplace_back((*it));
+						}
+					}		
 				}
 			}
 		}

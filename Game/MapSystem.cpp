@@ -19,8 +19,8 @@ void MapSystem::render()
 	{
 		//if (entity->getName() == "map")
 		{
-			auto spriteComp = entity->getComponent<SpriteComponent>("sprite component");
-			auto mapComp = entity->getComponent<MapComponent>("map component");
+			SpriteComponent* spriteComp = entity->getComponent<SpriteComponent>("sprite component");
+			MapComponent* mapComp = entity->getComponent<MapComponent>("map component");
 
 
 			//for (int i = 0; i < mapComp->map->getRow(); i++)
@@ -49,7 +49,7 @@ void MapSystem::render()
 			SpriteManager *batch = SpriteManager::getInstance();
 			for (list<Entity*>::iterator it = mapComp->map->entityInQuadtree.begin(); it != mapComp->map->entityInQuadtree.end(); ++it)
 			{
-				auto t = (*it)->getComponent<Transform>("transform component");
+				Transform *t = (*it)->getComponent<Transform>("transform component");
 				Rect r = (*it)->getComponent<SpriteComponent>("sprite component")->getRect();
 				spriteComp->setRect(r);
 				batch->drawTile(spriteComp, t, getGameWorld()->cam);

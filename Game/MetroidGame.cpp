@@ -22,7 +22,7 @@ void MetroidGame::init()
 
 void MetroidGame::loadResource()
 {
-	auto asset = SpriteManager::getInstance();
+	SpriteManager* asset = SpriteManager::getInstance();
 	
 	asset->attachResource(new Sprite("samus_aran.png", "resources/charactor/samus_aran.png"));
 
@@ -35,6 +35,9 @@ void MetroidGame::loadResource()
 	asset->attachResource(new TileMap("untitled.tmx", "../resources/map/untitled.tmx"));
 
 	asset->attachResource(new introAnimation("introscene.xml", "../resources/intro/introscene.xml"));
+	
+	// code that generates quadtree xml file
+	
 	/*QuadtreeDivision quadtreeDivision;
 	quadtreeDivision.preExport("../resources/map/untitled.tmx");
 	quadtreeDivision.BuildTree(quadtreeDivision.rootQuadtree);

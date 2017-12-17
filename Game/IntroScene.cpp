@@ -13,9 +13,9 @@ IntroScene::~IntroScene()
 
 void IntroScene::update(float dt)
 {
-	inputSystem.update(dt);
 	animationSystem.update(dt);
 	renderSystem.update(dt);
+	inputSystem.update(dt);
 }
 
 void IntroScene::init()
@@ -26,9 +26,10 @@ void IntroScene::init()
 
 	Entity * intro = world->create_Entity("intro");
 
-	auto spriteComp = intro->addComponent<SpriteComponent>("sprite component");
-	auto transformComp = intro->addComponent<Transform>("transform component");
-	auto introAnimationComp = intro->addComponent<AnimationComponent>("animation component");
+	intro->addComponent<PlayerControllable>("player controlable");
+	SpriteComponent* spriteComp = intro->addComponent<SpriteComponent>("sprite component");
+	Transform* transformComp = intro->addComponent<Transform>("transform component");
+	AnimationComponent* introAnimationComp = intro->addComponent<AnimationComponent>("animation component");
 
 
 	auto intro_sprite = static_cast<Sprite*>(SpriteManager::getInstance()->find("intro.png"));

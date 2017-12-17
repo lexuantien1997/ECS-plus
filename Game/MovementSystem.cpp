@@ -15,11 +15,11 @@ MovementSystem::~MovementSystem()
 
 void MovementSystem::update(float dt)
 {
-	for (auto entity : getEntities())
+	for (Entity* entity : getEntities())
 	{
-		auto transform= entity->getComponent<Transform>("transform component");
-		auto bound= entity->getComponent<Bound>("bound");
-		auto velocity = entity->getComponent<Velocity>("velocity");
+		Transform* transform= entity->getComponent<Transform>("transform component");
+		Bound* bound= entity->getComponent<Bound>("bound");
+		Velocity* velocity = entity->getComponent<Velocity>("velocity");
 	
 		velocity->translating(0, bound->GRAVITY);
 

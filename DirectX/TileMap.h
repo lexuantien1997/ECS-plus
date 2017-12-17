@@ -23,10 +23,11 @@ class TileMap : public Resource
 	string source; // the path of map file
 	int _column, _row;
 	Vector2f _size;
-	vector<Rect*> _ground;
 public:
 	int **value;
 	map<int, Entity*> mapTile;
+	map<int, Entity*> mapGround;
+	vector<Rect*> _ground;
 	list<Entity*> entityInQuadtree;
 
 	TileMap(string name, string sourcePath);
