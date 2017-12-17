@@ -8,6 +8,7 @@
 #include <cassert>
 #include <memory>
 #include "../Game/Camera.h"
+#include "../DirectX/Define.h"
 
 using namespace std;
 

@@ -48,7 +48,7 @@ void TileMap::loadResource()
 			Transform *t = e->addComponent<Transform>("transform component");
 			SpriteComponent *s = e->addComponent<SpriteComponent>("sprite component");
 			s->initSpriteComponent(NULL, Rect(Vector2f(((value[i][j] - 1) % 11) * 16, ((value[i][j] - 1) / 11) * 16), Vector2f(16, 16)));
-			t->initTransform(Vector2f(j * 16, i * 16), Vector2f(0, 0), Vector2f(0, 0), NULL);
+			t->initTransform(Vector2f(j * 16, -i * 16), Vector2f(0, 0), Vector2f(0, 0), NULL);
 			mapTile.emplace(id++, e);
 			//	//Tile temp(_tileWidth * j, _tileHeight * i, _tileWidth, _tileHeight);
 			//	Tile temp(((data[i][j] - 1) % 11) * 16, ((data[i][j] - 1) / 11) * 16, _tileWidth, _tileHeight);

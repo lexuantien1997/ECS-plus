@@ -11,6 +11,7 @@
 #include "Rect.h"
 #include "Vector2.h"
 #include "TileMap.h"
+#include <vector>
 using namespace ECS;
 using namespace std;
 using namespace rapidxml;
@@ -57,6 +58,8 @@ public:
 	void createQuadtreeFromFile(string sourcePath, TileMap* map);
 	void readNodeFromFile(xml_node<>*, TileMap *);
 	void linkNodes();
+	list<Entity*> listObjectInViewport(Rect viewport, QNode*);
+
 };
 
 #endif 

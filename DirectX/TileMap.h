@@ -13,6 +13,7 @@
 #include "../ECS Plus/Entity.h"
 #include "Transform.h"
 #include "../Game/SpriteComponent.h"
+#include "list"
 
 using namespace std;
 using namespace rapidxml;
@@ -26,6 +27,7 @@ class TileMap : public Resource
 public:
 	int **value;
 	map<int, Entity*> mapTile;
+	list<Entity*> entityInQuadtree;
 
 	TileMap(string name, string sourcePath);
 	int getColumn() { return _column; }

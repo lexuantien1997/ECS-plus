@@ -45,6 +45,9 @@ void InputSystem::update(float dt)
 			//	bound->runningRight = false;
 			//	bound->no_state = false;
 			//}
+			Vector2i camPos = getGameWorld()->cam.getCamPosition();
+			camPos.x = camPos.x - 2;
+			getGameWorld()->cam.setCamPosition(camPos);
 			velocity->setVelocity(Vector2f(-bound->SPEED, velocity->getVelocity().y));
 			bound->runningRight = false;
 		}
@@ -60,6 +63,10 @@ void InputSystem::update(float dt)
 				bound->runningRight = true;
 				bound->no_state = false;
 			}*/
+			Vector2i camPos = getGameWorld()->cam.getCamPosition();
+			camPos.x = camPos.x + 2;
+			getGameWorld()->cam.setCamPosition(camPos);
+			Vector2i c = getGameWorld()->cam.getCamPosition();
 			velocity->setVelocity(Vector2f(bound->SPEED, velocity->getVelocity().y));
 			bound->runningRight = true;
 		}

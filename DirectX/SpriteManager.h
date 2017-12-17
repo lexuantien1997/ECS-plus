@@ -42,6 +42,7 @@ public:
 	~SpriteManager();
 
 	void draw(SpriteComponent* spritecomp, Transform* transform, Camera cam);
+	void drawTile(SpriteComponent* spritecomp, Transform* transform, Camera cam);
 
 	void begin();
 	void end();

@@ -33,8 +33,8 @@ void MetroidGame::loadResource()
 
 	/*QuadtreeDivision quadtreeDivision;
 	quadtreeDivision.preExport("../resources/map/untitled.tmx");
-	quadtreeDivision.BuildTree(quadtreeDivision.quadtree);
-	quadtreeDivision.Export(quadtreeDivision.quadtree, quadtreeDivision.xml_rootNode);
+	quadtreeDivision.BuildTree(quadtreeDivision.rootQuadtree);
+	quadtreeDivision.Export(quadtreeDivision.rootQuadtree, quadtreeDivision.xml_rootNode);
 	quadtreeDivision.endExport("../resources/map/untitledQuadtree.xml");
-	quadtreeDivision.release(quadtreeDivision.quadtree);*/
+	quadtreeDivision.release(quadtreeDivision.rootQuadtree);*/
 }

@@ -44,6 +44,8 @@ void Game::runGame()
 	// initialize data like resource:
 	init();
 	
+	
+	
 	while (!endGame)
 	{
 		if (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
@@ -62,14 +64,6 @@ void Game::runGame()
 
 				// start update
 				update(deltatime);
-
-			/*	std::stringstream ss;
-				ss << "Delta time: " << deltatime;
-				wchar_t* wString = new wchar_t[4096];
-				MultiByteToWideChar(CP_ACP, 0, ss.str().c_str(), -1, wString, 4096);
-				SetWindowText(window->GetHwnd(), wString);*/
-
-				// start render
 				render();
 			}
 			else

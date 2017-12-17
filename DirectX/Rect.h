@@ -26,6 +26,14 @@ public:
 		size = Vector2f(width, height);
 	}
 
+	bool intersect(Rect b)
+	{
+		return !(this->left_top.x >= b.left_top.x + b.size.x ||
+				this->left_top.x + this->size.x <= b.left_top.x ||
+				this->left_top.y <= b.left_top.y - b.size.y ||
+				this->left_top.y - this->size.y >= b.left_top.y);
+	}
+
 	Rect()
 	{
 

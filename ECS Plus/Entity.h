@@ -181,6 +181,8 @@ namespace ECS
 
 		// A variable hold the location of System
 		vector<bool> systems;
+
+		//bool operator==(Entity*e) { return name._Equal(e->getName()); };
 	};
 
 

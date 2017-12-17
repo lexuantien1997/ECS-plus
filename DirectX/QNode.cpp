@@ -21,22 +21,26 @@ bool QNode::isContain(Entity *obj)
 	Vector2f p = obj->getComponent<Transform>("transform component")->getPosition();
 	return !(this->bound.left_top.x >= p.x + r.size.x ||
 		this->bound.left_top.x + this->bound.size.x <= p.x ||
-		this->bound.left_top.y >= p.y + r.size.y ||
-		this->bound.left_top.y + this->bound.size.y <= p.y);
+		this->bound.left_top.y <= p.y - r.size.y ||
+		this->bound.left_top.y - this->bound.size.y >= p.y);
 }
 
 void QNode::Split()
 {
 	Node = new QNode*[4];
 	int i = 1;
-	Node[0] = new QNode(NodeID * 10 + i++, Rect(Vector2f(bound.left_top.x, bound.left_top.y), Vector2f(bound.size.x / 2, bound.size.y / 2)));
-	Node[1] = new QNode(NodeID * 10 + i++, Rect(Vector2f(bound.left_top.x + bound.size.x / 2, bound.left_top.y), Vector2f(bound.size.x / 2, bound.size.y / 2)));
-	Node[2] = new QNode(NodeID * 10 + i++, Rect(Vector2f(bound.left_top.x, bound.left_top.y + bound.size.y / 2), Vector2f(bound.size.x / 2, bound.size.y / 2)));
-	Node[3] = new QNode(NodeID * 10 + i++, Rect(Vector2f(bound.left_top.x + bound.size.x / 2, bound.left_top.y + bound.size.y / 2), Vector2f(bound.size.x / 2, bound.size.y / 2)));
+	Node[0] = new QNode(NodeID * 10 + i++, Rect(Vector2f(bound.left_top.x, -bound.left_top.y), Vector2f(bound.size.x / 2, bound.size.y / 2)));
+	Node[1] = new QNode(NodeID * 10 + i++, Rect(Vector2f(bound.left_top.x + bound.size.x / 2, -bound.left_top.y), Vector2f(bound.size.x / 2, bound.size.y / 2)));
+	Node[2] = new QNode(NodeID * 10 + i++, Rect(Vector2f(bound.left_top.x, -bound.left_top.y - bound.size.y / 2), Vector2f(bound.size.x / 2, bound.size.y / 2)));
+	Node[3] = new QNode(NodeID * 10 + i++, Rect(Vector2f(bound.left_top.x + bound.size.x / 2, -bound.left_top.y - bound.size.y / 2), Vector2f(bound.size.x / 2, bound.size.y / 2)));
 }
 
 void QNode::Insert(Entity *obj)
 {
+	if (this->NodeID == 11 && obj->getId() == 193)
+	{
+		int m = 0;
+	}
 	if (Node)
 	{
 		if (Node[0]->isContain(obj))
@@ -116,7 +120,7 @@ void QuadtreeDivision::preExport(string tmxFile)
 				Transform *t = e->addComponent<Transform>("transform component");
 				SpriteComponent *s = e->addComponent<SpriteComponent>("sprite component");
 				s->initSpriteComponent(NULL, Rect(Vector2f(((value[i][j] - 1) % 11) * 16, ((value[i][j] - 1) / 11) * 16), Vector2f(16, 16)));
-				t->initTransform(Vector2f(j * 16, i * 16), Vector2f(0, 0), Vector2f(0, 0), NULL);
+				t->initTransform(Vector2f(j * 16, -i * 16), Vector2f(0, 0), Vector2f(0, 0), NULL);
 				background.emplace_back(e);
 				id++;
 			}
@@ -252,6 +256,7 @@ void QuadtreeDivision::readNodeFromFile(xml_node<>*xmlNode, TileMap* map)
 		
 		
 		node->objects.emplace_back(e);
+		mapEntityTile.emplace(_id, e);
 		at = at->next_attribute("tileid");
 	}
 
@@ -292,4 +297,49 @@ void QuadtreeDivision::linkNodes()
 
 		}
 	}
+}
+
+list<Entity*> QuadtreeDivision::listObjectInViewport(Rect viewport, QNode *node)
+{
+	if (node == this->rootQuadtree)
+		this->objects.clear();
+	if (!node->Node)
+	{
+		bool b = viewport.intersect(node->bound);
+		if (b)
+		{
+			if (node->objects.size() > 0)
+			{
+				for (list<Entity*>::iterator it = node->objects.begin(); it != node->objects.end(); ++it)
+				{
+					list<Entity*>::iterator i = std::find(this->background.begin(), this->background.end(), (*it));
+					/*for (list<Entity*>::iterator i = background.begin(); i != background.end(); ++i)
+					{
+					if ((*it)->getName()._Equal((*i)->getName()))
+					{
+					continue;
+					}
+					else
+					this->objects.emplace_back((*it));
+					}*/
+					if (i != background.end())
+						continue;
+					else
+						this->background.emplace_back((*it));
+				}
+			}
+		}
+	}
+	else
+	{
+		if (viewport.intersect(node->Node[0]->bound))
+			listObjectInViewport(viewport, node->Node[0]);
+		if (viewport.intersect(node->Node[1]->bound))
+			listObjectInViewport(viewport, node->Node[1]);
+		if (viewport.intersect(node->Node[2]->bound))
+			listObjectInViewport(viewport, node->Node[2]);
+		if (viewport.intersect(node->Node[3]->bound))
+			listObjectInViewport(viewport, node->Node[3]);
+	}
+	return background;
 }
