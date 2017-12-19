@@ -65,7 +65,17 @@ void PlayingScene::init()
 	maptransformComp->initTransform(Vector2f(0, -0), Vector2f(0, 0), Vector2f(1, 1), 0);
 	mapComp->InitMapComponent();
 
+	//
+	Entity* Skree = world->create_Entity("Skree");
+	auto skreeTransform = Skree->addComponent<Transform>("transform component");
+	auto skreeSpriteComp = Skree->addComponent<SpriteComponent>("sprite component");
+	auto skreeAnimationComp = Skree->addComponent<AnimationComponent>("animation component");
+	auto skreeVelocity = Skree->addComponent<Velocity>("velocity");
 
+	skreeTransform->initTransform(Vector2f(50, -50), Vector2f(0, 0), Vector2f(1, 1), NULL);
+	auto skreeSprite = static_cast<Sprite*>(SpriteManager::getInstance()->find("enemies.png"));
+	skreeSpriteComp->initSpriteComponent(skreeSprite, Rect(Vector2f(15, 30), Vector2f(16, 24)));
+	skreeAnimationComp->initAnimationComponent("", "enemies.xml");
 
 	// Add state into State Component:
 

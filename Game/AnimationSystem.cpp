@@ -20,7 +20,7 @@ void AnimationSystem::update(float dt)
 		if (entity->getName() == "intro")
 		{
 			stateTime = stateTime + 0.01;
-			if (stateTime >= 0.03)
+			if (stateTime >= 0.04)
 			{
 				stateTime = 0.0;
 				
@@ -30,6 +30,37 @@ void AnimationSystem::update(float dt)
 				vector<Rect> rects = introAni->rect;
 				Rect r = rects.at(++(introAni->rectIndex)%rects.size());
 				spriteComp->setRect(r);
+			}
+		}
+		else if (entity->getName() == "Skree")
+		{// dùng duration là sai, duration cố định
+				EnemiesAnimation* enemyAni = entity->getComponent<AnimationComponent>("animation component")->getEnemiesAnimation();
+				enemyAni->setDuration(enemyAni->getDuration() + 0.01);
+			if (enemyAni->getDuration() >= 0.04)
+			{
+				enemyAni->setDuration(0.0);
+
+
+				SpriteComponent* spriteComp = entity->getComponent<SpriteComponent>("sprite component");
+				Transform* transform = entity->getComponent<Transform>("transform component");
+				map<string, vector<Rect>>::iterator it = enemyAni->mapEnemiesAnimation.find(entity->getName());
+
+				if (enemyAni->rectIndex % it->second.size() == 0)
+				{
+					Vector2f v = transform->getPosition();
+					transform->setPosition(v.x + 4, v.y);
+				}
+				else if (enemyAni->rectIndex % it->second.size() == 2)
+				{
+					Vector2f v = transform->getPosition();
+					transform->setPosition(v.x - 4, v.y);
+				}
+				
+				if (it != enemyAni->mapEnemiesAnimation.end())
+				{
+					Rect r = it->second.at(++(enemyAni->rectIndex) % it->second.size());
+					spriteComp->setRect(r);
+				}
 			}
 		}
 		else if (entity->getName() == "samus")

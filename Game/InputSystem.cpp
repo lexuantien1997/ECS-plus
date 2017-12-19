@@ -26,6 +26,13 @@ void InputSystem::update(float dt)
 				SceneManager::getInstance()->removeScene();
 			}
 		}
+		else if (entity->getName() == "start")
+		{
+			if (InputManager::getInstance()->isKeyDown(DIK_RETURN, KeyState::current))
+			{
+				SceneManager::getInstance()->removeScene();
+			}
+		}
 		else
 		{
 			PlayerControllable* playCon = entity->getComponent<PlayerControllable>("player control");

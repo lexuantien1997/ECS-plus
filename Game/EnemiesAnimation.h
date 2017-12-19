@@ -1,5 +1,5 @@
-#ifndef _INTROANIMATION_H_
-#define _INTROANIMATION_H_
+#ifndef _ENEMIES_ANIMATION_H_
+#define _ENEMIES_ANIMATION_H_
 
 #include "../DirectX/Resource.h"
 #include "../DirectX/Rect.h"
@@ -8,18 +8,21 @@
 #include "../rapid xml/rapidxml_iterators.hpp"
 #include "../rapid xml/rapidxml_print.hpp"
 #include "../rapid xml/rapidxml_utils.hpp"
+
+
 using namespace rapidxml;
 
-class introAnimation : public Resource
+class EnemiesAnimation : public Resource
 {
 	string sourcePath;
+	float duration;
 public:
 	int rectIndex;
-	vector<Rect> rect;
-	introAnimation(string name, string sourcePath);
-	~introAnimation();
-
-	// Inherit from `Resource`
+	map<string, vector<Rect>> mapEnemiesAnimation;
+	EnemiesAnimation(string fileName, string sourcePath);
+	~EnemiesAnimation();
+	float getDuration() { return duration; }
+	void setDuration(float d) { duration = d; }
 	void loadResource();
 };
 

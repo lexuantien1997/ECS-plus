@@ -7,13 +7,15 @@
 #include "Action.h"
 #include "Animation.h"
 #include "introAnimation.h"
+#include "EnemiesAnimation.h"
 
 class AnimationComponent:public ECS::Component
 {
 private:
 
 	Animation* animation;
-	introAnimation *introAnima;
+	introAnimation* introAnima;
+	EnemiesAnimation* enemiesAnimation;
 	Action* currentAction;
 	Action* previousAction;
 
@@ -25,6 +27,7 @@ public:
 
 	Animation* getAniamtion() { return animation; }
 	introAnimation* getIntroAnimation() { return introAnima; }
+	EnemiesAnimation* getEnemiesAnimation() { return enemiesAnimation; }
 
 	Action* getCurrentAction() {
 		return currentAction;

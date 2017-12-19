@@ -18,9 +18,9 @@ protected:
 
 	int fps;
 
-	WindowManager* window;
 
 public:
+	WindowManager* window;
 	
 	virtual void init();
 

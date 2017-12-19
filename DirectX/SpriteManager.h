@@ -44,6 +44,7 @@ public:
 	void draw(SpriteComponent* spritecomp, Transform* transform, Camera cam);
 	void drawTile(SpriteComponent* spritecomp, Transform* transform, Camera cam);
 	void drawLeftTopTransform(SpriteComponent* spritecomp, Transform* t, Camera cam);
+	void SpriteManager::drawCenterTransform(SpriteComponent* spritecomp, Transform* t, Camera cam);
 
 	void begin();
 	void end();

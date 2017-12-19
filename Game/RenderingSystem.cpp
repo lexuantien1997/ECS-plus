@@ -56,6 +56,20 @@ void RenderingSystem::render()
 
 			SpriteManager::getInstance()->drawLeftTopTransform(spriteComp, transform, getGameWorld()->cam);
 		}
+		else if (entity->getName() == "start")
+		{
+			Transform* transform = entity->getComponent<Transform>("transform component");
+			SpriteComponent* spriteComp = entity->getComponent<SpriteComponent>("sprite component");
+
+			SpriteManager::getInstance()->drawLeftTopTransform(spriteComp, transform, getGameWorld()->cam);
+		}
+		else if (entity->getName() == "Skree")
+		{
+			Transform* transform = entity->getComponent<Transform>("transform component");
+			SpriteComponent* spriteComp = entity->getComponent<SpriteComponent>("sprite component");
+
+			SpriteManager::getInstance()->draw(spriteComp, transform, getGameWorld()->cam);
+		}
 	}
 }
 

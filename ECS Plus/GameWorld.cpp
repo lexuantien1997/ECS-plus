@@ -2,6 +2,7 @@
 #include "Entity.h"
 #include "TSystem.h"
 
+
 void ECS::GameWorld::clear()
 {
 	systems.clear();

@@ -126,6 +126,7 @@
     <ClCompile Include="AnimationSystem.cpp" />
     <ClCompile Include="Bound.cpp" />
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="EnemiesAnimation.cpp" />
     <ClCompile Include="Gravity.cpp" />
     <ClCompile Include="GravitySystem.cpp" />
     <ClCompile Include="InputSystem.cpp" />
@@ -141,6 +142,7 @@
     <ClCompile Include="RenderingSystem.cpp" />
     <ClCompile Include="SpriteComponent.cpp" />
     <ClCompile Include="Action.cpp" />
+    <ClCompile Include="Start_GameOver_Scene.cpp" />
     <ClCompile Include="State.cpp" />
     <ClCompile Include="StateComponent.cpp" />
     <ClCompile Include="StateSystem.cpp" />
@@ -163,6 +165,7 @@
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Client.h" />
     <ClInclude Include="Delegate.h" />
+    <ClInclude Include="EnemiesAnimation.h" />
     <ClInclude Include="Event.h" />
     <ClInclude Include="Gravity.h" />
     <ClInclude Include="GravitySystem.h" />
@@ -180,6 +183,7 @@
     <ClInclude Include="Server.h" />
     <ClInclude Include="SpriteComponent.h" />
     <ClInclude Include="Action.h" />
+    <ClInclude Include="Start_GameOver_Scene.h" />
     <ClInclude Include="State.h" />
     <ClInclude Include="StateComponent.h" />
     <ClInclude Include="StateSystem.h" />

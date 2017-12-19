@@ -31,5 +31,4 @@ void introAnimation::loadResource()
 		this->rect.push_back(r);
 		node = node->next_sibling();
 	}
-
 }

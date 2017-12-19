@@ -96,7 +96,6 @@
     <ClCompile Include="StateComponent.cpp">
       <Filter>Components\src</Filter>
     </ClCompile>
-    <ClCompile Include="StateSystem.cpp" />
     <ClCompile Include="State.cpp">
       <Filter>State Pattern\src</Filter>
     </ClCompile>
@@ -115,7 +114,18 @@
     <ClCompile Include="IntroScene.cpp">
       <Filter>Utility\src</Filter>
     </ClCompile>
-    <ClCompile Include="introAnimation.cpp" />
+    <ClCompile Include="Start_GameOver_Scene.cpp">
+      <Filter>Utility\src</Filter>
+    </ClCompile>
+    <ClCompile Include="StateSystem.cpp">
+      <Filter>Utility\include</Filter>
+    </ClCompile>
+    <ClCompile Include="introAnimation.cpp">
+      <Filter>Utility\src</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemiesAnimation.cpp">
+      <Filter>Utility\src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AnimationComponent.h">
@@ -200,7 +210,15 @@
     <ClInclude Include="IntroScene.h">
       <Filter>Utility\include</Filter>
     </ClInclude>
-    <ClInclude Include="introAnimation.h" />
+    <ClInclude Include="Start_GameOver_Scene.h">
+      <Filter>Utility\include</Filter>
+    </ClInclude>
+    <ClInclude Include="introAnimation.h">
+      <Filter>Utility\include</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemiesAnimation.h">
+      <Filter>Utility\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="Read me .txt">
