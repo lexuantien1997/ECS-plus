@@ -1,7 +1,7 @@
 #ifndef VELOCITY_H_
 #define VELOCITY_H_
 
-#include "../ECS Plus/_ECS_Header.h"
+#include "../High perfomance ECS/ECS_Header.h"
 #include "../DirectX/_DIRECTX_Header.h"
 
 
@@ -11,7 +11,7 @@ private:
 	Vector2f vNormal;
 public:
 
-	Velocity(string name);
+	Velocity();
 
 	// ============ get - set velocity ==================
 	void setVelocity(Vector2f &v);

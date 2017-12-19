@@ -1,12 +1,12 @@
 #ifndef MOVEMENTSYSTEM_H_
 #define MOVEMENTSYSTEM_H_
 
-#include "../ECS Plus/_ECS_Header.h"
+#include "../High perfomance ECS/ECS_Header.h"
 #include "../DirectX/_DIRECTX_Header.h"
 
 #include "Velocity.h"
 
-class MovementSystem:public ECS::TSystem
+class MovementSystem:public ECS::System
 {
 public:
 
@@ -19,8 +19,6 @@ public:
 	void render();
 
 	void init();
-
-	void loadResource();
 };
 
 

@@ -1,7 +1,7 @@
 #ifndef RESOURCE_H_
 #define RESOURCE_H_
 
-#include "../ECS Plus/_ECS_Header.h"
+#include "../High perfomance ECS/ECS_Header.h"
 
 class Resource
 {

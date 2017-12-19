@@ -1,6 +1,6 @@
 #include "MapComponent.h"
 
-MapComponent::MapComponent(string name) : Component(name)
+MapComponent::MapComponent()
 {
 	
 }

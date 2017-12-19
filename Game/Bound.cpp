@@ -3,7 +3,7 @@
 
 
 
-Bound::Bound(string name):Component(name)
+Bound::Bound()
 {
 	 this->onGround = true;
 	 this->runningRight = true;

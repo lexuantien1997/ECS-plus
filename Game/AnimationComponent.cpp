@@ -1,6 +1,6 @@
 #include "AnimationComponent.h"
 
-AnimationComponent::AnimationComponent(string name) :Component(name)
+AnimationComponent::AnimationComponent() 
 {
 	
 }

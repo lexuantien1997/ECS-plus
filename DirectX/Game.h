@@ -8,7 +8,7 @@
 #include "InputManager.h"
 #include "WindowManager.h"
 
-#include "../ECS Plus/SceneManager.h"
+#include "../High perfomance ECS/SceneManager.h"
 
 class Game
 {

@@ -2,7 +2,7 @@
 
 
 
-Velocity::Velocity(string name):Component(name)
+Velocity::Velocity()
 {
 }
 

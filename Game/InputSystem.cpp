@@ -5,8 +5,8 @@
 using namespace ECS;
 InputSystem::InputSystem()
 {
-	Requires<Require<Bound, Velocity>>();
-	Excludes<Exclude<>>();
+	requireComponent<Bound>();
+	requireComponent<Velocity>();
 }
 
 InputSystem::~InputSystem()
@@ -19,8 +19,8 @@ void InputSystem::update(float dt)
 
 	for (auto entity : getEntities())
 	{
-		auto velocity = entity->getComponent<Velocity>("velocity");
-		auto bound = entity->getComponent<Bound>("bound");
+		auto velocity = entity->getComponent<Velocity>();
+		auto bound = entity->getComponent<Bound>();
 
 
 		auto input = InputManager::getInstance();
@@ -75,9 +75,5 @@ void InputSystem::render()
 }
 
 void InputSystem::init()
-{
-}
-
-void InputSystem::loadResource()
 {
 }

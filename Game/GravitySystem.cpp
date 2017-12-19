@@ -4,8 +4,9 @@
 
 GravitySystem::GravitySystem()
 {
-	Requires<Require<Velocity,Gravity,Bound>>();
-	Excludes<Exclude<>>();
+	requireComponent<Velocity>();
+	requireComponent<Gravity>();
+	requireComponent<Bound>();
 }
 
 
@@ -18,9 +19,9 @@ void GravitySystem::update(float dt)
 {
 	for (auto entity : getEntities())
 	{
-		auto gravity = entity->getComponent<Gravity>("gravity");
-		auto bound = entity->getComponent<Bound>("bound");
-		auto velocity = entity->getComponent<Velocity>("velocity");
+		auto gravity = entity->getComponent<Gravity>();
+		auto bound = entity->getComponent<Bound>();
+		auto velocity = entity->getComponent<Velocity>();
 		auto ancel = gravity->getAncel() * dt;
 		if (antiGravity)
 		{
@@ -43,6 +44,3 @@ void GravitySystem::init()
 {
 }
 
-void GravitySystem::loadResource()
-{
-}

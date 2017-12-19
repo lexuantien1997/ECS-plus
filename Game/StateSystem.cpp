@@ -1,12 +1,16 @@
 ﻿#include "StateSystem.h"
 
+StateSystem::StateSystem()
+{
+	requireComponent<StateComponent>();
+}
 
 
 void StateSystem::update(float dt)
 {
 	for (auto entity : getEntities())
 	{
-		auto stateComp = entity->getComponent<StateComponent>("state component");
+		auto stateComp = entity->getComponent<StateComponent>();
 		State* nextState = NULL;
 		auto currentState = stateComp->getCurrentState();
 
@@ -56,7 +60,7 @@ void StateSystem::init(string stateName)
 {
 	for (auto entity : getEntities())
 	{
-		auto stateComp = entity->getComponent<StateComponent>("state component");
+		auto stateComp = entity->getComponent<StateComponent>();
 
 		stateComp->serCurrentState(stateComp->findState(stateName));
 		if (stateComp->getCurrentState()->enter != NULL)
@@ -67,15 +71,6 @@ void StateSystem::init(string stateName)
 	}
 }
 
-void StateSystem::loadResource()
-{
-}
-
-StateSystem::StateSystem()
-{
-	Requires<Require<StateComponent>>();
-	Excludes<Exclude<>>();
-}
 
 
 StateSystem::~StateSystem()

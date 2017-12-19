@@ -3,13 +3,10 @@
 
 #include "AnimationComponent.h"
 #include "PlayerControllable.h"
-#include "Mess.h"
-#include "Server.h"
 
-class InputSystem:public ECS::TSystem,public Server
+class InputSystem:public ECS::System
 {
 public:
-
 
 	InputSystem();
 
@@ -21,7 +18,6 @@ public:
 
 	void init();
 
-	void loadResource();
 };
 
 #endif // !INPUTSYSTEM_H_

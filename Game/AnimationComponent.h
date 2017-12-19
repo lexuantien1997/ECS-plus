@@ -1,7 +1,7 @@
 #ifndef ANIMATIONCOMPONENT_H_
 #define ANIMATIONCOMPONENT_H_
 
-#include "../ECS Plus/_ECS_Header.h"
+#include "../High perfomance ECS/ECS_Header.h"
 #include "../DirectX/_DIRECTX_Header.h"
 
 #include "Action.h"
@@ -18,7 +18,7 @@ private:
 
 public:
 
-	AnimationComponent(string name);
+	AnimationComponent();
 	
 	void initAnimationComponent(string startAction,string sourceName);
 

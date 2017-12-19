@@ -2,7 +2,7 @@
 
 
 
-Gravity::Gravity(string name):Component(name)
+Gravity::Gravity()
 {
 
 }

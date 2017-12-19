@@ -3,7 +3,7 @@
 
 #include "StateComponent.h"
 
-class StateSystem:public ECS::TSystem
+class StateSystem:public ECS::System
 {
 public:
 
@@ -14,8 +14,6 @@ public:
 	void init();
 
 	void init(string stateName);
-
-	void loadResource();
 	
 	StateSystem();
 

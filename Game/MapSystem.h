@@ -5,7 +5,7 @@
 #include "SpriteComponent.h"
 #include "MapComponent.h"
 
-class MapSystem : public ECS::TSystem
+class MapSystem : public ECS::System
 {
 public:
 	MapSystem();
@@ -15,7 +15,6 @@ public:
 
 	void init();
 
-	void loadResource();
 	~MapSystem();
 };
 #endif // !_MAPSYSTEM_H_

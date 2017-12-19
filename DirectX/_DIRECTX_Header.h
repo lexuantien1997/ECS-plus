@@ -11,4 +11,5 @@
 #include "Transform.h"
 #include "Rect.h"
 #include "GameTime.h"
+#include "TileMap.h"
 #endif // !_DIRECTX_HEADER_H

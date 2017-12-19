@@ -4,9 +4,8 @@
 
 RenderingSystem::RenderingSystem()
 {
-	Requires<Require<SpriteComponent, Transform>>();
-
-	Excludes<Exclude<>>();
+	requireComponent<SpriteComponent>();
+	requireComponent<Transform>();
 }
 
 
@@ -24,11 +23,11 @@ void RenderingSystem::render()
 {
 	for (auto entity : getEntities())
 	{
-		if (entity->getName() == "samus")
+		if (entity->getEntityName()== EntityName::SAMUS )
 		{
-			auto transform = entity->getComponent<Transform>("transform component");
-			auto spriteComp = entity->getComponent<SpriteComponent>("sprite component");
-			auto bound = entity->getComponent<Bound>("bound");
+			auto transform = entity->getComponent<Transform>();
+			auto spriteComp = entity->getComponent<SpriteComponent>();
+			auto bound = entity->getComponent<Bound>();
 
 			if (bound->runningRight == false)
 			{
@@ -47,7 +46,7 @@ void RenderingSystem::render()
 			}
 			transform->setOrigin(spriteComp->getRect().size*0.5f);
 			auto batch = SpriteManager::getInstance();
-			batch->draw(spriteComp, transform, getGameWorld()->cam);
+			batch->draw(spriteComp, transform, getWorld()->getParentScene()->cam);
 		}
 	}
 }
@@ -56,10 +55,4 @@ void RenderingSystem::init()
 {
 
 }
-
-void RenderingSystem::loadResource()
-{
-
-}
-
 

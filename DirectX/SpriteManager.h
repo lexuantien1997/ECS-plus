@@ -1,8 +1,9 @@
 #ifndef SPRITEMANAGER_H_
 #define SPRITEMANAGER_H_
+
 #include "../directx data/Include/d3dx9.h"
 #include "../DirectX/_DIRECTX_Header.h"
-#include "../ECS Plus/Singleton.h"
+#include "../High perfomance ECS/Singleton.h"
 #include "../rapid xml/rapidxml.hpp"
 #include "../rapid xml/rapidxml_iterators.hpp"
 #include "../rapid xml/rapidxml_print.hpp"
@@ -10,9 +11,9 @@
 #include "Vector2.h"
 #include "Transform.h"
 #include "../Game/SpriteComponent.h"
-#include <map>
 #include "DeviceManager.h"
 #include "../Game/Camera.h"
+#include <map>
 
 using namespace std;
 

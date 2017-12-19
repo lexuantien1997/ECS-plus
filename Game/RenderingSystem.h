@@ -1,11 +1,11 @@
 #ifndef RENDERINGSYSTEM_H_
 #define RENDERINGSYSTEM_H_
 
-#include "../ECS Plus/_ECS_Header.h"
+#include "../High perfomance ECS/ECS_Header.h"
 #include "../DirectX/_DIRECTX_Header.h"
 #include "SpriteComponent.h"
 
-class RenderingSystem:public ECS::TSystem
+class RenderingSystem:public ECS::System
 {
 
 public:
@@ -19,8 +19,6 @@ public:
 	void render();
 
 	void init();
-
-	void loadResource();
 
 };
 

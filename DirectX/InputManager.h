@@ -1,8 +1,7 @@
 #ifndef INPUTMANAGER_H_
 #define INPUTMANAGER_H_
 
-//#include "Singleton.h"
-#include "..\ECS Plus\Singleton.h"
+#include "../High perfomance ECS/Singleton.h"
 #include "../directx data/Include/dinput.h"
 #include "../directx data/Include/d3dx9.h"
 

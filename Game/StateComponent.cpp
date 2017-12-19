@@ -2,7 +2,7 @@
 
 
 
-StateComponent::StateComponent(string name):Component(name)
+StateComponent::StateComponent()
 {
 	
 }

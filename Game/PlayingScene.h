@@ -2,9 +2,8 @@
 #define PLAYINGSCENE_H_
 
 // data
-#include "../ECS Plus/Scene.h"
+#include "../High perfomance ECS/ECS_Header.h"
 #include "../DirectX/_DIRECTX_Header.h"
-#include "../ECS Plus/_ECS_Header.h"
 
 // Components
 #include "Velocity.h"
@@ -33,7 +32,7 @@ private:
 	MovementSystem movementSystem;
 	StateSystem stateSystem;
 	MapSystem mapSystem;
-	AnimationSystem animationSystem=AnimationSystem(&inputSystem);
+	AnimationSystem animationSystem;
 public:
 
 	PlayingScene(string name);

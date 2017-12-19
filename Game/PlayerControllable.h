@@ -1,6 +1,6 @@
 #ifndef PLAYERCONTROLLABLE_H_
 #define PLAYERCONTROLLABLE_H_
-#include "../ECS Plus/_ECS_Header.h"
+#include "../High perfomance ECS/ECS_Header.h"
 #include "../DirectX/_DIRECTX_Header.h"
 
 class PlayerControllable:public ECS::Component
@@ -20,7 +20,7 @@ public:
 
 	} controls;
 
-	PlayerControllable(string name);
+	PlayerControllable();
 
 	~PlayerControllable();
 

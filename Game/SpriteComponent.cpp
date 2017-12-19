@@ -2,7 +2,7 @@
 
 
 
-SpriteComponent::SpriteComponent(string name):Component(name)
+SpriteComponent::SpriteComponent()
 {
 	sprite = NULL;
 }

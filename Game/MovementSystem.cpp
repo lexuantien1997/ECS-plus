@@ -4,8 +4,10 @@
 
 MovementSystem::MovementSystem()
 {
-	Requires<Require<Velocity, Transform,Bound>>();
-	Excludes<Exclude<>>();
+
+	requireComponent<Velocity>();
+	requireComponent<Transform>();
+	requireComponent<Bound>();
 }
 
 
@@ -17,9 +19,9 @@ void MovementSystem::update(float dt)
 {
 	for (auto entity : getEntities())
 	{
-		auto transform= entity->getComponent<Transform>("transform component");
-		auto bound= entity->getComponent<Bound>("bound");
-		auto velocity = entity->getComponent<Velocity>("velocity");
+		auto transform= entity->getComponent<Transform>();
+		auto bound= entity->getComponent<Bound>();
+		auto velocity = entity->getComponent<Velocity>();
 	
 		velocity->translating(0, bound->GRAVITY);
 
@@ -46,7 +48,3 @@ void MovementSystem::init()
 
 }
 
-void MovementSystem::loadResource()
-{
-
-}

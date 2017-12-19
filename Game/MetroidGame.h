@@ -1,7 +1,7 @@
 #ifndef METROIDGAME_H_
 #define METROIDGAME_H_
 
-#include "../ECS Plus/_ECS_Header.h"
+#include "../High perfomance ECS/Singleton.h"
 #include "../DirectX/_DIRECTX_Header.h"
 #include "PlayingScene.h"
 

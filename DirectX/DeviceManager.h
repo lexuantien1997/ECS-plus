@@ -1,8 +1,8 @@
 #ifndef DEVICEMANAGER_H_
 #define DEVICEMANAGER_H_
 
-//#include "Singleton.h"
-#include "..\ECS Plus\Singleton.h"
+
+#include "../High perfomance ECS/Singleton.h"
 #include "WindowManager.h"
 #include "../directx data/Include/d3dx9.h"
 

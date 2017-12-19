@@ -2,7 +2,7 @@
 #define TRANSFORM_H_
 
 #include "Vector2.h"
-#include "../ECS Plus/_ECS_Header.h"
+#include "../High perfomance ECS/ECS_Header.h"
 
 using namespace ECS;
 
@@ -31,7 +31,7 @@ private:
 public:
 	~Transform() {}
 
-	Transform(string name) :Component(name) { }
+	Transform()  { }
 
 	// ============= position + move (translate) Position ===============
 	void moving(float offx, float offy);

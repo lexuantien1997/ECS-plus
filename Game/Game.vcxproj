@@ -153,14 +153,6 @@
     <ClCompile Include="Velocity.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DirectX\DirectX.vcxproj">
-      <Project>{766ea06d-ce81-43d8-91ad-3cf28e959c0d}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\ECS Plus\ECS Plus.vcxproj">
-      <Project>{5a41ea8c-344f-42e2-a18c-62292b8324ce}</Project>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="Animation.h" />
     <ClInclude Include="AnimationComponent.h" />
     <ClInclude Include="AnimationSystem.h" />
@@ -190,6 +182,14 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="Read me .txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DirectX\DirectX.vcxproj">
+      <Project>{766ea06d-ce81-43d8-91ad-3cf28e959c0d}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\High perfomance ECS\High perfomance ECS.vcxproj">
+      <Project>{404a2f5c-df3f-4d08-9f36-18f9c52a619c}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

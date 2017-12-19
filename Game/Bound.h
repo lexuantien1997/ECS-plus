@@ -1,7 +1,7 @@
 #ifndef BOUND_H_
 #define BOUND_H_
 
-#include "../ECS Plus/_ECS_Header.h"
+#include "../High perfomance ECS/ECS_Header.h"
 #include "../DirectX/_DIRECTX_Header.h"
 
 class Bound :public ECS::Component
@@ -25,7 +25,7 @@ public:
 	bool turning;
 	int vel_x;
 
-	Bound(string name);
+	Bound();
 	
 	~Bound();
 };

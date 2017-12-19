@@ -1,7 +1,7 @@
 #ifndef GAMETIME_H_
 #define GAMETIME_H_
 
-#include "../ECS Plus/Singleton.h"
+#include "../High perfomance ECS/Singleton.h"
 #include <Windows.h>
 
 class GameTime:public ECS::Singleton<GameTime>

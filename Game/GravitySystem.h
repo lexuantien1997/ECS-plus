@@ -1,14 +1,14 @@
 #ifndef GRAVITYSYSTEM_H_
 #define GRAVITYSYSTEM_H_
 
-#include "../ECS Plus/_ECS_Header.h"
+#include "../High perfomance ECS/ECS_Header.h"
 #include "../DirectX/_DIRECTX_Header.h"
 
 #include "Velocity.h"
 #include "Gravity.h"
 #include "Bound.h"
 
-class GravitySystem:public ECS::TSystem
+class GravitySystem:public ECS::System
 {
 private:
 	bool antiGravity = false;
@@ -24,7 +24,6 @@ public:
 
 	void init();
 
-	void loadResource();
 };
 
 #endif

@@ -5,8 +5,9 @@
 
 MapSystem::MapSystem()
 {
-	Requires<Require<SpriteComponent, MapComponent, Transform>>();
-	Excludes<Exclude<>>();
+	requireComponent<SpriteComponent>();
+	requireComponent<MapComponent>();
+	requireComponent<Transform>();
 }
 
 void MapSystem::update(float dt)
@@ -17,11 +18,11 @@ void MapSystem::render()
 {
 	for (auto entity : getEntities())
 	{
-		if (entity->getName() == "map")
+		if (entity->getEntityName() == EntityName::MAP )
 		{
-			auto transform = entity->getComponent<Transform>("transform component");
-			auto spriteComp = entity->getComponent<SpriteComponent>("sprite component");
-			auto mapComp = entity->getComponent<MapComponent>("map component");
+			auto transform = entity->getComponent<Transform>();
+			auto spriteComp = entity->getComponent<SpriteComponent>();
+			auto mapComp = entity->getComponent<MapComponent>();
 
 			int _xOld = transform->getPosition().x;
 			int _yOld = transform->getPosition().y;
@@ -32,12 +33,12 @@ void MapSystem::render()
 				{
 					int x = mapComp->map->getSize().x * j;
 					int y = mapComp->map->getSize().y * i;
-					int camX = getGameWorld()->cam.getCamPosition().x;
-					int camY = getGameWorld()->cam.getCamPosition().y;
+					int camX = getWorld()->getParentScene()->cam.getCamPosition().x;
+					int camY = getWorld()->getParentScene()->cam.getCamPosition().y;
 					if (mapComp->map->value[i][j] != 0)
 					{
 						spriteComp->setRect(Rect(((mapComp->map->value[i][j] - 1) % 11) * 16, ((mapComp->map->value[i][j] - 1) / 11) * 16, 16, 16));
-						SpriteManager::getInstance()->draw(spriteComp, transform, getGameWorld()->cam);
+						SpriteManager::getInstance()->draw(spriteComp, transform, getWorld()->getParentScene()->cam);
 						/*std::ostringstream ss;
 						ss << "x: " << spriteComp->getRect().left_top.x << " , y: " << spriteComp->getRect().left_top.y << endl;
 						OutputDebugStringA(ss.str().c_str());*/
@@ -58,11 +59,6 @@ void MapSystem::init()
 {
 }
 
-
-
-void MapSystem::loadResource()
-{
-}
 
 MapSystem::~MapSystem()
 {

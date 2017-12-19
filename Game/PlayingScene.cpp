@@ -45,7 +45,7 @@ void PlayingScene::init()
 	initEntity();
 
 	// refresh the game world:
-	world->refresh();
+	world->loop2RefreshAndRemove();
 
 	stateSystem.init("no_state");	
 }
@@ -54,6 +54,7 @@ void PlayingScene::init()
 
 void PlayingScene::initSystem()
 {
+
 	// SYSTEMS
 	world->addSystem(renderSystem);
 	world->addSystem(inputSystem);
@@ -67,30 +68,31 @@ void PlayingScene::initEntity()
 {
 
 	// Create the entity
-	Entity* samus = world->create_Entity("samus");
-	Entity* Map = world->create_Entity("map");
+	Entity* samus = world->createEntity(EntityName::SAMUS);
+	Entity* Map = world->createEntity(EntityName::MAP);
 
-
+	Map->refresh();
+	samus->refresh();
 	// ===================================================================================================
 	// create components for `samus`
 	// ===================================================================================================
 
-	auto stateComp = samus->addComponent<StateComponent>("state component");
-	auto transformComp = samus->addComponent<Transform>("transform component");
-	auto bound = samus->addComponent<Bound>("bound");
-	auto velocity = samus->addComponent<Velocity>("velocity");
-	auto gravity = samus->addComponent<Gravity>("gravity");
-	auto spriteComp = samus->addComponent<SpriteComponent>("sprite component");
-	auto animationComp = samus->addComponent<AnimationComponent>("animation component");
+	auto stateComp = samus->addComponent<StateComponent>();
+	auto transformComp = samus->addComponent<Transform>();
+	auto bound = samus->addComponent<Bound>();
+	auto velocity = samus->addComponent<Velocity>();
+	auto gravity = samus->addComponent<Gravity>();
+	auto spriteComp = samus->addComponent<SpriteComponent>();
+	auto animationComp = samus->addComponent<AnimationComponent>();
 
 
 	// ===================================================================================================
 	// create components for `map`
 	// ===================================================================================================
 
-	auto maptransformComp = Map->addComponent<Transform>("transform component");
-	auto TilesetComponent = Map->addComponent<SpriteComponent>("sprite component");
-	auto mapComp = Map->addComponent<MapComponent>("map component");
+	auto maptransformComp = Map->addComponent<Transform>();
+	auto TilesetComponent = Map->addComponent<SpriteComponent>();
+	auto mapComp = Map->addComponent<MapComponent>();
 
 	// ===================================================================================================
 	// init components for `samus`
@@ -285,4 +287,6 @@ void PlayingScene::initEntity()
 	jump_shoot_up->addTransition(new Transition("jump_shoot_up", "stand_left", [=] {
 		return bound->onGround; }));
 #pragma endregion
+
+
 }

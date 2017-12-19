@@ -1,7 +1,7 @@
 #ifndef STATECOMPONENT_H_
 #define STATECOMPONENT_H_
 
-#include "../ECS Plus/_ECS_Header.h"
+#include "../High perfomance ECS/ECS_Header.h"
 #include "../DirectX/_DIRECTX_Header.h"
 #include "State.h"
 
@@ -15,7 +15,7 @@ private:
 	map<string, State*> states;
 public:
 
-	StateComponent(string name);
+	StateComponent();
 
 	void addState(State* state);
 

@@ -1,8 +1,7 @@
 #ifndef SCENE_H_
 #define SCENE_H_
-#include "Base.h"
 #include "GameWorld.h"
-
+#include "../Game/Camera.h"
 namespace ECS
 {
 	class Scene
@@ -13,11 +12,11 @@ namespace ECS
 		string name;
 
 	public:
-		
+		Camera cam;
 
 		GameWorld *world;
 
-		Scene(string _name) :name(_name), world(new GameWorld()) {  }
+		Scene(string _name) :name(_name), world(new GameWorld()) { world->setScene(this); }
 
 		~Scene() { }
 

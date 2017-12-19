@@ -3,17 +3,15 @@
 
 #include "AnimationComponent.h"
 #include "SpriteComponent.h"
-#include "Mess.h"
-#include "Client.h"
 
-class AnimationSystem:public ECS::TSystem,public Client
+class AnimationSystem:public ECS::System
 {
 private:
 	
 	float stateTime;
 public:
 
-	AnimationSystem(Server* p_server);
+	AnimationSystem();
 
 	~AnimationSystem();
 
@@ -27,9 +25,7 @@ public:
 
 	void init();
 
-	void loadResource();
 
-	void MessageSentHandler(const Server* p_sender, void* p_parameter);
 };
 
 #endif // !ANIMATIONSYSTEM_H_

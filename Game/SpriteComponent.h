@@ -2,11 +2,12 @@
 #define SPRITECOMPONENT_H_
 
 #include "../DirectX/_DIRECTX_Header.h"
-#include "../ECS Plus/_ECS_Header.h"
+#include "../High perfomance ECS/ECS_Header.h"
+
 #include "../DirectX/Rect.h"
 
 class Sprite;
-struct Rect;
+class Rect;
 
 class SpriteComponent :public ECS::Component
 {
@@ -15,7 +16,7 @@ private:
 	Rect rect;
 public:
 
-	SpriteComponent(string name);
+	SpriteComponent();
 
 	Sprite* getSprite() { return sprite; }
 
