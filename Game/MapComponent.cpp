@@ -10,7 +10,7 @@ void MapComponent::InitMapComponent()
 	this->map = static_cast<TileMap*>(SpriteManager::getInstance()->find("untitled.tmx"));
 	quadtreeDivision.createQuadtreeFromFile("../resources/map/untitledQuadtree.xml", map);
 	// move this elsewhere
-	map->entityInQuadtree = quadtreeDivision.listObjectInViewport(Rect(0, 0, 320, 240), quadtreeDivision.rootQuadtree);
+	map->entityInQuadtree = quadtreeDivision.listObjectInViewport(Rect(0, 0, 640, 480), quadtreeDivision.rootQuadtree);
 	for (auto it = quadtreeDivision.objects.begin(); it != quadtreeDivision.objects.end(); ++it)
 	{
 		int id = (*it)->getId();

@@ -25,6 +25,9 @@ public:
 	bool turning;
 	int vel_x;
 
+	// use for skree
+	bool follow;
+
 	Bound(string name);
 	
 	~Bound();

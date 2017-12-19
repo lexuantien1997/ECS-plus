@@ -36,7 +36,7 @@ void AnimationSystem::update(float dt)
 		{// dùng duration là sai, duration cố định
 				EnemiesAnimation* enemyAni = entity->getComponent<AnimationComponent>("animation component")->getEnemiesAnimation();
 				enemyAni->setDuration(enemyAni->getDuration() + 0.01);
-			if (enemyAni->getDuration() >= 0.04)
+			if (enemyAni->getDuration() >= 0.03)
 			{
 				enemyAni->setDuration(0.0);
 
@@ -48,12 +48,12 @@ void AnimationSystem::update(float dt)
 				if (enemyAni->rectIndex % it->second.size() == 0)
 				{
 					Vector2f v = transform->getPosition();
-					transform->setPosition(v.x + 4, v.y);
+					transform->setPosition(v.x + 8, v.y);
 				}
 				else if (enemyAni->rectIndex % it->second.size() == 2)
 				{
 					Vector2f v = transform->getPosition();
-					transform->setPosition(v.x - 4, v.y);
+					transform->setPosition(v.x - 8, v.y);
 				}
 				
 				if (it != enemyAni->mapEnemiesAnimation.end())

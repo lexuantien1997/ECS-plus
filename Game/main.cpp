@@ -13,7 +13,7 @@ int WINAPI WinMain(
 	int nShowCmd)
 {
 
-	MetroidGame *metroid = new MetroidGame(hInstance, L"Metroid", GAME_SCREEN_RESOLUTION_320_240_24, 0, 60);
+	MetroidGame *metroid = new MetroidGame(hInstance, L"Metroid", GAME_SCREEN_RESOLUTION_640_480_24, 0, 60);
 
 	metroid->runGame();
 

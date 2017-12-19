@@ -17,8 +17,8 @@ void MetroidGame::init()
 {
 	Game::init();
 	SceneManager::getInstance()->addScene(new Start_GameOver_Scene("Start scene")); // there's a bug here
-	SceneManager::getInstance()->addScene(new PlayingScene("Playing scene"));
 	SceneManager::getInstance()->addScene(new IntroScene("Intro scene"));
+	SceneManager::getInstance()->addScene(new PlayingScene("Playing scene"));
 }
 
 void MetroidGame::loadResource()
