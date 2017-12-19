@@ -15,8 +15,6 @@ PlayingScene::~PlayingScene()
 
 void PlayingScene::render()
 {
-	inputSystem.render();
-	movementSystem.render();
 	mapSystem.render();
 	renderSystem.render();
 }
@@ -27,7 +25,6 @@ void PlayingScene::update(float dt)
 	stateSystem.update(dt);
 	movementSystem.update(dt);
 	animationSystem.update(dt);
-	renderSystem.update(dt);
 }
 
 void PlayingScene::release()
@@ -49,8 +46,6 @@ void PlayingScene::init()
 
 	stateSystem.init("no_state");	
 }
-
-
 
 void PlayingScene::initSystem()
 {

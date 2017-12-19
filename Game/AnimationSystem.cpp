@@ -18,9 +18,22 @@ void AnimationSystem::update(float dt)
 	for (auto entity :getEntities())
 	{
 		auto animationComp = entity->getComponent<AnimationComponent>();
-		auto bound= entity->getComponent<Bound>();
+		auto currentAction = animationComp->getCurrentAction();
 
-		onUpdate(entity,dt);
+		stateTime += dt;
+		if (stateTime >= currentAction->getFrameDuration())
+		{
+			currentAction->increasing();
+			stateTime = 0;
+		}
+
+		if (currentAction->getCurrentRect() >= currentAction->getAction_Size())
+			currentAction->setCurrentRect(0);
+
+		auto spriteComp = entity->getComponent<SpriteComponent>();
+
+		spriteComp->setRect(currentAction->getActionRect().at(currentAction->getCurrentRect()));
+		
 	}
 	
 }

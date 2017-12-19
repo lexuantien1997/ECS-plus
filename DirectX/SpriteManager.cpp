@@ -73,7 +73,7 @@ void SpriteManager::draw(SpriteComponent* spritecomp, Transform* t, Camera cam)
 	D3DXVECTOR2 scaling = D3DXVECTOR2(sca.x, sca.y);
 
 	// scaling center:
-	D3DXVECTOR2 scalingScenter = D3DXVECTOR2(t->getPosition().x, t->getPosition().y);
+	D3DXVECTOR2 scalingScenter = D3DXVECTOR2(t->getPosition().x + ori.x, t->getPosition().y + ori.y);
 	
 	D3DXMATRIX matrix;
 
@@ -107,7 +107,7 @@ void SpriteManager::draw(SpriteComponent* spritecomp, Transform* t, Camera cam)
 	D3DXVECTOR3 realPositionInCamera(result.x, result.y, 0);
 
 	// vị trí vẽ sẽ là giữa bức hình hay không
-	D3DXVECTOR3* isCenter  = new D3DXVECTOR3(r.size.x / 2, r.size.y / 2, 0);
+	D3DXVECTOR3* isCenter  = new D3DXVECTOR3(0, r.size.y, 0);
 	
 	begin(); // start drawing
 
