@@ -31,7 +31,7 @@ void Start_GameOver_Scene::init()
 
 	auto start_sprite = static_cast<Sprite*>(SpriteManager::getInstance()->find("start.png"));
 	spriteComp->initSpriteComponent(start_sprite, Rect(Vector2f(5, 56), Vector2f(256, 220)));
-	transformComp->initTransform(Vector2f(0, -0), Vector2f(0, 0), Vector2f(320.0 / 256.0, 240.0 / 220.0), NULL);
+	transformComp->initTransform(Vector2f(0, -0), Vector2f(0, 0), Vector2f(640.0 / 256.0, 480.0 / 220.0), NULL);
 
 	world->refresh();
 }

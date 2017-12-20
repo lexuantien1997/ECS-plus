@@ -34,7 +34,7 @@ void IntroScene::init()
 
 	auto intro_sprite = static_cast<Sprite*>(SpriteManager::getInstance()->find("intro.png"));
 	spriteComp->initSpriteComponent(intro_sprite, Rect(Vector2f(0, 0), Vector2f(260, 244)));
-	transformComp->initTransform(Vector2f(0, -0), Vector2f(0, 0), Vector2f(320.0 / 260.0, 240.0 / 244.0), NULL);
+	transformComp->initTransform(Vector2f(0, -0), Vector2f(0, 0), Vector2f(640.0 / 260.0, 480.0 / 244.0), NULL);
 	introAnimationComp->initAnimationComponent("", "introscene.xml");
 
 	world->refresh();
